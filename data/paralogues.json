@@ -1,0 +1,135 @@
+[
+  {
+    "id": "leda",
+    "title": "Diversionary Tactics",
+    "character": "Leda",
+    "start": "Talk to Leda, Temple Row",
+    "reward": "Silver Shield",
+    "routes": {
+      "Dietrich": {"windows": [{"open": "9/2", "close": "9/8"}], "deadline": "9/8", "fixedBattleDate": true},
+      "Theodora": {"windows": [{"open": "9/2", "close": "9/8"}], "deadline": "9/8", "fixedBattleDate": true}
+    },
+    "note": "The battle always happens on 9/8, even if you accept earlier."
+  },
+  {
+    "id": "theodora",
+    "title": "Missing Brave-Warrior Statue",
+    "character": "Theodora",
+    "start": "Talk to Bonaventure, Temple Row",
+    "reward": "Pilum",
+    "routes": {"Dietrich": {"windows": [{"open": "9/3", "close": "9/12"}], "deadline": "9/15"}},
+    "note": "The fight is out on the World Map, so leave Dagsion before 9/15."
+  },
+  {
+    "id": "bertrand",
+    "title": "Friendly Match with Brigid's King",
+    "character": "Bertrand",
+    "start": "Talk to Gabriel, Arena Square",
+    "reward": "Extra Large Bullion",
+    "routes": {
+      "Cai": {"windows": [{"open": "9/17", "close": "9/25"}], "deadline": "9/25"},
+      "Dietrich": {
+        "windows": [{"open": "9/17", "close": "9/17"}],
+        "deadline": "9/17",
+        "warning": "Dietrich can only accept this on 9/17."
+      },
+      "Theodora": {"windows": [{"open": "9/17", "close": "9/25"}], "deadline": "9/25"}
+    }
+  },
+  {
+    "id": "talimun",
+    "title": "Secret of the Vanished Carriage",
+    "character": "Talimun",
+    "start": "Talk to Talimun, near the Port",
+    "reward": "Cleansing Blade",
+    "routes": {
+      "Cai": {
+        "windows": [{"open": "9/17", "close": "9/22"}, {"open": "10/1", "close": "10/10"}],
+        "deadline": "10/12"
+      },
+      "Dietrich": {
+        "windows": [{"open": "9/17", "close": "9/22"}, {"open": "10/1", "close": "10/10"}],
+        "deadline": "10/12",
+        "warning": "GameTyrant says Dietrich's first window closes 9/19, so go early."
+      },
+      "Theodora": {
+        "windows": [{"open": "9/17", "close": "9/22"}, {"open": "10/1", "close": "10/10"}],
+        "deadline": "10/12"
+      }
+    },
+    "note": "It's offered in two separate windows. Missing the first one is fine."
+  },
+  {
+    "id": "anna",
+    "title": "Golden Secret",
+    "character": "Anna",
+    "start": "Talk to Anna, Dagsion Summit",
+    "reward": "Orichalcum",
+    "routes": {
+      "Cai": {"windows": [{"open": "9/24", "close": "10/5"}], "deadline": "10/5"},
+      "Dietrich": {"windows": [{"open": "9/29", "close": "10/5"}], "deadline": "10/5"},
+      "Theodora": {"windows": [{"open": "9/24", "close": "10/5"}], "deadline": "10/5"}
+    }
+  },
+  {
+    "id": "anatolia",
+    "title": "Queen of the Erased",
+    "character": "Anatolia",
+    "start": "Talk to Anatolia, City Streets",
+    "reward": "Electron Agitator (+ Spellshard and Dew of Peace if every villager survives)",
+    "routes": {
+      "Dietrich": {"windows": [{"open": "10/5", "close": "10/14"}], "deadline": "10/17"},
+      "Leda": {"windows": [{"open": "10/5", "close": "10/14"}], "deadline": "10/17"}
+    },
+    "note": "Protect every villager to earn the bonus rewards."
+  },
+  {
+    "id": "cai",
+    "title": "Great Escape",
+    "character": "Cai",
+    "start": "Talk to Cai, City Streets",
+    "reward": "Gem Box",
+    "routes": {
+      "Dietrich": {"windows": [{"open": "10/16", "close": "10/22"}], "deadline": "10/22", "fixedBattleDate": true},
+      "Theodora": {"windows": [{"open": "10/16", "close": "10/22"}], "deadline": "10/22", "fixedBattleDate": true},
+      "Leda": {"windows": [{"open": "10/16", "close": "10/22"}], "deadline": "10/22", "fixedBattleDate": true}
+    },
+    "note": "The battle always happens on 10/22."
+  },
+  {
+    "id": "dietrich",
+    "title": "Sealed-Off Past",
+    "character": "Dietrich",
+    "start": "Talk to Fabio, near the Arena",
+    "reward": "Salamander ×2",
+    "routes": {
+      "Theodora": {
+        "windows": [{"open": "10/16", "close": "10/24"}],
+        "deadline": "10/24",
+        "warning": "Theodora's Chapter 12 ends 10/24, which is the real cutoff."
+      },
+      "Leda": {"windows": [{"open": "10/16", "close": "10/22"}], "deadline": "11/1"}
+    }
+  },
+  {
+    "id": "orchel",
+    "title": "Orchel's Regret",
+    "character": "Orchel",
+    "start": "Talk to Orchel, Lower Temple Row",
+    "reward": "Healing Staff",
+    "routes": {
+      "Cai": {
+        "windows": [{"open": "10/18", "close": "10/20"}],
+        "deadline": "10/21",
+        "warning": "Cai only gets three days to accept."
+      },
+      "Dietrich": {"windows": [{"open": "10/18", "close": "10/25"}], "deadline": "10/27"},
+      "Theodora": {
+        "windows": [{"open": "10/18", "close": "10/24"}],
+        "deadline": "10/24",
+        "warning": "Theodora's Chapter 12 ends 10/24, which is the real cutoff."
+      },
+      "Leda": {"windows": [{"open": "10/18", "close": "10/25"}], "deadline": "10/27"}
+    }
+  }
+]

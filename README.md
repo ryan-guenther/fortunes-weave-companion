@@ -1,14 +1,14 @@
 # Fortune's Weave Companion
 
-A fast, offline-capable companion for **Fire Emblem: Fortune's Weave**. Install it on your phone's home screen and use it while you play.
+A fast, installable companion for **Fire Emblem: Fortune's Weave**. Add it to your phone's home screen and use it while you play, even offline.
 
 **Live app:** https://ryan-guenther.github.io/fortunes-weave-companion/
 
 ## Features
 
-- **Characters:** favorite and "really liked" gifts for all 63 giftable characters, plus categories that also work and items to avoid.
+- **Characters:** favorite and "really liked" gifts for all 63 giftable characters, plus categories that also work and items to avoid. A small number on a gift shows how many guides agree on it.
 - **Items:** reverse lookup showing everyone who wants an item and where to buy it.
-- **Paralogues:** pick a route (Cai, Dietrich, Theodora, Leda) to see each Part I paralogue's accept window, deadline, start location and rewards on a timeline. Enter your in-game date to see what is open now.
+- **Paralogues:** pick a route (Cai, Dietrich, Theodora or Leda) to see each Part I paralogue's accept window, deadline, start location and rewards on a timeline. Enter your in-game date to see what's open now.
 - Works offline after the first visit, and remembers your route and date on your device.
 
 ## Install on your phone
@@ -18,26 +18,64 @@ A fast, offline-capable companion for **Fire Emblem: Fortune's Weave**. Install 
 
 ## Project layout
 
-| File | Purpose |
-| --- | --- |
-| `index.html` | The whole app: markup, styles, data and script in one file |
-| `manifest.webmanifest` | App name, colors and icons for installing |
-| `sw.js` | Service worker for offline use |
-| `icon-*.png`, `apple-touch-icon.png` | App icons |
-| `.nojekyll` | Tells GitHub Pages to serve files as-is |
+```
+index.html              Page markup
+css/styles.css          Styles (light and dark)
+js/app.js               App logic: loads the data and renders each view
+data/characters.json    Gifts per character
+data/paralogues.json    Paralogue windows and deadlines per route
+data/shops.json         Where to buy each item
+data/sources.json       Guide names for the source codes used in characters.json
+manifest.webmanifest    Name, colors and icons for installing
+sw.js                   Service worker for offline use
+icons/                  App icons
+.github/workflows/      Deploys the site to GitHub Pages
+```
 
-## Updating
+There's no build step. The app is plain HTML, CSS and JavaScript.
 
-1. Edit or replace `index.html`.
-2. Bump `VERSION` on line 2 of `sw.js` (for example `companion-v1` → `companion-v2`) so installed copies pick up the change.
-3. Commit to `main`. GitHub Pages redeploys in a minute or two.
+## Editing the data
+
+Most changes are edits to the JSON files in `data/`.
+
+**A gift** in `characters.json`:
+
+```json
+{"item": "Volcano Ghosh", "sources": ["G8", "NGB"]}
+```
+
+Put it under `favorites` (double points) or `reallyLiked`. `sources` uses the codes in `sources.json`. Gifts with more sources are listed first, so keep the most confirmed items at the top.
+
+**A paralogue route** in `paralogues.json`, with dates as `month/day`:
+
+```json
+"Cai": {"windows": [{"open": "9/17", "close": "9/25"}], "deadline": "9/25"}
+```
+
+Optional fields are `fixedBattleDate` (the fight happens on the deadline no matter when you accept) and `warning` (shown as "Watch out").
+
+## Running locally
+
+The app loads its data with `fetch`, so open it through a local server rather than as a file:
+
+```sh
+python3 -m http.server
+```
+
+Then visit http://localhost:8000.
+
+## Deploying
+
+Every push to `main` runs `.github/workflows/deploy.yml`. It checks that the data files are valid JSON, stamps the service worker's cache version with the commit, and publishes to GitHub Pages. Installed copies pick up the new version on their next launch.
+
+In the repo's **Settings → Pages**, the source must be set to **GitHub Actions**.
 
 ## Data sources
 
-Gift and paralogue data is compiled from community guides and player reports:
-Game8, NightlyGamingBinge, Polygon, GameSpot, Selphie1999Gaming, KeenGamer, Pocket Tactics and GameTyrant.
-Where sources disagree, the card notes it. Corrections are welcome via issues or pull requests.
+Gift and paralogue data is compiled from community guides and player reports: Game8, NightlyGamingBinge, Polygon, GameSpot, Selphie1999Gaming, KeenGamer, Pocket Tactics and GameTyrant. Where sources disagree, the card says so. Corrections are welcome as issues or pull requests.
 
-## Disclaimer
+## License
 
-Unofficial fan project, not affiliated with or endorsed by Nintendo or Intelligent Systems. Fire Emblem is a trademark of Nintendo. The MIT license covers this project's code; game names and terms belong to their owners.
+[MIT](LICENSE) for this project's code.
+
+Unofficial fan project, not affiliated with or endorsed by Nintendo or Intelligent Systems. Fire Emblem is a trademark of Nintendo, and game names and terms belong to their owners.
