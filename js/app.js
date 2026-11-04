@@ -74,6 +74,7 @@ const state = {
   charRoute: 'all',          // route filter on the characters view
   recruitFilter: 'all',      // recruit status filter, used once a route is picked
   done: {},                  // { route: Set of paralogue ids marked done }
+  recruited: {},             // { route: Set of character names marked recruited }
 };
 
 const RECRUIT_FILTERS = [
@@ -82,7 +83,22 @@ const RECRUIT_FILTERS = [
   { id: 'joins', name: 'Join automatically' },
   { id: 'later', name: 'Join in Part II/III' },
   { id: 'no', name: 'Not on this route' },
+  { id: 'recruited', name: 'Recruited' },
 ];
+
+// Per-route checklists are saved as { route: [ids] }.
+function loadRouteSets(key) {
+  let saved = {};
+  try { saved = JSON.parse(storage.get(key)) ?? {}; } catch { /* ignore bad saved data */ }
+  return Object.fromEntries(ROUTES.map((r) => [r, new Set(Array.isArray(saved[r]) ? saved[r] : [])]));
+}
+
+function toggleInRouteSet(key, sets, route, id) {
+  const set = sets[route];
+  if (set.has(id)) set.delete(id);
+  else set.add(id);
+  storage.set(key, JSON.stringify(Object.fromEntries(ROUTES.map((r) => [r, [...sets[r]]]))));
+}
 
 function loadSavedState() {
   const view = storage.get('fw-view');
@@ -97,12 +113,8 @@ function loadSavedState() {
   const recruitFilter = storage.get('fw-recruit-filter');
   if (RECRUIT_FILTERS.some((f) => f.id === recruitFilter)) state.recruitFilter = recruitFilter;
 
-  try {
-    const done = JSON.parse(storage.get('fw-paralogues-done')) ?? {};
-    for (const r of ROUTES) state.done[r] = new Set(Array.isArray(done[r]) ? done[r] : []);
-  } catch {
-    for (const r of ROUTES) state.done[r] = new Set();
-  }
+  state.done = loadRouteSets('fw-paralogues-done');
+  state.recruited = loadRouteSets('fw-recruited');
 
   try {
     const saved = JSON.parse(storage.get('fw-game-date'));
@@ -320,21 +332,30 @@ function requirementText(req, route) {
   return parts.join(' · ');
 }
 
+const isRecruited = (name, route) => state.recruited[route]?.has(name) ?? false;
+
+function recruitToggle(name, route) {
+  const on = isRecruited(name, route);
+  return `<button type="button" class="done-toggle" data-recruited="${escapeHtml(name)}" aria-pressed="${on}">${on ? `✓ Recruited on ${route} (tap to undo)` : `Mark recruited on ${route}`}</button>`;
+}
+
 function recruitBlock(name) {
   const rec = recruitByName.get(name);
   if (!rec) return `<p class="recruit-line is-unknown"><b>Recruit:</b> not covered by the guides yet.</p>`;
 
   if (rec.later) {
-    return `<p class="recruit-line is-later"><b>Joins in ${escapeHtml(rec.later.when)}.</b> ${escapeHtml(rec.later.how)}</p>`;
+    const line = `<p class="recruit-line is-later"><b>Joins in ${escapeHtml(rec.later.when)}.</b> ${escapeHtml(rec.later.how)}</p>`;
+    return state.charRoute === 'all' ? line : line + recruitToggle(name, state.charRoute);
   }
 
   if (state.charRoute === 'all') {
     const chips = ROUTES.map((r) => {
       const req = rec.partOne[r];
       const status = recruitStatus(name, r);
-      const text = !req ? '—' : req.joins === 'auto' ? 'Joins' : `S${req.support} R${req.renown}`;
+      const text = !req ? '—' : isRecruited(name, r) ? '✓' : req.joins === 'auto' ? 'Joins' : `S${req.support} R${req.renown}`;
       const title = !req ? `Not recruitable on ${r} in Part I` : `${r}: ${req.joins === 'auto' ? 'joins automatically' : `Support ${req.support}, Renown ${req.renown}${req.also ? `, ${req.also}` : ''}`}`;
-      return `<span class="route-chip is-${status}" title="${escapeHtml(title)}"><b>${r}</b> ${text}</span>`;
+      const recruitedClass = req && isRecruited(name, r) ? ' is-recruited' : '';
+      return `<span class="route-chip is-${status}${recruitedClass}" title="${escapeHtml(title)}"><b>${r}</b> ${text}</span>`;
     }).join('');
     return `<div><p class="label">Recruit (Part I)</p><div class="route-chips">${chips}</div></div>`;
   }
@@ -342,7 +363,7 @@ function recruitBlock(name) {
   const route = state.charRoute;
   const req = rec.partOne[route];
   if (!req) return `<p class="recruit-line is-no"><b>${route}:</b> can't be recruited on this route in Part I.</p>`;
-  return `<p class="recruit-line is-${recruitStatus(name, route)}"><b>${route}:</b> ${requirementText(req, route)}</p>`;
+  return `<p class="recruit-line is-${recruitStatus(name, route)}"><b>${route}:</b> ${requirementText(req, route)}</p>${recruitToggle(name, route)}`;
 }
 
 function renderCharacters() {
@@ -352,19 +373,29 @@ function renderCharacters() {
     [...c.favorites, ...c.reallyLiked].some((g) => normalize(g.item).includes(q)) ||
     normalize(c.alsoGood ?? '').includes(q);
   const route = state.charRoute;
-  const byStatus = (c) => route === 'all' || state.recruitFilter === 'all' || recruitStatus(c.name, route) === state.recruitFilter;
+  // With a route picked, recruited characters only show under the Recruited filter.
+  const byStatus = (c) => {
+    if (route === 'all') return true;
+    const recruited = isRecruited(c.name, route);
+    if (state.recruitFilter === 'recruited') return recruited;
+    if (recruited) return false;
+    return state.recruitFilter === 'all' || recruitStatus(c.name, route) === state.recruitFilter;
+  };
   const list = characters.filter((c) => (!q || matches(c)) && byStatus(c));
   const filtered = list.length !== characters.length;
+  const recruitedCount = route === 'all' ? 0 : state.recruited[route].size;
 
   const body = (list.length
     ? `<div class="card-grid">${list.map((c) => characterCard(c, Boolean(q))).join('')}</div>`
     : `<p class="empty">No one matches these filters.</p>`) + GIFT_TIPS;
 
   const routeFilter = filterRow('Route', [{ id: 'all', name: 'All routes' }, ...ROUTES.map((r) => ({ id: r, name: r }))], route, 'char-route');
-  const statusFilter = route === 'all' ? '' : filterRow('Recruitment', RECRUIT_FILTERS, state.recruitFilter, 'recruit');
+  const statusOptions = RECRUIT_FILTERS.map((f) =>
+    (f.id === 'recruited' ? { ...f, name: `Recruited (${recruitedCount})` } : f));
+  const statusFilter = route === 'all' ? '' : filterRow('Recruitment', statusOptions, state.recruitFilter, 'recruit');
   const intro = route === 'all'
     ? 'Gifts and Part I recruitment for every character. Pick a route to see what each one needs there.'
-    : `Gifts and what each character needs to join on the ${route} route. A ✓ means you've ticked off that paralogue.`;
+    : `Gifts and what each character needs to join on the ${route} route. Mark someone recruited to move them under Recruited. A ✓ next to a paralogue means you've ticked it off.`;
 
   return viewFrame({
     filters: routeFilter + statusFilter,
@@ -670,7 +701,7 @@ function bindEvents() {
   $('#view').addEventListener('click', (e) => {
     const button = e.target.closest('button');
     if (!button) return;
-    const { item, character, route, expand, role, classOf, charRoute, recruit, done } = button.dataset;
+    const { item, character, route, expand, role, classOf, charRoute, recruit, done, recruited } = button.dataset;
 
     if (item) {
       showView('items', item);
@@ -686,11 +717,10 @@ function bindEvents() {
       storage.set('fw-recruit-filter', recruit);
       render();
     } else if (done) {
-      const set = state.done[state.route];
-      if (set.has(done)) set.delete(done);
-      else set.add(done);
-      const saved = Object.fromEntries(ROUTES.map((r) => [r, [...state.done[r]]]));
-      storage.set('fw-paralogues-done', JSON.stringify(saved));
+      toggleInRouteSet('fw-paralogues-done', state.done, state.route, done);
+      render();
+    } else if (recruited) {
+      toggleInRouteSet('fw-recruited', state.recruited, state.charRoute, recruited);
       render();
     } else if (route) {
       state.route = route;

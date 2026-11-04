@@ -470,6 +470,7 @@ main { padding-block: 12px 40px; }
 .route-chip.is-joins { border-color: transparent; background: var(--accent-soft); }
 .route-chip.is-recruit { color: var(--fg); }
 .route-chip.is-no { color: var(--muted); border-style: dashed; }
+.route-chip.is-recruited { border-color: transparent; background: var(--gold-soft); }
 
 .recruit-line {
   margin: 0;
