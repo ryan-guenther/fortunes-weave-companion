@@ -408,7 +408,8 @@ function renderClasses() {
   return `
     <ol class="tier-strip" aria-label="Class tiers">${tiers}</ol>
     <div class="role-filter segmented" role="group" aria-label="Role">${roleButtons}</div>
-    <p class="route-note">Recommended paths from KeenGamer, from starting class to Master or Divine. "A / B" means either works. They're suggestions, so a character's growths and your team's needs come first.</p>
+    <p class="route-note">Recommended paths from starting class to Master or Divine. "A / B" means either works. They're suggestions, so a character's growths and your team's needs come first.</p>
+    <p class="source-line">Sources: paths from <a href="https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/" target="_blank" rel="noopener">KeenGamer: Best Class for Every Character</a>; tiers and tips from <a href="https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/" target="_blank" rel="noopener">AllThings.How: Class Guide</a>.</p>
     ${groups || `<p class="empty">No class path matches “${escapeHtml(state.query)}”.</p>`}`;
 }
 

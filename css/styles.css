@@ -664,6 +664,14 @@ main { padding-block: 12px 40px; }
   color: var(--accent);
 }
 
+.source-line {
+  margin: -8px 0 14px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.source-line a { color: inherit; }
+
 .role-filter { margin-bottom: 4px; }
 
 .role-filter button {

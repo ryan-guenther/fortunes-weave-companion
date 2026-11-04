@@ -1,4 +1,8 @@
 {
+  "sources": [
+    {"name": "KeenGamer: Best Class for Every Character", "url": "https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/", "covers": "Every path and reason"},
+    {"name": "AllThings.How: Class Guide, All Tiers and Masteries", "url": "https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/", "covers": "Tier names, unlocks and the tip notes"}
+  ],
   "tiers": [
     {"name": "Beginner", "unlock": "Beginner License, Renown 1"},
     {"name": "Specialty", "unlock": "Specialty License, Renown 4"},

@@ -82,7 +82,24 @@ In the repo's **Settings → Pages**, the source must be set to **GitHub Actions
 
 ## Data sources
 
-Gift, paralogue and class data is compiled from community guides and player reports: Game8, NightlyGamingBinge, Polygon, GameSpot, Selphie1999Gaming, KeenGamer, Pocket Tactics, GameTyrant and AllThings.How. Where sources disagree, the card says so. Corrections are welcome as issues or pull requests.
+Data is compiled from community guides and player reports. Where sources disagree, the card says so. Corrections are welcome as issues or pull requests.
+
+**Gifts**
+- [Game8: Gift Giving Guide](https://game8.co/)
+- [NightlyGamingBinge: character guides](https://nightlygamingbinge.com/fire-emblem-fortunes-weave-guides-and-walkthroughs/)
+- [Polygon: Best gifts for each character](https://www.polygon.com/)
+- [GameSpot: Gifts Guide](https://www.gamespot.com/)
+- [Selphie1999Gaming: Gifts for all characters](https://selphie1999gaming.com/game-guides/fire-emblem-fortunes-weave/fire-emblem-fortunes-weave-gifts-for-all-characters/)
+- [KeenGamer: Best Gifts Guide](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-gifts-guide/)
+
+**Paralogues**
+- [KeenGamer: All Paralogues List](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-all-paralogues-list/)
+- [Pocket Tactics: Paralogues](https://www.pockettactics.com/fire-emblem-fortunes-weave/paralogues)
+- [GameTyrant: How to Get All Paralogues](https://gametyrant.com/news/how-to-get-all-paralogues-in-fire-emblem-fortunes-weave)
+
+**Classes**
+- [KeenGamer: Best Class for Every Character](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/) (every path and reason)
+- [AllThings.How: Class Guide, All Tiers and Masteries](https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/) (tiers, unlocks and tips)
 
 ## License
 
