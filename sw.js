@@ -12,6 +12,7 @@ const APP_FILES = [
   './data/characters.json',
   './data/classes.json',
   './data/paralogues.json',
+  './data/recruitment.json',
   './data/shops.json',
   './data/sources.json',
   './manifest.webmanifest',

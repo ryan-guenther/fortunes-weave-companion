@@ -71,7 +71,18 @@ const state = {
   dateDraft: { month: '', day: '' }, // what the date inputs currently show
   expanded: new Set(),       // character cards showing every "really liked" item
   role: 'all',               // role filter on the classes view
+  charRoute: 'all',          // route filter on the characters view
+  recruitFilter: 'all',      // recruit status filter, used once a route is picked
+  done: {},                  // { route: Set of paralogue ids marked done }
 };
+
+const RECRUIT_FILTERS = [
+  { id: 'all', name: 'Everyone' },
+  { id: 'recruit', name: 'Need recruiting' },
+  { id: 'joins', name: 'Join automatically' },
+  { id: 'later', name: 'Join in Part II/III' },
+  { id: 'no', name: 'Not on this route' },
+];
 
 function loadSavedState() {
   const view = storage.get('fw-view');
@@ -79,6 +90,19 @@ function loadSavedState() {
 
   const route = storage.get('fw-route');
   if (ROUTES.includes(route)) state.route = route;
+
+  const charRoute = storage.get('fw-char-route');
+  if (ROUTES.includes(charRoute)) state.charRoute = charRoute;
+
+  const recruitFilter = storage.get('fw-recruit-filter');
+  if (RECRUIT_FILTERS.some((f) => f.id === recruitFilter)) state.recruitFilter = recruitFilter;
+
+  try {
+    const done = JSON.parse(storage.get('fw-paralogues-done')) ?? {};
+    for (const r of ROUTES) state.done[r] = new Set(Array.isArray(done[r]) ? done[r] : []);
+  } catch {
+    for (const r of ROUTES) state.done[r] = new Set();
+  }
 
   try {
     const saved = JSON.parse(storage.get('fw-game-date'));
@@ -98,6 +122,8 @@ let sources = {};
 let paralogues = [];
 let classData = { tiers: [], roles: [], characters: [] };
 let classByName = new Map();
+let recruitment = { sources: [], characters: [] };
+let recruitByName = new Map();
 
 async function fetchJson(url) {
   // no-cache: always check with the server so data matches the deployed app.
@@ -107,15 +133,17 @@ async function fetchJson(url) {
 }
 
 async function loadData() {
-  [characters, shops, sources, paralogues, classData] = await Promise.all([
+  [characters, shops, sources, paralogues, classData, recruitment] = await Promise.all([
     fetchJson('data/characters.json'),
     fetchJson('data/shops.json'),
     fetchJson('data/sources.json'),
     fetchJson('data/paralogues.json'),
     fetchJson('data/classes.json'),
+    fetchJson('data/recruitment.json'),
   ]);
   items = buildItemIndex(characters);
   classByName = new Map(classData.characters.map((c) => [c.name, c]));
+  recruitByName = new Map(recruitment.characters.map((c) => [c.name, c]));
 }
 
 // Reverse index: for each item, who has it as a favorite and who really likes it.
@@ -142,6 +170,7 @@ const link = (url, text) => `<a href="${url}" target="_blank" rel="noopener">${e
 const SOURCES = {
   gifts: `Gifts from Game8 "Gift Giving Guide" (Oct 19, 2026), ${link('https://nightlygamingbinge.com/fire-emblem-fortunes-weave-guides-and-walkthroughs/', 'NightlyGamingBinge')}, Polygon "Best gifts for each character" by Josh Broadwell (Oct 9, 2026), GameSpot "Gifts Guide" by Dave Irwin (Sep 23, 2026), ${link('https://selphie1999gaming.com/game-guides/fire-emblem-fortunes-weave/fire-emblem-fortunes-weave-gifts-for-all-characters/', 'Selphie1999Gaming')}, ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-gifts-guide/', 'KeenGamer')} and reader comments on the Polygon and Game8 guides. Shop locations from Polygon. When guides disagree, an item counts as a favorite if any guide tested it as one.`,
   paralogues: `Dates from ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-all-paralogues-list/', 'KeenGamer')}, ${link('https://www.pockettactics.com/fire-emblem-fortunes-weave/paralogues', 'Pocket Tactics')} and ${link('https://gametyrant.com/news/how-to-get-all-paralogues-in-fire-emblem-fortunes-weave', 'GameTyrant')}. World Map tip for Theodora's paralogue from ${link('https://nerdschalk.com/fire-emblem-fortunes-weave-calendar-checklist/', 'NerdsChalk')}.`,
+  recruitment: `Recruitment from ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-all-characters-recruitment-guide/', 'KeenGamer: All Characters Recruitment Guide')}, cross-checked against ${link('https://www.gameshedge.com/fire-emblem-fortunes-weave-characters-recruitment-guide/', 'GamesHedge: Characters Recruitment Guide')}.`,
   classes: `Paths from ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/', 'KeenGamer: Best Class for Every Character')}. Tiers and tips from ${link('https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/', 'AllThings.How: Class Guide')}.`,
 };
 
@@ -243,6 +272,7 @@ function characterCard(c, isSearching) {
   return `
     <article class="card">
       <div class="card-head">${crest(c.name)}<div><h2>${escapeHtml(c.name)}</h2>${likes}</div></div>
+      ${recruitBlock(c.name)}
       ${c.favorites.length ? `
         <div>
           <p class="label">Favorites</p>
@@ -262,24 +292,89 @@ function characterCard(c, isSearching) {
     </article>`;
 }
 
+// ---------- Recruitment ----------
+
+// How a character joins on a route: 'joins', 'recruit', 'later', 'no' or 'unknown'.
+function recruitStatus(name, route) {
+  const rec = recruitByName.get(name);
+  if (!rec) return 'unknown';
+  const onRoute = rec.partOne?.[route];
+  if (onRoute) return onRoute.joins === 'auto' ? 'joins' : 'recruit';
+  if (rec.later) return 'later';
+  return 'no';
+}
+
+// "Clear Orchel's paralogue" gets a check mark once that paralogue is ticked off on the route.
+function withParalogueChecks(text, route) {
+  // escapeHtml leaves apostrophes alone, so "Clear Orchel's paralogue" survives intact.
+  return escapeHtml(text).replace(/Clear ([A-Z][\w-]*(?: [A-Z][\w-]*)*)'s paralogue/g, (match, who) => {
+    const p = paralogues.find((x) => x.character === who);
+    return p && state.done[route]?.has(p.id) ? `${match} <span class="done-mark" title="Done">✓</span>` : match;
+  });
+}
+
+function requirementText(req, route) {
+  if (req.joins === 'auto') return `Joins automatically${req.note ? `. ${escapeHtml(req.note)}` : ''}`;
+  const parts = [`Support ${req.support}`, `Renown ${req.renown}`];
+  if (req.also) parts.push(withParalogueChecks(req.also, route));
+  return parts.join(' · ');
+}
+
+function recruitBlock(name) {
+  const rec = recruitByName.get(name);
+  if (!rec) return `<p class="recruit-line is-unknown"><b>Recruit:</b> not covered by the guides yet.</p>`;
+
+  if (rec.later) {
+    return `<p class="recruit-line is-later"><b>Joins in ${escapeHtml(rec.later.when)}.</b> ${escapeHtml(rec.later.how)}</p>`;
+  }
+
+  if (state.charRoute === 'all') {
+    const chips = ROUTES.map((r) => {
+      const req = rec.partOne[r];
+      const status = recruitStatus(name, r);
+      const text = !req ? '—' : req.joins === 'auto' ? 'Joins' : `S${req.support} R${req.renown}`;
+      const title = !req ? `Not recruitable on ${r} in Part I` : `${r}: ${req.joins === 'auto' ? 'joins automatically' : `Support ${req.support}, Renown ${req.renown}${req.also ? `, ${req.also}` : ''}`}`;
+      return `<span class="route-chip is-${status}" title="${escapeHtml(title)}"><b>${r}</b> ${text}</span>`;
+    }).join('');
+    return `<div><p class="label">Recruit (Part I)</p><div class="route-chips">${chips}</div></div>`;
+  }
+
+  const route = state.charRoute;
+  const req = rec.partOne[route];
+  if (!req) return `<p class="recruit-line is-no"><b>${route}:</b> can't be recruited on this route in Part I.</p>`;
+  return `<p class="recruit-line is-${recruitStatus(name, route)}"><b>${route}:</b> ${requirementText(req, route)}</p>`;
+}
+
 function renderCharacters() {
   const q = normalize(state.query);
   const matches = (c) =>
     normalize(c.name).includes(q) ||
     [...c.favorites, ...c.reallyLiked].some((g) => normalize(g.item).includes(q)) ||
     normalize(c.alsoGood ?? '').includes(q);
-  const list = q ? characters.filter(matches) : characters;
+  const route = state.charRoute;
+  const byStatus = (c) => route === 'all' || state.recruitFilter === 'all' || recruitStatus(c.name, route) === state.recruitFilter;
+  const list = characters.filter((c) => (!q || matches(c)) && byStatus(c));
+  const filtered = list.length !== characters.length;
 
   const body = (list.length
     ? `<div class="card-grid">${list.map((c) => characterCard(c, Boolean(q))).join('')}</div>`
-    : `<p class="empty">No one matches “${escapeHtml(state.query)}”.</p>`) + GIFT_TIPS;
+    : `<p class="empty">No one matches these filters.</p>`) + GIFT_TIPS;
+
+  const routeFilter = filterRow('Route', [{ id: 'all', name: 'All routes' }, ...ROUTES.map((r) => ({ id: r, name: r }))], route, 'char-route');
+  const statusFilter = route === 'all' ? '' : filterRow('Recruitment', RECRUIT_FILTERS, state.recruitFilter, 'recruit');
+  const intro = route === 'all'
+    ? 'Gifts and Part I recruitment for every character. Pick a route to see what each one needs there.'
+    : `Gifts and what each character needs to join on the ${route} route. A ✓ means you've ticked off that paralogue.`;
 
   return viewFrame({
-    intro: 'Favorite and really-liked gifts for every character. Tap a gift to see who else wants it.',
-    count: q ? `${list.length} of ${characters.length} characters` : `${characters.length} characters`,
-    key: GIFT_KEY,
+    filters: routeFilter + statusFilter,
+    intro,
+    count: filtered ? `${list.length} of ${characters.length} characters` : `${characters.length} characters`,
+    key: GIFT_KEY + `
+      <span><span class="route-chip is-joins">Joins</span> automatic</span>
+      <span><span class="route-chip is-recruit">S3 R9</span> Support 3, Renown 9</span>`,
     body,
-    source: SOURCES.gifts,
+    source: `${SOURCES.gifts} ${SOURCES.recruitment}`,
   });
 }
 
@@ -369,8 +464,8 @@ function timeline(list) {
       `<div class="window" style="left:${pct(w.open)}%;width:calc(${pct(w.close)}% - ${pct(w.open)}% + 6px)" title="Accept ${formatDate(w.open)} to ${formatDate(w.close)}"></div>`,
     ).join('');
     return `
-      <div class="timeline-row">
-        <span class="row-label" title="${escapeHtml(p.title)}">${escapeHtml(p.character)}</span>
+      <div class="timeline-row${isDone(p) ? ' is-done' : ''}">
+        <span class="row-label" title="${escapeHtml(p.title)}">${isDone(p) ? '✓ ' : ''}${escapeHtml(p.character)}</span>
         <div class="timeline-track">
           ${ticks}${windows}
           <div class="deadline" style="left:${pct(r.deadline)}%" title="Deadline ${formatDate(r.deadline)}"></div>
@@ -391,15 +486,20 @@ function timeline(list) {
     </div>`;
 }
 
+function isDone(p) {
+  return state.done[state.route]?.has(p.id) ?? false;
+}
+
 function paralogueCard(p) {
   const r = p.routes[state.route];
-  const status = paralogueStatus(r);
+  const done = isDone(p);
+  const status = done ? { kind: 'done', html: '<span class="status status-done">✓ Done</span>' } : paralogueStatus(r);
   const accept = r.windows
     .map((w) => (w.open === w.close ? `${formatDate(w.open)} only` : `${formatDate(w.open)} to ${formatDate(w.close)}`))
     .join('<br>or ');
 
   return `
-    <article class="card${status?.kind === 'passed' ? ' is-passed' : ''}">
+    <article class="card${status?.kind === 'passed' ? ' is-passed' : ''}${done ? ' is-done' : ''}">
       <div class="card-head">${crest(p.character)}<div><h2>${escapeHtml(p.title)}</h2><p class="card-sub">${escapeHtml(p.character)}'s paralogue</p></div></div>
       ${status ? status.html : ''}
       <dl class="facts">
@@ -410,6 +510,7 @@ function paralogueCard(p) {
       </dl>
       ${r.warning ? `<div class="callout"><b>Watch out:</b> ${escapeHtml(r.warning)}</div>` : ''}
       ${p.note ? `<p class="note">${escapeHtml(p.note)}</p>` : ''}
+      <button type="button" class="done-toggle" data-done="${escapeHtml(p.id)}" aria-pressed="${done}">${done ? '✓ Done (tap to undo)' : 'Mark done'}</button>
     </article>`;
 }
 
@@ -449,8 +550,8 @@ function renderParalogues() {
 
   return viewFrame({
     filters: filterRow('Route', ROUTES.map((r) => ({ id: r, name: r })), state.route, 'route', dateControls()),
-    intro: 'Go to the start location during the window to accept. Clear them as soon as they open, since a chapter ending can cut a window short.',
-    count: `${onRoute.length} of ${paralogues.length} paralogues`,
+    intro: `${state.route} gets ${onRoute.length} of ${paralogues.length} Part I paralogues. Accept during the window and clear them as soon as they open, since a chapter ending can cut a window short. Tap Mark done as you finish them.`,
+    count: `${onRoute.filter(isDone).length} of ${onRoute.length} done`,
     key,
     body: section('Timeline', timeline(onRoute)) + section('Paralogues', cards + notOnRoute, plural(shown.length, 'paralogue')),
     source: SOURCES.paralogues,
@@ -569,12 +670,28 @@ function bindEvents() {
   $('#view').addEventListener('click', (e) => {
     const button = e.target.closest('button');
     if (!button) return;
-    const { item, character, route, expand, role, classOf } = button.dataset;
+    const { item, character, route, expand, role, classOf, charRoute, recruit, done } = button.dataset;
 
     if (item) {
       showView('items', item);
     } else if (character) {
+      state.recruitFilter = 'all'; // make sure the linked character isn't filtered out
       showView('characters', character);
+    } else if (charRoute) {
+      state.charRoute = charRoute;
+      storage.set('fw-char-route', charRoute);
+      render();
+    } else if (recruit) {
+      state.recruitFilter = recruit;
+      storage.set('fw-recruit-filter', recruit);
+      render();
+    } else if (done) {
+      const set = state.done[state.route];
+      if (set.has(done)) set.delete(done);
+      else set.add(done);
+      const saved = Object.fromEntries(ROUTES.map((r) => [r, [...state.done[r]]]));
+      storage.set('fw-paralogues-done', JSON.stringify(saved));
+      render();
     } else if (route) {
       state.route = route;
       storage.set('fw-route', route);

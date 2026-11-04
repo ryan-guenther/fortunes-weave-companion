@@ -6,11 +6,11 @@ A fast, installable companion for **Fire Emblem: Fortune's Weave**. Add it to yo
 
 ## Features
 
-- **Characters:** favorite and "really liked" gifts for all 63 giftable characters, plus categories that also work and items to avoid. A small number on a gift shows how many guides agree on it.
+- **Characters:** favorite and "really liked" gifts for all 63 giftable characters, plus categories that also work and items to avoid. A small number on a gift shows how many guides agree on it. Filter by route to see who can be recruited there and what they need.
 - **Items:** reverse lookup showing everyone who wants an item and where to buy it.
-- **Paralogues:** pick a route (Cai, Dietrich, Theodora or Leda) to see each Part I paralogue's accept window, deadline, start location and rewards on a timeline. Enter your in-game date to see what's open now.
+- **Paralogues:** pick a route (Cai, Dietrich, Theodora or Leda) to see each Part I paralogue's accept window, deadline, start location and rewards on a timeline. Enter your in-game date to see what's open now, and tick off each one as you finish it.
 - **Classes:** the recommended class path for every character, grouped by role, with the game's five class tiers and how each unlocks.
-- Works offline after the first visit, and remembers your route and date on your device.
+- Works offline after the first visit, and remembers your filters, date and finished paralogues on your device.
 
 ## Install on your phone
 
@@ -26,6 +26,7 @@ js/app.js               App logic: loads the data and renders each view
 data/characters.json    Gifts per character
 data/paralogues.json    Paralogue windows and deadlines per route
 data/classes.json       Class tiers, roles and each character's recommended path
+data/recruitment.json   Part I recruitment requirements per route, and later joins
 data/shops.json         Where to buy each item
 data/sources.json       Guide names for the source codes used in characters.json
 manifest.webmanifest    Name, colors and icons for installing
@@ -64,6 +65,14 @@ Optional fields are `fixedBattleDate` (the fight happens on the deadline no matt
 
 An optional `tip` adds an extra note under the path.
 
+**Recruitment** in `recruitment.json`. Leave a route out of `partOne` when the character can't be recruited on it:
+
+```json
+{"name": "Diego", "partOne": {"Cai": {"support": 3, "renown": 10, "also": "Clear Orchel's paralogue"}}}
+```
+
+Use `{"joins": "auto"}` for automatic joins, or `"later": {"when": "...", "how": "..."}` for Part II and III recruits.
+
 ## Running locally
 
 The app loads its data with `fetch`, so open it through a local server rather than as a file:
@@ -98,6 +107,10 @@ Data is compiled from community guides and player reports. Where sources disagre
 - [Pocket Tactics: Paralogues](https://www.pockettactics.com/fire-emblem-fortunes-weave/paralogues)
 - [GameTyrant: How to Get All Paralogues](https://gametyrant.com/news/how-to-get-all-paralogues-in-fire-emblem-fortunes-weave)
 - [NerdsChalk: Calendar Checklist](https://nerdschalk.com/fire-emblem-fortunes-weave-calendar-checklist/) (World Map tip for Theodora's paralogue)
+
+**Recruitment**
+- [KeenGamer: All Characters Recruitment Guide](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-all-characters-recruitment-guide/) (every route requirement and later recruit)
+- [GamesHedge: Characters Recruitment Guide](https://www.gameshedge.com/fire-emblem-fortunes-weave-characters-recruitment-guide/) (cross-check)
 
 **Classes**
 - [KeenGamer: Best Class for Every Character](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/) (every path and reason)

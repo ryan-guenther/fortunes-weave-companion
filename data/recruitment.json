@@ -1,0 +1,493 @@
+{
+  "sources": [
+    {
+      "name": "KeenGamer: All Characters Recruitment Guide",
+      "url": "https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-all-characters-recruitment-guide/",
+      "covers": "Every route requirement and later recruit"
+    },
+    {
+      "name": "GamesHedge: Characters Recruitment Guide",
+      "url": "https://www.gameshedge.com/fire-emblem-fortunes-weave-characters-recruitment-guide/",
+      "covers": "Cross-check; matched KeenGamer on every character checked"
+    }
+  ],
+  "notes": "Requirements are Part I. S = support level with the Flame Lord, R = Renown level. A route missing from partOne means the character can't be recruited on it in Part I.",
+  "characters": [
+    {
+      "name": "Alexandra",
+      "partOne": {
+        "Cai": {"support": 2, "renown": 7},
+        "Dietrich": {"support": 3, "renown": 8},
+        "Theodora": {"support": 1, "renown": 6},
+        "Leda": {"support": 3, "renown": 10}
+      }
+    },
+    {
+      "name": "Anatolia",
+      "later": {
+        "when": "Part III, Salvation First Section",
+        "how": "Joins automatically. Clear Anatolia's paralogue in Part I to be safe."
+      }
+    },
+    {
+      "name": "Aswan",
+      "later": {
+        "when": "Part III, Salvation Fifth Section",
+        "how": "Keep Aswan alive as a guest in Part II, Chapter 3."
+      }
+    },
+    {
+      "name": "Benditz",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 9},
+        "Dietrich": {"support": 2, "renown": 7},
+        "Theodora": {"support": 1, "renown": 8},
+        "Leda": {"support": 3, "renown": 7}
+      }
+    },
+    {
+      "name": "Bertrand",
+      "later": {
+        "when": "Part II as a guest, Part III as a unit",
+        "how": "Clear Bertrand's paralogue in Part I to be safe."
+      }
+    },
+    {"name": "Bonaventure", "partOne": {"Theodora": {"joins": "auto"}}},
+    {
+      "name": "Buccar",
+      "partOne": {
+        "Dietrich": {"support": 3, "renown": 8, "also": "Clear Leda's paralogue"},
+        "Theodora": {"support": 3, "renown": 8, "also": "Clear Leda's paralogue"},
+        "Leda": {"joins": "auto"}
+      }
+    },
+    {"name": "Cai", "partOne": {"Cai": {"joins": "auto"}}},
+    {
+      "name": "Catania",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 10},
+        "Dietrich": {"support": 1, "renown": 8},
+        "Theodora": {"support": 3, "renown": 7},
+        "Leda": {"joins": "auto", "note": "Joins through the recruitment tutorial"}
+      }
+    },
+    {
+      "name": "Centurio",
+      "later": {"when": "Part III, Salvation Second Section", "how": "Complete the \"Rescue Centurio\" quest."}
+    },
+    {
+      "name": "Creek",
+      "later": {
+        "when": "Part II, Chapter 2",
+        "how": "Complete \"My Late Sister's Accessory\" in Part I, then defeat Creek in Chapter 2."
+      }
+    },
+    {
+      "name": "Dadao",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 7, "also": "Give 2 Kothar Gar"},
+        "Dietrich": {"support": 3, "renown": 10, "also": "Give 2 Kothar Gar"},
+        "Theodora": {"support": 2, "renown": 5, "also": "Give 2 Kothar Gar"},
+        "Leda": {"support": 2, "renown": 5, "also": "Give 2 Kothar Gar"}
+      }
+    },
+    {
+      "name": "Dante",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 10, "also": "8,000G"},
+        "Dietrich": {"support": 2, "renown": 8, "also": "8,000G"},
+        "Theodora": {"support": 3, "renown": 6, "also": "8,000G"},
+        "Leda": {"support": 3, "renown": 10, "also": "8,000G"}
+      }
+    },
+    {
+      "name": "Diego",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 10, "also": "Clear Orchel's paralogue"},
+        "Dietrich": {"support": 3, "renown": 9, "also": "Clear Orchel's paralogue"},
+        "Theodora": {"support": 2, "renown": 8, "also": "Clear Orchel's paralogue"},
+        "Leda": {"support": 3, "renown": 8, "also": "Clear Orchel's paralogue"}
+      }
+    },
+    {"name": "Dietrich", "partOne": {"Dietrich": {"joins": "auto"}}},
+    {
+      "name": "Esmeralda",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 7, "also": "Recruitment quest"},
+        "Dietrich": {"joins": "auto"},
+        "Theodora": {"support": 3, "renown": 9, "also": "Recruitment quest"},
+        "Leda": {"support": 3, "renown": 6, "also": "Recruitment quest"}
+      }
+    },
+    {
+      "name": "Fabio",
+      "partOne": {
+        "Dietrich": {"joins": "auto"},
+        "Leda": {
+          "support": 3,
+          "renown": 9,
+          "also": "Clear Dietrich's paralogue, complete \"They Have Lost\", give a suitable item (opens around Chapter 12)"
+        }
+      }
+    },
+    {
+      "name": "Fianna",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 8, "also": "3,000G"},
+        "Dietrich": {"support": 3, "renown": 7, "also": "3,000G"},
+        "Theodora": {"support": 3, "renown": 9, "also": "3,000G"},
+        "Leda": {"support": 3, "renown": 5, "also": "3,000G"}
+      }
+    },
+    {
+      "name": "Gaitz",
+      "partOne": {
+        "Dietrich": {
+          "support": 3,
+          "renown": 10,
+          "also": "Clear Bertrand's paralogue, complete \"They Have Lost\" (opens around Chapter 12)"
+        }
+      }
+    },
+    {
+      "name": "Goliath",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 7, "also": "Give 3 Giant's Meat"},
+        "Dietrich": {"support": 3, "renown": 6, "also": "Give 3 Giant's Meat"},
+        "Theodora": {"support": 3, "renown": 9, "also": "Give 3 Giant's Meat"},
+        "Leda": {"support": 3, "renown": 10, "also": "Give 3 Giant's Meat"}
+      }
+    },
+    {
+      "name": "Guzran",
+      "partOne": {
+        "Cai": {"joins": "auto", "note": "Joins through the recruitment tutorial"},
+        "Dietrich": {"support": 3, "renown": 8},
+        "Theodora": {"support": 3, "renown": 8},
+        "Leda": {"support": 1, "renown": 3}
+      }
+    },
+    {
+      "name": "Halvin",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 5, "also": "Give 10 Dates"},
+        "Dietrich": {"support": 3, "renown": 9, "also": "Give 10 Dates"},
+        "Theodora": {"support": 3, "renown": 7, "also": "Give 10 Dates"},
+        "Leda": {"support": 3, "renown": 7, "also": "Give 10 Dates"}
+      }
+    },
+    {"name": "Hong Hua", "later": {"when": "Prologue and Part III", "how": "Joins automatically."}},
+    {
+      "name": "Inyoni",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 8, "also": "6,000G"},
+        "Dietrich": {"support": 3, "renown": 8, "also": "6,000G"},
+        "Theodora": {"support": 1, "renown": 9, "also": "4,000G"},
+        "Leda": {"support": 1, "renown": 7, "also": "3,000G"}
+      }
+    },
+    {
+      "name": "Io",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 10, "also": "4,000G"},
+        "Dietrich": {"support": 2, "renown": 3, "also": "800G"},
+        "Theodora": {"support": 3, "renown": 10, "also": "4,000G"},
+        "Leda": {"support": 1, "renown": 6, "also": "1,500G"}
+      }
+    },
+    {
+      "name": "Jasmine",
+      "partOne": {
+        "Cai": {"support": 1, "renown": 8, "also": "2,000G"},
+        "Dietrich": {"support": 3, "renown": 9, "also": "5,000G"},
+        "Theodora": {"support": 3, "renown": 8, "also": "5,000G"},
+        "Leda": {"support": 2, "renown": 4, "also": "500G"}
+      }
+    },
+    {
+      "name": "Jester",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 10, "also": "3 quests"},
+        "Dietrich": {"support": 3, "renown": 6, "also": "3 quests"},
+        "Theodora": {"support": 3, "renown": 9, "also": "3 quests"},
+        "Leda": {"support": 3, "renown": 10, "also": "3 quests"}
+      }
+    },
+    {
+      "name": "Kiroc",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 8, "also": "Give 8 Pure Water"},
+        "Dietrich": {"support": 1, "renown": 4, "also": "Give 3 Pure Water"},
+        "Theodora": {"support": 3, "renown": 10, "also": "Give 8 Pure Water"},
+        "Leda": {"support": 1, "renown": 4, "also": "Give 3 Pure Water"}
+      }
+    },
+    {
+      "name": "Klapka",
+      "later": {
+        "when": "Part III, Salvation Sixth Section",
+        "how": "Keep Klapka alive as a guest in Part III, Salvation Fifth Section."
+      }
+    },
+    {"name": "Leda", "partOne": {"Leda": {"joins": "auto"}}},
+    {
+      "name": "Lillian",
+      "partOne": {
+        "Cai": {"support": 2, "renown": 8, "also": "5,000G"},
+        "Dietrich": {"support": 2, "renown": 8, "also": "5,000G"},
+        "Theodora": {"joins": "auto"},
+        "Leda": {"support": 2, "renown": 7, "also": "5,000G"}
+      }
+    },
+    {
+      "name": "Loretta",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 7, "also": "Give 3 Iron Swords"},
+        "Dietrich": {"support": 3, "renown": 9, "also": "Give 3 Iron Swords"},
+        "Theodora": {"support": 3, "renown": 5, "also": "Give 3 Iron Swords"},
+        "Leda": {"support": 3, "renown": 5, "also": "Give 3 Iron Swords"}
+      }
+    },
+    {
+      "name": "Ludia",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 9, "also": "Recruitment quest"},
+        "Dietrich": {"support": 3, "renown": 9, "also": "Recruitment quest"},
+        "Theodora": {"support": 3, "renown": 7, "also": "Recruitment quest"},
+        "Leda": {"support": 3, "renown": 7, "also": "Recruitment quest"}
+      }
+    },
+    {
+      "name": "Lysander",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 8, "also": "Give 5 Iron Spears"},
+        "Dietrich": {"support": 3, "renown": 6, "also": "Give 5 Iron Spears"},
+        "Theodora": {"joins": "auto"},
+        "Leda": {"support": 3, "renown": 7, "also": "Give 5 Iron Spears"}
+      }
+    },
+    {
+      "name": "Majide",
+      "partOne": {
+        "Cai": {"support": 2, "renown": 5, "also": "Answer his question three times"},
+        "Dietrich": {"support": 3, "renown": 8, "also": "Answer his question three times"},
+        "Theodora": {"support": 3, "renown": 8, "also": "Answer his question three times"},
+        "Leda": {"support": 3, "renown": 9, "also": "Answer his question three times"}
+      }
+    },
+    {
+      "name": "Mikaela",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 5, "also": "3,000G"},
+        "Dietrich": {"joins": "auto"},
+        "Theodora": {"support": 3, "renown": 8, "also": "3,000G"},
+        "Leda": {"support": 3, "renown": 6, "also": "3,000G"}
+      }
+    },
+    {
+      "name": "Mu",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 9, "also": "Give 3 Glirmosa"},
+        "Dietrich": {"support": 3, "renown": 7, "also": "Give 3 Glirmosa"},
+        "Theodora": {"support": 3, "renown": 9, "also": "Give 3 Glirmosa"},
+        "Leda": {"joins": "auto"}
+      }
+    },
+    {
+      "name": "Nathan",
+      "later": {
+        "when": "Part II, Chapter 3",
+        "how": "Recruit Creek first, then have Creek land the final blow on Nathan."
+      }
+    },
+    {
+      "name": "Nezha",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 6, "also": "Give 3 Sandworm Meat"},
+        "Dietrich": {"support": 3, "renown": 10, "also": "Give 3 Sandworm Meat"},
+        "Theodora": {"support": 2, "renown": 6, "also": "Give 3 Sandworm Meat"},
+        "Leda": {"support": 3, "renown": 9, "also": "Give 3 Sandworm Meat"}
+      }
+    },
+    {
+      "name": "Ninae",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 6, "also": "Give 1 Paradise Fish"},
+        "Dietrich": {"support": 3, "renown": 8, "also": "Give 1 Paradise Fish"},
+        "Theodora": {"support": 3, "renown": 6, "also": "Give 1 Paradise Fish"},
+        "Leda": {"support": 3, "renown": 8, "also": "Give 1 Paradise Fish"}
+      }
+    },
+    {
+      "name": "Noctula",
+      "partOne": {
+        "Cai": {"support": 1, "renown": 4},
+        "Dietrich": {"support": 1, "renown": 6},
+        "Theodora": {"support": 1, "renown": 3},
+        "Leda": {"support": 3, "renown": 8}
+      }
+    },
+    {
+      "name": "Nuzzuo",
+      "partOne": {
+        "Cai": {"support": 2, "renown": 6, "also": "Give 3 Iron Bows"},
+        "Dietrich": {"support": 1, "renown": 9, "also": "Give 2 Iron Bows"},
+        "Theodora": {"support": 1, "renown": 6, "also": "Give 3 Iron Bows"},
+        "Leda": {"support": 3, "renown": 9, "also": "Give 3 Iron Bows"}
+      }
+    },
+    {
+      "name": "Nydine",
+      "partOne": {
+        "Cai": {"support": 1, "renown": 6, "also": "Give 2 Bronze Axes"},
+        "Dietrich": {"support": 2, "renown": 5, "also": "Give 2 Bronze Axes"},
+        "Theodora": {"support": 3, "renown": 5, "also": "Give 3 Iron Axes"},
+        "Leda": {"support": 3, "renown": 10, "also": "Give 3 Iron Axes"}
+      }
+    },
+    {
+      "name": "Olympia",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 8, "also": "3 quests"},
+        "Dietrich": {"support": 3, "renown": 6, "also": "3 quests"},
+        "Theodora": {"support": 3, "renown": 9, "also": "3 quests"},
+        "Leda": {"joins": "auto"}
+      }
+    },
+    {
+      "name": "Orchel",
+      "later": {
+        "when": "Part III, Salvation First Section",
+        "how": "Joins automatically. Clear Orchel's paralogue in Part I to be safe."
+      }
+    },
+    {
+      "name": "Peppe",
+      "partOne": {
+        "Cai": {"support": 1, "renown": 9, "also": "Clear Bertrand's paralogue"},
+        "Dietrich": {"support": 3, "renown": 8, "also": "Clear Bertrand's paralogue"},
+        "Theodora": {"support": 2, "renown": 7, "also": "Clear Bertrand's paralogue"}
+      }
+    },
+    {
+      "name": "Peter",
+      "partOne": {
+        "Cai": {"joins": "auto"},
+        "Dietrich": {"support": 3, "renown": 8, "also": "Recruitment quest"},
+        "Theodora": {"support": 3, "renown": 7, "also": "Recruitment quest"},
+        "Leda": {"support": 3, "renown": 10, "also": "Recruitment quest"}
+      }
+    },
+    {
+      "name": "Seteth",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 6, "also": "Recruitment quest"},
+        "Theodora": {"support": 3, "renown": 6, "also": "Recruitment quest"},
+        "Leda": {"support": 3, "renown": 10, "also": "Recruitment quest"}
+      }
+    },
+    {
+      "name": "Sha Lan",
+      "partOne": {
+        "Dietrich": {
+          "support": 3,
+          "renown": 10,
+          "also": "Clear Anatolia's paralogue, answer Saramis, Da Mina, Grounded Ship"
+        },
+        "Leda": {
+          "support": 3,
+          "renown": 8,
+          "also": "Clear Anatolia's paralogue, answer Saramis, Da Mina, Grounded Ship"
+        }
+      }
+    },
+    {
+      "name": "Simon",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 8, "also": "Choose Tails in the coin flip"},
+        "Dietrich": {"support": 3, "renown": 7, "also": "Choose Tails in the coin flip"},
+        "Theodora": {"support": 3, "renown": 7, "also": "Choose Tails in the coin flip"},
+        "Leda": {"support": 3, "renown": 6, "also": "Choose Tails in the coin flip"}
+      }
+    },
+    {
+      "name": "Sirocco",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 9, "also": "Recruitment quest"},
+        "Dietrich": {"support": 3, "renown": 9, "also": "Recruitment quest"},
+        "Theodora": {"support": 1, "renown": 5, "also": "Recruitment quest"},
+        "Leda": {"joins": "auto"}
+      }
+    },
+    {
+      "name": "Sofia",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 9},
+        "Dietrich": {"support": 3, "renown": 9},
+        "Theodora": {"joins": "auto", "note": "Joins through the recruitment tutorial"},
+        "Leda": {"support": 3, "renown": 7}
+      }
+    },
+    {
+      "name": "Tahonia",
+      "later": {
+        "when": "Part III, Salvation Fifth Section",
+        "how": "Keep Tahonia alive as a guest in Part II, Chapter 3."
+      }
+    },
+    {
+      "name": "Talimun",
+      "later": {
+        "when": "Part III, Salvation First Section",
+        "how": "Joins automatically. Clear Talimun's paralogue in Part I to be safe."
+      }
+    },
+    {"name": "Theodora", "partOne": {"Theodora": {"joins": "auto"}}},
+    {
+      "name": "Tialla",
+      "partOne": {
+        "Cai": {"joins": "auto"},
+        "Dietrich": {"support": 3, "renown": 9, "also": "Clear Cai's paralogue, 3,000G"},
+        "Theodora": {"support": 3, "renown": 10, "also": "Clear Cai's paralogue, 3,000G"},
+        "Leda": {"support": 3, "renown": 8, "also": "Clear Cai's paralogue, 3,000G"}
+      }
+    },
+    {"name": "Tobias", "partOne": {"Theodora": {"joins": "auto"}}},
+    {"name": "Troy", "later": {"when": "Prologue and Part III", "how": "Joins automatically."}},
+    {
+      "name": "Ultand",
+      "partOne": {
+        "Cai": {"joins": "auto", "note": "Joins in Chapter 6"},
+        "Dietrich": {"support": 3, "renown": 5, "also": "Recruitment quest"},
+        "Theodora": {"support": 3, "renown": 6, "also": "Recruitment quest"},
+        "Leda": {"support": 3, "renown": 8, "also": "Recruitment quest"}
+      }
+    },
+    {
+      "name": "Ursula",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 10, "also": "Clear Talimun's paralogue, answer \"Yes\" three times"},
+        "Dietrich": {"support": 3, "renown": 7, "also": "Clear Talimun's paralogue, answer \"Yes\" three times"},
+        "Theodora": {"support": 3, "renown": 9, "also": "Clear Talimun's paralogue, answer \"Yes\" three times"}
+      }
+    },
+    {
+      "name": "Yang Jie",
+      "partOne": {
+        "Cai": {"support": 2, "renown": 3, "also": "Answer Cheese, Moon, Potatoes"},
+        "Dietrich": {"joins": "auto", "note": "Joins through the recruitment tutorial"},
+        "Theodora": {"support": 3, "renown": 9, "also": "Answer Cheese, Moon, Potatoes"},
+        "Leda": {"support": 3, "renown": 8, "also": "Answer Cheese, Moon, Potatoes"}
+      }
+    },
+    {
+      "name": "Zarcone",
+      "partOne": {
+        "Cai": {"support": 3, "renown": 8, "also": "Negotiate his fee (can drop to 10G)"},
+        "Dietrich": {"support": 3, "renown": 7, "also": "Negotiate his fee (can drop to 10G)"},
+        "Theodora": {"support": 1, "renown": 4, "also": "Negotiate his fee (can drop to 10G)"},
+        "Leda": {"support": 2, "renown": 5, "also": "Negotiate his fee (can drop to 10G)"}
+      }
+    }
+  ]
+}
