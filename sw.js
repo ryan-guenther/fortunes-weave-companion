@@ -22,7 +22,7 @@ const APP_FILES = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE)
-      .then((cache) => cache.addAll(APP_FILES))
+      .then((cache) => cache.addAll(APP_FILES.map((url) => new Request(url, { cache: 'reload' }))))
       .then(() => self.skipWaiting()),
   );
 });
@@ -43,8 +43,10 @@ self.addEventListener('fetch', (event) => {
 
   if (isAppFile) {
     // Network first so updates show up; fall back to the cache when offline.
+    // no-cache skips GitHub Pages' 10-minute browser cache, so a deploy never
+    // mixes a new page with an old script.
     event.respondWith(
-      fetch(request)
+      fetch(request.url, { cache: 'no-cache', credentials: 'same-origin' })
         .then((response) => {
           if (response.ok) {
             const copy = response.clone();
@@ -52,7 +54,7 @@ self.addEventListener('fetch', (event) => {
           }
           return response;
         })
-        .catch(() => caches.match(request).then((hit) => hit || caches.match('./index.html'))),
+        .catch(() => caches.match(request, { ignoreSearch: true }).then((hit) => hit || caches.match('./index.html'))),
     );
     return;
   }

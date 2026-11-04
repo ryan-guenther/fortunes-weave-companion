@@ -100,7 +100,8 @@ let classData = { tiers: [], roles: [], characters: [] };
 let classByName = new Map();
 
 async function fetchJson(url) {
-  const res = await fetch(url);
+  // no-cache: always check with the server so data matches the deployed app.
+  const res = await fetch(url, { cache: 'no-cache' });
   if (!res.ok) throw new Error(`Couldn't load ${url} (${res.status})`);
   return res.json();
 }
@@ -430,7 +431,7 @@ function render() {
   $('#search').placeholder = placeholders[state.view];
 
   const renderers = { characters: renderCharacters, items: renderItems, paralogues: renderParalogues, classes: renderClasses };
-  $('#view').innerHTML = renderers[state.view]();
+  $('#view').innerHTML = (renderers[state.view] ?? renderCharacters)();
 }
 
 function showView(view, query) {
