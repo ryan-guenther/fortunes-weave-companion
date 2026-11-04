@@ -85,21 +85,26 @@ In the repo's **Settings → Pages**, the source must be set to **GitHub Actions
 Data is compiled from community guides and player reports. Where sources disagree, the card says so. Corrections are welcome as issues or pull requests.
 
 **Gifts**
-- [Game8: Gift Giving Guide](https://game8.co/)
+- Game8: Gift Giving Guide (updated Oct 19, 2026)
 - [NightlyGamingBinge: character guides](https://nightlygamingbinge.com/fire-emblem-fortunes-weave-guides-and-walkthroughs/)
-- [Polygon: Best gifts for each character](https://www.polygon.com/)
-- [GameSpot: Gifts Guide](https://www.gamespot.com/)
+- Polygon: Best gifts for each character in Fire Emblem: Fortune's Weave, by Josh Broadwell (updated Oct 9, 2026). Also the source for shop locations.
+- GameSpot: Fire Emblem Fortune's Weave Gifts Guide, by Dave Irwin (Sep 23, 2026)
 - [Selphie1999Gaming: Gifts for all characters](https://selphie1999gaming.com/game-guides/fire-emblem-fortunes-weave/fire-emblem-fortunes-weave-gifts-for-all-characters/)
 - [KeenGamer: Best Gifts Guide](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-gifts-guide/)
+- Reader comments on the Polygon and Game8 guides (code `RP` in the data)
 
 **Paralogues**
 - [KeenGamer: All Paralogues List](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-all-paralogues-list/)
 - [Pocket Tactics: Paralogues](https://www.pockettactics.com/fire-emblem-fortunes-weave/paralogues)
 - [GameTyrant: How to Get All Paralogues](https://gametyrant.com/news/how-to-get-all-paralogues-in-fire-emblem-fortunes-weave)
+- [NerdsChalk: Calendar Checklist](https://nerdschalk.com/fire-emblem-fortunes-weave-calendar-checklist/) (World Map tip for Theodora's paralogue)
 
 **Classes**
 - [KeenGamer: Best Class for Every Character](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/) (every path and reason)
 - [AllThings.How: Class Guide, All Tiers and Masteries](https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/) (tiers, unlocks and tips)
+
+**Fonts**
+- [Spectral SC](https://fonts.google.com/specimen/Spectral+SC) and [Source Sans 3](https://fonts.google.com/specimen/Source+Sans+3), served by Google Fonts under the SIL Open Font License.
 
 ## License
 

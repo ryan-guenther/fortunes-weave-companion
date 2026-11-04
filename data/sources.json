@@ -1,14 +1,19 @@
 {
-  "G8": {"name": "Game8", "url": "https://game8.co/"},
+  "G8": {"name": "Game8", "title": "Gift Giving Guide (updated Oct 19, 2026)"},
   "NGB": {
     "name": "NightlyGamingBinge",
-    "url": "https://nightlygamingbinge.com/fire-emblem-fortunes-weave-guides-and-walkthroughs/"
+    "url": "https://nightlygamingbinge.com/fire-emblem-fortunes-weave-guides-and-walkthroughs/",
+    "title": "Per-character guides"
   },
-  "GS": {"name": "GameSpot", "url": "https://www.gamespot.com/"},
-  "PL": {"name": "Polygon", "url": "https://www.polygon.com/"},
+  "GS": {"name": "GameSpot", "title": "Fire Emblem Fortune's Weave Gifts Guide, by Dave Irwin (Sep 23, 2026)"},
+  "PL": {
+    "name": "Polygon",
+    "title": "Best gifts for each character in Fire Emblem: Fortune's Weave, by Josh Broadwell (updated Oct 9, 2026)"
+  },
   "SG": {
     "name": "Selphie1999Gaming",
-    "url": "https://selphie1999gaming.com/game-guides/fire-emblem-fortunes-weave/fire-emblem-fortunes-weave-gifts-for-all-characters/"
+    "url": "https://selphie1999gaming.com/game-guides/fire-emblem-fortunes-weave/fire-emblem-fortunes-weave-gifts-for-all-characters/",
+    "title": "Fire Emblem Fortune's Weave gifts for all characters"
   },
-  "RP": {"name": "Player reports"}
+  "RP": {"name": "Player reports", "title": "Reader comments on the Polygon and Game8 gift guides"}
 }
