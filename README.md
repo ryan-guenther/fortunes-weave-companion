@@ -6,7 +6,7 @@ A fast, installable companion for **Fire Emblem: Fortune's Weave**. Add it to yo
 
 ## Features
 
-- **Characters:** favorite and "really liked" gifts for all 63 giftable characters, plus categories that also work and items to avoid. A small number on a gift shows how many guides agree on it. Filter by route to see who can be recruited there and what they need. Mark characters recruited on a route to clear them out of that route's list.
+- **Characters:** favorite and "really liked" gifts for all 63 giftable characters, plus categories that also work and items to avoid. A small number on a gift shows how many guides agree on it. Filter by route to see who can be recruited there and what they need. Mark characters recruited on a route, then switch off groups like Recruited and Not on this route for a short list of who you still need.
 - **Items:** reverse lookup showing everyone who wants an item and where to buy it.
 - **Paralogues:** pick a route (Cai, Dietrich, Theodora or Leda) to see each Part I paralogue's accept window, deadline, start location and rewards on a timeline. Enter your in-game date to see what's open now, and tick off each one as you finish it.
 - **Classes:** the recommended class path for every character, grouped by role, with the game's five class tiers and how each unlocks.

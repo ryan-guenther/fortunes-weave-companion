@@ -208,6 +208,9 @@ main { padding-block: 12px 40px; }
 
 .filter::-webkit-scrollbar { display: none; }
 
+/* Short toggle rows wrap so every option stays visible. */
+.filter.is-wrap { flex-wrap: wrap; overflow: visible; }
+
 .filter button {
   flex: none;
   padding: 6px 12px;
@@ -226,6 +229,19 @@ main { padding-block: 12px 40px; }
   border-color: var(--fg);
   background: var(--fg);
   color: var(--bg);
+}
+
+/* On/off toggles: off reads as crossed out so it's clear the group is hidden. */
+.filter button.is-toggle[aria-pressed="false"] {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.filter button .n {
+  margin-left: 2px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
 }
 
 .view-intro {

@@ -72,13 +72,13 @@ const state = {
   expanded: new Set(),       // character cards showing every "really liked" item
   role: 'all',               // role filter on the classes view
   charRoute: 'all',          // route filter on the characters view
-  recruitFilter: 'all',      // recruit status filter, used once a route is picked
+  recruitShow: new Set(['recruit', 'joins', 'later', 'no']), // recruit groups shown once a route is picked
   done: {},                  // { route: Set of paralogue ids marked done }
   recruited: {},             // { route: Set of character names marked recruited }
 };
 
-const RECRUIT_FILTERS = [
-  { id: 'all', name: 'Everyone' },
+// Recruitment groups on a route. Each can be shown or hidden independently.
+const RECRUIT_GROUPS = [
   { id: 'recruit', name: 'Need recruiting' },
   { id: 'joins', name: 'Join automatically' },
   { id: 'later', name: 'Join in Part II/III' },
@@ -110,8 +110,10 @@ function loadSavedState() {
   const charRoute = storage.get('fw-char-route');
   if (ROUTES.includes(charRoute)) state.charRoute = charRoute;
 
-  const recruitFilter = storage.get('fw-recruit-filter');
-  if (RECRUIT_FILTERS.some((f) => f.id === recruitFilter)) state.recruitFilter = recruitFilter;
+  try {
+    const shown = JSON.parse(storage.get('fw-recruit-show'));
+    if (Array.isArray(shown)) state.recruitShow = new Set(shown.filter((id) => RECRUIT_GROUPS.some((g) => g.id === id)));
+  } catch { /* ignore bad saved data */ }
 
   state.done = loadRouteSets('fw-paralogues-done');
   state.recruited = loadRouteSets('fw-recruited');
@@ -194,6 +196,17 @@ function filterRow(label, options, selected, dataKey, extra = '') {
     <div class="filter-row">
       <div class="filter" role="group" aria-label="${escapeHtml(label)}">${buttons}</div>
       ${extra}
+    </div>`;
+}
+
+// Like filterRow, but each button turns on or off by itself.
+function toggleRow(label, options, shown, dataKey) {
+  const buttons = options.map((o) =>
+    `<button type="button" class="is-toggle" data-${dataKey}="${escapeHtml(o.id)}" aria-pressed="${shown.has(o.id)}">${escapeHtml(o.name)} <span class="n">${o.count}</span></button>`,
+  ).join('');
+  return `
+    <div class="filter-row">
+      <div class="filter is-wrap" role="group" aria-label="${escapeHtml(label)}">${buttons}</div>
     </div>`;
 }
 
@@ -373,29 +386,35 @@ function renderCharacters() {
     [...c.favorites, ...c.reallyLiked].some((g) => normalize(g.item).includes(q)) ||
     normalize(c.alsoGood ?? '').includes(q);
   const route = state.charRoute;
-  // With a route picked, recruited characters only show under the Recruited filter.
-  const byStatus = (c) => {
-    if (route === 'all') return true;
-    const recruited = isRecruited(c.name, route);
-    if (state.recruitFilter === 'recruited') return recruited;
-    if (recruited) return false;
-    return state.recruitFilter === 'all' || recruitStatus(c.name, route) === state.recruitFilter;
+  // Which group a character falls in on the picked route. Recruited wins over the rest,
+  // and characters the guides don't cover are listed with "Need recruiting".
+  const groupOf = (c) => {
+    if (isRecruited(c.name, route)) return 'recruited';
+    const status = recruitStatus(c.name, route);
+    return status === 'unknown' ? 'recruit' : status;
   };
-  const list = characters.filter((c) => (!q || matches(c)) && byStatus(c));
+  // A name tapped elsewhere in the app always shows, whatever the toggles say.
+  const exactName = characters.some((c) => normalize(c.name) === q);
+  const byGroup = (c) => route === 'all' || exactName || state.recruitShow.has(groupOf(c));
+  const list = characters.filter((c) => (!q || matches(c)) && byGroup(c));
   const filtered = list.length !== characters.length;
-  const recruitedCount = route === 'all' ? 0 : state.recruited[route].size;
 
   const body = (list.length
     ? `<div class="card-grid">${list.map((c) => characterCard(c, Boolean(q))).join('')}</div>`
     : `<p class="empty">No one matches these filters.</p>`) + GIFT_TIPS;
 
   const routeFilter = filterRow('Route', [{ id: 'all', name: 'All routes' }, ...ROUTES.map((r) => ({ id: r, name: r }))], route, 'char-route');
-  const statusOptions = RECRUIT_FILTERS.map((f) =>
-    (f.id === 'recruited' ? { ...f, name: `Recruited (${recruitedCount})` } : f));
-  const statusFilter = route === 'all' ? '' : filterRow('Recruitment', statusOptions, state.recruitFilter, 'recruit');
+  const groupCounts = route === 'all' ? {} : characters.reduce((acc, c) => {
+    const g = groupOf(c);
+    acc[g] = (acc[g] ?? 0) + 1;
+    return acc;
+  }, {});
+  const statusFilter = route === 'all'
+    ? ''
+    : toggleRow('Show', RECRUIT_GROUPS.map((g) => ({ ...g, count: groupCounts[g.id] ?? 0 })), state.recruitShow, 'recruit');
   const intro = route === 'all'
     ? 'Gifts and Part I recruitment for every character. Pick a route to see what each one needs there.'
-    : `Gifts and what each character needs to join on the ${route} route. Mark someone recruited to move them under Recruited. A ✓ next to a paralogue means you've ticked it off.`;
+    : `Gifts and what each character needs to join on the ${route} route. Tap the groups above to show or hide them; turn off Not on this route and Recruited for just the people you still need. A ✓ next to a paralogue means you've ticked it off.`;
 
   return viewFrame({
     filters: routeFilter + statusFilter,
@@ -706,15 +725,15 @@ function bindEvents() {
     if (item) {
       showView('items', item);
     } else if (character) {
-      state.recruitFilter = 'all'; // make sure the linked character isn't filtered out
       showView('characters', character);
     } else if (charRoute) {
       state.charRoute = charRoute;
       storage.set('fw-char-route', charRoute);
       render();
     } else if (recruit) {
-      state.recruitFilter = recruit;
-      storage.set('fw-recruit-filter', recruit);
+      if (state.recruitShow.has(recruit)) state.recruitShow.delete(recruit);
+      else state.recruitShow.add(recruit);
+      storage.set('fw-recruit-show', JSON.stringify([...state.recruitShow]));
       render();
     } else if (done) {
       toggleInRouteSet('fw-paralogues-done', state.done, state.route, done);
