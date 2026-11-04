@@ -133,6 +133,85 @@ function buildItemIndex(chars) {
   return [...byItem.values()].sort((a, b) => score(b) - score(a) || a.name.localeCompare(b.name));
 }
 
+// ---------- Shared view layout ----------
+// Every view renders the same frame, top to bottom:
+//   filter row (optional) → intro line with count → key (optional) → sections → sources
+
+const link = (url, text) => `<a href="${url}" target="_blank" rel="noopener">${escapeHtml(text)}</a>`;
+
+const SOURCES = {
+  gifts: `Gifts from Game8 "Gift Giving Guide" (Oct 19, 2026), ${link('https://nightlygamingbinge.com/fire-emblem-fortunes-weave-guides-and-walkthroughs/', 'NightlyGamingBinge')}, Polygon "Best gifts for each character" by Josh Broadwell (Oct 9, 2026), GameSpot "Gifts Guide" by Dave Irwin (Sep 23, 2026), ${link('https://selphie1999gaming.com/game-guides/fire-emblem-fortunes-weave/fire-emblem-fortunes-weave-gifts-for-all-characters/', 'Selphie1999Gaming')}, ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-gifts-guide/', 'KeenGamer')} and reader comments on the Polygon and Game8 guides. Shop locations from Polygon. When guides disagree, an item counts as a favorite if any guide tested it as one.`,
+  paralogues: `Dates from ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-all-paralogues-list/', 'KeenGamer')}, ${link('https://www.pockettactics.com/fire-emblem-fortunes-weave/paralogues', 'Pocket Tactics')} and ${link('https://gametyrant.com/news/how-to-get-all-paralogues-in-fire-emblem-fortunes-weave', 'GameTyrant')}. World Map tip for Theodora's paralogue from ${link('https://nerdschalk.com/fire-emblem-fortunes-weave-calendar-checklist/', 'NerdsChalk')}.`,
+  classes: `Paths from ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/', 'KeenGamer: Best Class for Every Character')}. Tiers and tips from ${link('https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/', 'AllThings.How: Class Guide')}.`,
+};
+
+function filterRow(label, options, selected, dataKey, extra = '') {
+  const buttons = options.map((o) =>
+    `<button type="button" data-${dataKey}="${escapeHtml(o.id)}" aria-pressed="${o.id === selected}">${escapeHtml(o.name)}</button>`,
+  ).join('');
+  return `
+    <div class="filter-row">
+      <div class="filter" role="group" aria-label="${escapeHtml(label)}">${buttons}</div>
+      ${extra}
+    </div>`;
+}
+
+function viewFrame({ filters = '', intro, count, key = '', body, source }) {
+  return `
+    ${filters}
+    <div class="view-intro"><p>${intro}</p><span class="count">${escapeHtml(count)}</span></div>
+    ${key ? `<div class="key">${key}</div>` : ''}
+    ${body}
+    <p class="source-line"><b>Sources:</b> ${source}</p>`;
+}
+
+function section(title, body, meta = '', summary = '') {
+  return `
+    <section class="view-section">
+      <h2 class="section-title">${escapeHtml(title)}${meta ? ` <span>${escapeHtml(meta)}</span>` : ''}</h2>
+      ${summary ? `<p class="section-summary">${escapeHtml(summary)}</p>` : ''}
+      ${body}
+    </section>`;
+}
+
+const GIFT_KEY = `
+  <span><span class="chip is-favorite is-static">Item</span> Favorite: double points</span>
+  <span><span class="chip is-static">Item</span> Really liked</span>
+  <span><span class="chip is-static">Item<sup>3</sup></span> Confirmed by 3 guides</span>`;
+
+const GIFT_TIPS = section('Gift tips', `
+  <div class="tips">
+    <div class="tip-card">
+      <h3>Reactions</h3>
+      <ol>
+        <li>Two yellow arrows: favorite, double points</li>
+        <li>"They really liked it": big gain</li>
+        <li>"They liked it": moderate gain</li>
+        <li>"They kind of like it": small gain</li>
+        <li>"They don't like it": nothing</li>
+      </ol>
+    </div>
+    <div class="tip-card">
+      <h3>Rules of thumb</h3>
+      <ul>
+        <li>One gift per character per week.</li>
+        <li>The first gift to someone can be anything; it unlocks meals. Use something cheap from the Lowtown tavern.</li>
+        <li>On a character's birthday, almost any gift gets "really liked". Unrecruited characters won't prompt you, so check the Calendar.</li>
+        <li>Grab the Gift Discount Boon of Salvation early.</li>
+        <li>Dagsion shops restock at the start of each chapter.</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <h3>Best all-rounders</h3>
+      <ul>
+        <li><b>Tales of Adventure</b> and <b>Strategy Manuscript</b> are favorites for a huge share of the cast.</li>
+        <li><b>Eastern Tea Leaves</b> (Callianeira Port) is really liked by almost everyone.</li>
+        <li><b>Volcano</b> and <b>Crimson Ghosh</b> cover most drinkers.</li>
+        <li>The Items tab has the full ranking.</li>
+      </ul>
+    </div>
+  </div>`);
+
 // ---------- Characters view ----------
 
 function giftChip(gift, isFavorite) {
@@ -191,9 +270,17 @@ function renderCharacters() {
     normalize(c.alsoGood ?? '').includes(q);
   const list = q ? characters.filter(matches) : characters;
 
-  $('#count').textContent = `${list.length} of ${characters.length} characters`;
-  if (!list.length) return `<p class="empty">No one matches “${escapeHtml(state.query)}”.</p>`;
-  return `<div class="card-grid">${list.map((c) => characterCard(c, Boolean(q))).join('')}</div>`;
+  const body = (list.length
+    ? `<div class="card-grid">${list.map((c) => characterCard(c, Boolean(q))).join('')}</div>`
+    : `<p class="empty">No one matches “${escapeHtml(state.query)}”.</p>`) + GIFT_TIPS;
+
+  return viewFrame({
+    intro: 'Favorite and really-liked gifts for every character. Tap a gift to see who else wants it.',
+    count: q ? `${list.length} of ${characters.length} characters` : `${characters.length} characters`,
+    key: GIFT_KEY,
+    body,
+    source: SOURCES.gifts,
+  });
 }
 
 // ---------- Items view ----------
@@ -204,21 +291,17 @@ function renderItems() {
     normalize(it.name).includes(q) || [...it.favoriteOf, ...it.reallyLikedBy].some((n) => normalize(n).includes(q));
   const list = q ? items.filter(matches) : items;
 
-  $('#count').textContent = `${list.length} items, ranked by how many people want them`;
-  if (!list.length) return `<p class="empty">No item matches “${escapeHtml(state.query)}”.</p>`;
-
-  const topItems = q ? '' : `
-    <p class="label">Most wanted</p>
+  const topItems = q ? '' : section('Most wanted', `
     <div class="top-items">
       ${items.slice(0, 8).map((it) => `
         <button type="button" data-item="${escapeHtml(it.name)}">
           <strong>${escapeHtml(it.name)}</strong>
           <small>${it.favoriteOf.length} favorite · ${it.reallyLikedBy.length} really liked</small>
         </button>`).join('')}
-    </div>`;
+    </div>`);
 
-  const names = (list) =>
-    `<div class="names">${list.map((n) => `<button type="button" data-character="${escapeHtml(n)}">${escapeHtml(n)}</button>`).join('')}</div>`;
+  const names = (people) =>
+    `<div class="names">${people.map((n) => `<button type="button" data-character="${escapeHtml(n)}">${escapeHtml(n)}</button>`).join('')}</div>`;
 
   const rows = list.map((it) => `
     <article class="item-row">
@@ -232,7 +315,17 @@ function renderItems() {
       </div>
     </article>`).join('');
 
-  return `${topItems}<div class="item-list">${rows}</div>`;
+  const body = (list.length
+    ? topItems + section(q ? 'Matches' : 'All items', `<div class="item-list">${rows}</div>`)
+    : `<p class="empty">No item matches “${escapeHtml(state.query)}”.</p>`) + GIFT_TIPS;
+
+  return viewFrame({
+    intro: 'Every gift, ranked by how many characters want it. Tap a name to see their card.',
+    count: q ? `${list.length} of ${items.length} items` : `${items.length} items`,
+    key: GIFT_KEY,
+    body,
+    source: SOURCES.gifts,
+  });
 }
 
 // ---------- Paralogues view ----------
@@ -295,11 +388,6 @@ function timeline(list) {
         </div>
         ${rows}
       </div>
-      <div class="timeline-key">
-        <span><i class="swatch window-swatch"></i>Window to accept</span>
-        <span><i class="swatch deadline-swatch"></i>Battle deadline</span>
-        ${state.gameDate ? '<span><i class="swatch now-swatch"></i>Your date</span>' : ''}
-      </div>
     </div>`;
 }
 
@@ -337,7 +425,6 @@ function dateControls() {
 }
 
 function renderParalogues() {
-  $('#count').textContent = '';
   const byFirstWindow = (a, b) =>
     dayNumber(a.routes[state.route].windows[0].open) - dayNumber(b.routes[state.route].windows[0].open);
 
@@ -348,23 +435,26 @@ function renderParalogues() {
     : onRoute;
   const missing = paralogues.filter((p) => !p.routes[state.route]).map((p) => `${p.character} (${p.title})`);
 
-  const routeButtons = ROUTES.map((r) =>
-    `<button type="button" data-route="${r}" aria-pressed="${r === state.route}">${r}</button>`,
-  ).join('');
-
   const cards = shown.length
     ? `<div class="card-grid">${shown.map(paralogueCard).join('')}</div>`
     : `<p class="empty">No paralogue on this route matches “${escapeHtml(state.query)}”.</p>`;
+  const notOnRoute = missing.length
+    ? `<p class="section-summary">Not on the ${state.route} route: ${escapeHtml(missing.join(', '))}.</p>`
+    : '';
 
-  return `
-    <div class="route-bar">
-      <div class="segmented" role="group" aria-label="Route">${routeButtons}</div>
-      ${dateControls()}
-    </div>
-    <p class="route-note">${state.route} gets ${onRoute.length} of ${paralogues.length} Part I paralogues. Go to the start location during the window to accept. Clearing them as soon as they open is safest, since chapter ends can cut a window short.</p>
-    ${timeline(onRoute)}
-    ${cards}
-    ${missing.length ? `<p class="not-on-route">Not on the ${state.route} route: ${escapeHtml(missing.join(', '))}.</p>` : ''}`;
+  const key = `
+    <span><i class="swatch window-swatch"></i>Window to accept</span>
+    <span><i class="swatch deadline-swatch"></i>Battle deadline</span>
+    ${state.gameDate ? '<span><i class="swatch now-swatch"></i>Your date</span>' : ''}`;
+
+  return viewFrame({
+    filters: filterRow('Route', ROUTES.map((r) => ({ id: r, name: r })), state.route, 'route', dateControls()),
+    intro: 'Go to the start location during the window to accept. Clear them as soon as they open, since a chapter ending can cut a window short.',
+    count: `${onRoute.length} of ${paralogues.length} paralogues`,
+    key,
+    body: section('Timeline', timeline(onRoute)) + section('Paralogues', cards + notOnRoute, plural(shown.length, 'paralogue')),
+    source: SOURCES.paralogues,
+  });
 }
 
 // ---------- Classes view ----------
@@ -385,32 +475,26 @@ function renderClasses() {
   const q = normalize(state.query);
   const matches = (c) => normalize(`${c.name} ${c.path.join(' ')}`).includes(q);
   const shown = classData.characters.filter((c) => (state.role === 'all' || c.role === state.role) && (!q || matches(c)));
-  $('#count').textContent = '';
-
-  const roleButtons = [{ id: 'all', name: 'All' }, ...classData.roles].map((r) =>
-    `<button type="button" data-role="${r.id}" aria-pressed="${r.id === state.role}">${escapeHtml(r.name)}</button>`,
-  ).join('');
 
   const tiers = classData.tiers.map((t) =>
-    `<li><b>${escapeHtml(t.name)}</b><span>${escapeHtml(t.unlock)}</span></li>`,
+    `<span class="tier"><b>${escapeHtml(t.name)}</b> ${escapeHtml(t.unlock)}</span>`,
   ).join('');
 
   const groups = classData.roles
     .map((role) => ({ role, list: shown.filter((c) => c.role === role.id) }))
     .filter((g) => g.list.length)
-    .map(({ role, list }) => `
-      <section class="role-group">
-        <h2 class="role-title">${escapeHtml(role.name)} <span>${plural(list.length, 'character')}</span></h2>
-        <p class="route-note">${escapeHtml(role.summary)}</p>
-        <div class="card-grid">${list.map(classCard).join('')}</div>
-      </section>`).join('');
+    .map(({ role, list }) =>
+      section(role.name, `<div class="card-grid">${list.map(classCard).join('')}</div>`, plural(list.length, 'character'), role.summary),
+    ).join('');
 
-  return `
-    <ol class="tier-strip" aria-label="Class tiers">${tiers}</ol>
-    <div class="role-filter segmented" role="group" aria-label="Role">${roleButtons}</div>
-    <p class="route-note">Recommended paths from starting class to Master or Divine. "A / B" means either works. They're suggestions, so a character's growths and your team's needs come first.</p>
-    <p class="source-line">Sources: paths from <a href="https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/" target="_blank" rel="noopener">KeenGamer: Best Class for Every Character</a>; tiers and tips from <a href="https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/" target="_blank" rel="noopener">AllThings.How: Class Guide</a>.</p>
-    ${groups || `<p class="empty">No class path matches “${escapeHtml(state.query)}”.</p>`}`;
+  return viewFrame({
+    filters: filterRow('Role', [{ id: 'all', name: 'All roles' }, ...classData.roles], state.role, 'role'),
+    intro: 'Recommended class path for each character. "A / B" means either works. Treat them as suggestions; growths and your team come first.',
+    count: shown.length === classData.characters.length ? `${shown.length} characters` : `${shown.length} of ${classData.characters.length} characters`,
+    key: `<div class="tiers" aria-label="Class tiers">${tiers}</div>`,
+    body: groups || `<p class="empty">No class path matches “${escapeHtml(state.query)}”.</p>`,
+    source: SOURCES.classes,
+  });
 }
 
 // ---------- Rendering and events ----------
@@ -419,9 +503,6 @@ function render() {
   for (const button of document.querySelectorAll('[data-view]')) {
     button.setAttribute('aria-pressed', String(button.dataset.view === state.view));
   }
-  const giftView = state.view === 'characters' || state.view === 'items';
-  $('#gift-legend').hidden = !giftView;
-  $('#gift-tips').hidden = !giftView;
   $('#search-clear').hidden = !state.query;
   const placeholders = {
     characters: 'Search a character or an item (e.g. Volcano Ghosh)',

@@ -188,26 +188,122 @@ h1 {
 
 main { padding-block: 12px 40px; }
 
-.legend {
+/* Every view: filter row → intro + count → key → sections → sources */
+
+.filter-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  padding-block: 14px 4px;
-  color: var(--muted);
-  font-size: 13px;
+  align-items: center;
+  gap: 8px 12px;
+  padding-top: 14px;
 }
 
-.legend > span {
-  display: inline-flex;
+.filter {
+  display: flex;
   gap: 6px;
-  align-items: center;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.filter::-webkit-scrollbar { display: none; }
+
+.filter button {
+  flex: none;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.filter button[aria-pressed="true"] {
+  border-color: var(--fg);
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.view-intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 16px;
+  padding-top: 14px;
+}
+
+.view-intro p {
+  flex: 1 1 320px;
+  max-width: 75ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .count {
-  margin-left: auto;
+  color: var(--muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
   color: var(--muted);
   font-size: 13px;
 }
+
+.key > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.view-section { margin-top: 24px; }
+
+.section-title {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.section-title span {
+  margin-left: 6px;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.section-summary {
+  max-width: 75ch;
+  margin: -4px 0 12px;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.source-line {
+  max-width: 90ch;
+  margin: 28px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.source-line a { color: inherit; }
 
 .card-grid {
   display: grid;
@@ -359,7 +455,6 @@ main { padding-block: 12px 40px; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
-  margin-bottom: 18px;
 }
 
 .top-items button {
@@ -435,26 +530,10 @@ main { padding-block: 12px 40px; }
 
 /* ---------- Paralogues view ---------- */
 
-.route-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  padding-block: 14px 6px;
-}
-
-.route-bar .segmented button { color: var(--fg); }
-
-.route-bar .segmented button[aria-pressed="true"] {
-  background: var(--fg);
-  color: var(--bg);
-}
-
 .game-date {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-left: auto;
   color: var(--muted);
   font-size: 13.5px;
 }
@@ -472,16 +551,8 @@ main { padding-block: 12px 40px; }
 
 .game-date input { width: 4.2em; }
 
-.route-note {
-  max-width: 75ch;
-  margin: 4px 0 14px;
-  color: var(--muted);
-  font-size: 13.5px;
-}
-
 .timeline {
   overflow-x: auto;
-  margin-bottom: 16px;
   padding: 14px 16px 10px;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -567,15 +638,6 @@ main { padding-block: 12px 40px; }
   opacity: 0.55;
 }
 
-.timeline-key {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
 .swatch {
   display: inline-block;
   margin-right: 5px;
@@ -622,78 +684,25 @@ main { padding-block: 12px 40px; }
 .status-passed { background: var(--line); color: var(--muted); }
 .card.is-passed { opacity: 0.6; }
 
-.not-on-route {
-  margin-top: 18px;
-  color: var(--muted);
-  font-size: 13.5px;
-}
-
 /* ---------- Classes view ---------- */
 
-.tier-strip {
+.tiers {
   display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  margin: 14px 0 12px;
-  padding: 0 0 4px;
-  list-style: none;
+  flex-wrap: wrap;
+  gap: 4px 18px;
   counter-reset: tier;
 }
 
-.tier-strip li {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 6px 10px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  color: var(--muted);
-  font-size: 12px;
+.tier {
   white-space: nowrap;
   counter-increment: tier;
 }
 
-.tier-strip b {
-  color: var(--fg);
-  font-size: 13.5px;
-}
+.tier b { color: var(--fg); }
 
-.tier-strip b::before {
-  content: counter(tier) ". ";
+.tier b::before {
+  content: counter(tier) " ";
   color: var(--accent);
-}
-
-.source-line {
-  margin: -8px 0 14px;
-  color: var(--muted);
-  font-size: 12.5px;
-}
-
-.source-line a { color: inherit; }
-
-.role-filter { margin-bottom: 4px; }
-
-.role-filter button {
-  padding: 6px 11px;
-  font-size: 13.5px;
-}
-
-.role-group { margin-top: 22px; }
-
-.role-title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 22px;
-}
-
-.role-title span {
-  margin-left: 6px;
-  color: var(--muted);
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 400;
 }
 
 .class-path {
@@ -717,35 +726,34 @@ main { padding-block: 12px 40px; }
   font-weight: 600;
 }
 
-.class-path .arrow {
+.arrow {
   color: var(--muted);
   font-size: 13px;
 }
 
-/* ---------- Tips and footer ---------- */
+/* ---------- Gift tips and footer ---------- */
 
 .tips {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 14px;
-  margin-top: 28px;
 }
 
-.tips section {
+.tip-card {
   padding: 16px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 12px;
 }
 
-.tips h2 {
+.tip-card h3 {
   margin: 0 0 8px;
   font-family: var(--font-display);
   font-size: 18px;
 }
 
-.tips ol,
-.tips ul {
+.tip-card ol,
+.tip-card ul {
   display: flex;
   flex-direction: column;
   gap: 4px;
