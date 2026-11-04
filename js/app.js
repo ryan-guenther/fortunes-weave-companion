@@ -1,11 +1,12 @@
 // Fortune's Weave Companion
-// Loads the data files, then renders one of three views into #view:
-// characters (gift cards), items (reverse lookup) and paralogues (per-route dates).
+// Loads the data files, then renders one of four views into #view:
+// characters (gift cards), items (reverse lookup), paralogues (per-route dates)
+// and classes (recommended class path per character).
 
 'use strict';
 
 const ROUTES = ['Cai', 'Dietrich', 'Theodora', 'Leda'];
-const VIEWS = ['characters', 'items', 'paralogues'];
+const VIEWS = ['characters', 'items', 'paralogues', 'classes'];
 const REALLY_LIKED_PREVIEW = 12;
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const TIMELINE_TICKS = ['9/1', '9/8', '9/15', '9/22', '10/1', '10/8', '10/15', '10/22', '11/1'];
@@ -69,6 +70,7 @@ const state = {
   gameDate: null,            // { month, day } once both are known
   dateDraft: { month: '', day: '' }, // what the date inputs currently show
   expanded: new Set(),       // character cards showing every "really liked" item
+  role: 'all',               // role filter on the classes view
 };
 
 function loadSavedState() {
@@ -94,6 +96,8 @@ let items = [];
 let shops = {};
 let sources = {};
 let paralogues = [];
+let classData = { tiers: [], roles: [], characters: [] };
+let classByName = new Map();
 
 async function fetchJson(url) {
   const res = await fetch(url);
@@ -102,13 +106,15 @@ async function fetchJson(url) {
 }
 
 async function loadData() {
-  [characters, shops, sources, paralogues] = await Promise.all([
+  [characters, shops, sources, paralogues, classData] = await Promise.all([
     fetchJson('data/characters.json'),
     fetchJson('data/shops.json'),
     fetchJson('data/sources.json'),
     fetchJson('data/paralogues.json'),
+    fetchJson('data/classes.json'),
   ]);
   items = buildItemIndex(characters);
+  classByName = new Map(classData.characters.map((c) => [c.name, c]));
 }
 
 // Reverse index: for each item, who has it as a favorite and who really likes it.
@@ -149,6 +155,10 @@ function characterCard(c, isSearching) {
   }
 
   const hasGifts = c.favorites.length || c.reallyLiked.length;
+  const classInfo = classByName.get(c.name);
+  const classLine = classInfo
+    ? `<p class="also-good"><b>Class path:</b> <button class="link-button" type="button" data-class-of="${escapeHtml(c.name)}">${escapeHtml(classInfo.path[classInfo.path.length - 1])}</button></p>`
+    : '';
 
   return `
     <article class="card">
@@ -168,6 +178,7 @@ function characterCard(c, isSearching) {
       ${c.alsoGood ? `<p class="also-good"><b>Also good:</b> ${escapeHtml(c.alsoGood)}</p>` : ''}
       ${c.avoid ? `<div class="callout"><b>Avoid:</b> ${escapeHtml(c.avoid)}</div>` : ''}
       ${c.note ? `<p class="note">${escapeHtml(c.note)}</p>` : ''}
+      ${classLine}
     </article>`;
 }
 
@@ -355,21 +366,70 @@ function renderParalogues() {
     ${missing.length ? `<p class="not-on-route">Not on the ${state.route} route: ${escapeHtml(missing.join(', '))}.</p>` : ''}`;
 }
 
+// ---------- Classes view ----------
+
+function classCard(c) {
+  const steps = c.path.map((step) => `<span class="step">${escapeHtml(step)}</span>`).join('<span class="arrow" aria-hidden="true">→</span>');
+  return `
+    <article class="card">
+      <div class="card-head">${crest(c.name)}<div><h2>${escapeHtml(c.name)}</h2>
+        <button class="link-button" type="button" data-character="${escapeHtml(c.name)}">See gifts</button></div></div>
+      <div class="class-path" aria-label="Class path">${steps}</div>
+      <p class="card-sub">${escapeHtml(c.why)}</p>
+      ${c.tip ? `<p class="note">${escapeHtml(c.tip)}</p>` : ''}
+    </article>`;
+}
+
+function renderClasses() {
+  const q = normalize(state.query);
+  const matches = (c) => normalize(`${c.name} ${c.path.join(' ')}`).includes(q);
+  const shown = classData.characters.filter((c) => (state.role === 'all' || c.role === state.role) && (!q || matches(c)));
+  $('#count').textContent = '';
+
+  const roleButtons = [{ id: 'all', name: 'All' }, ...classData.roles].map((r) =>
+    `<button type="button" data-role="${r.id}" aria-pressed="${r.id === state.role}">${escapeHtml(r.name)}</button>`,
+  ).join('');
+
+  const tiers = classData.tiers.map((t) =>
+    `<li><b>${escapeHtml(t.name)}</b><span>${escapeHtml(t.unlock)}</span></li>`,
+  ).join('');
+
+  const groups = classData.roles
+    .map((role) => ({ role, list: shown.filter((c) => c.role === role.id) }))
+    .filter((g) => g.list.length)
+    .map(({ role, list }) => `
+      <section class="role-group">
+        <h2 class="role-title">${escapeHtml(role.name)} <span>${plural(list.length, 'character')}</span></h2>
+        <p class="route-note">${escapeHtml(role.summary)}</p>
+        <div class="card-grid">${list.map(classCard).join('')}</div>
+      </section>`).join('');
+
+  return `
+    <ol class="tier-strip" aria-label="Class tiers">${tiers}</ol>
+    <div class="role-filter segmented" role="group" aria-label="Role">${roleButtons}</div>
+    <p class="route-note">Recommended paths from KeenGamer, from starting class to Master or Divine. "A / B" means either works. They're suggestions, so a character's growths and your team's needs come first.</p>
+    ${groups || `<p class="empty">No class path matches “${escapeHtml(state.query)}”.</p>`}`;
+}
+
 // ---------- Rendering and events ----------
 
 function render() {
   for (const button of document.querySelectorAll('[data-view]')) {
     button.setAttribute('aria-pressed', String(button.dataset.view === state.view));
   }
-  const onParalogues = state.view === 'paralogues';
-  $('#gift-legend').hidden = onParalogues;
-  $('#gift-tips').hidden = onParalogues;
+  const giftView = state.view === 'characters' || state.view === 'items';
+  $('#gift-legend').hidden = !giftView;
+  $('#gift-tips').hidden = !giftView;
   $('#search-clear').hidden = !state.query;
-  $('#search').placeholder = onParalogues
-    ? 'Search a paralogue, character or reward'
-    : 'Search a character or an item (e.g. Volcano Ghosh)';
+  const placeholders = {
+    characters: 'Search a character or an item (e.g. Volcano Ghosh)',
+    items: 'Search a character or an item (e.g. Volcano Ghosh)',
+    paralogues: 'Search a paralogue, character or reward',
+    classes: 'Search a character or a class (e.g. Swordmaster)',
+  };
+  $('#search').placeholder = placeholders[state.view];
 
-  const renderers = { characters: renderCharacters, items: renderItems, paralogues: renderParalogues };
+  const renderers = { characters: renderCharacters, items: renderItems, paralogues: renderParalogues, classes: renderClasses };
   $('#view').innerHTML = renderers[state.view]();
 }
 
@@ -414,7 +474,8 @@ function bindEvents() {
   for (const button of document.querySelectorAll('[data-view]')) {
     button.addEventListener('click', () => {
       const view = button.dataset.view;
-      showView(view, view === 'paralogues' ? '' : state.query);
+      const keepsQuery = view === 'characters' || view === 'items';
+      showView(view, keepsQuery ? state.query : '');
     });
   }
 
@@ -425,7 +486,7 @@ function bindEvents() {
   $('#view').addEventListener('click', (e) => {
     const button = e.target.closest('button');
     if (!button) return;
-    const { item, character, route, expand } = button.dataset;
+    const { item, character, route, expand, role, classOf } = button.dataset;
 
     if (item) {
       showView('items', item);
@@ -434,6 +495,12 @@ function bindEvents() {
     } else if (route) {
       state.route = route;
       storage.set('fw-route', route);
+      render();
+    } else if (classOf) {
+      state.role = 'all';
+      showView('classes', classOf);
+    } else if (role) {
+      state.role = role;
       render();
     } else if (expand) {
       if (state.expanded.has(expand)) state.expanded.delete(expand);

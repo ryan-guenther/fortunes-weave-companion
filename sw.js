@@ -10,6 +10,7 @@ const APP_FILES = [
   './css/styles.css',
   './js/app.js',
   './data/characters.json',
+  './data/classes.json',
   './data/paralogues.json',
   './data/shops.json',
   './data/sources.json',
