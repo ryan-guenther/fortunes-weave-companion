@@ -182,10 +182,10 @@ function buildItemIndex(chars) {
 const link = (url, text) => `<a href="${url}" target="_blank" rel="noopener">${escapeHtml(text)}</a>`;
 
 const SOURCES = {
-  gifts: `Gifts from Game8 "Gift Giving Guide" (Oct 19, 2026), ${link('https://nightlygamingbinge.com/fire-emblem-fortunes-weave-guides-and-walkthroughs/', 'NightlyGamingBinge')}, Polygon "Best gifts for each character" by Josh Broadwell (Oct 9, 2026), GameSpot "Gifts Guide" by Dave Irwin (Sep 23, 2026), ${link('https://selphie1999gaming.com/game-guides/fire-emblem-fortunes-weave/fire-emblem-fortunes-weave-gifts-for-all-characters/', 'Selphie1999Gaming')}, ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-gifts-guide/', 'KeenGamer')} and reader comments on the Polygon and Game8 guides. Shop locations from Polygon. When guides disagree, an item counts as a favorite if any guide tested it as one.`,
+  gifts: `Gifts from ${link('https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/619779', 'Game8')} (gift guide Oct 19, character pages Oct 27, 2026), ${link('https://nightlygamingbinge.com/fire-emblem-fortunes-weave-guides-and-walkthroughs/', 'NightlyGamingBinge')}, Polygon "Best gifts for each character" by Josh Broadwell (Oct 9, 2026), ${link('https://www.gamespot.com/articles/fire-emblem-fortunes-weave-gifts-guide/', 'GameSpot: Gifts Guide')} by Dave Irwin (Sep 23, 2026), ${link('https://gamerant.com/fire-emblem-fortunes-weave-best-gifts-guide/', 'GameRant: Favorite Gifts for Everyone')} by Steve Booker (Sep 27, 2026), ${link('https://selphie1999gaming.com/game-guides/fire-emblem-fortunes-weave/fire-emblem-fortunes-weave-gifts-for-all-characters/', 'Selphie1999Gaming')}, ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-gifts-guide/', 'KeenGamer')} and reader comments on the Polygon and Game8 guides. Shop locations from Polygon. When guides disagree, an item counts as a favorite if any guide tested it as one.`,
   paralogues: `Dates from ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-all-paralogues-list/', 'KeenGamer')}, ${link('https://www.pockettactics.com/fire-emblem-fortunes-weave/paralogues', 'Pocket Tactics')} and ${link('https://gametyrant.com/news/how-to-get-all-paralogues-in-fire-emblem-fortunes-weave', 'GameTyrant')}. World Map tip for Theodora's paralogue from ${link('https://nerdschalk.com/fire-emblem-fortunes-weave-calendar-checklist/', 'NerdsChalk')}.`,
   recruitment: `Recruitment from ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-all-characters-recruitment-guide/', 'KeenGamer: All Characters Recruitment Guide')}, cross-checked against ${link('https://www.gameshedge.com/fire-emblem-fortunes-weave-characters-recruitment-guide/', 'GamesHedge: Characters Recruitment Guide')}.`,
-  classes: `Paths from ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/', 'KeenGamer: Best Class for Every Character')}. Tiers and tips from ${link('https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/', 'AllThings.How: Class Guide')}.`,
+  classes: `Paths from ${link('https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/619779', 'Game8 character pages')} (updated Oct 27, 2026) and ${link('https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/', 'KeenGamer: Best Class for Every Character')}. Class tiers from ${link('https://www.pockettactics.com/fire-emblem-fortunes-weave/classes', 'Pocket Tactics: Classes')}. Tier unlocks and tips from ${link('https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/', 'AllThings.How: Class Guide')}. Master class unlocks from ${link('https://prodigygamers.com/2026/10/19/fire-emblem-fortunes-weave-all-classes-unlock-temple-master-exam/', 'ProdigyGamers: All Classes Unlock')}.`,
 };
 
 function filterRow(label, options, selected, dataKey, extra = '') {
@@ -610,21 +610,70 @@ function renderParalogues() {
 
 // ---------- Classes view ----------
 
+const TIER_ORDER = ['Beginner', 'Specialty', 'Advanced', 'Master', 'Divine'];
+
+// Tier of a step like "Archer / Light Cavalry" or "Diviner + Riding": the first class we recognize.
+function tierOf(step) {
+  const names = step.split(/\s*[/+]\s*/);
+  for (const n of names) {
+    if (classData.classTiers[n]) return classData.classTiers[n];
+  }
+  return null;
+}
+
+// Steps from Beginner to Master, with a placeholder wherever the guide skips a tier.
+// Divine sits outside that ladder, so jumping to it never counts as a gap.
+function stepsWithGaps(steps) {
+  const out = [];
+  let lastIndex = null;
+  for (const s of steps) {
+    const index = s.tier ? TIER_ORDER.indexOf(s.tier) : null;
+    if (index !== null && lastIndex !== null && s.tier !== 'Divine') {
+      for (let i = lastIndex + 1; i < index; i += 1) out.push({ tier: TIER_ORDER[i], missing: true });
+    }
+    out.push(s);
+    if (index !== null) lastIndex = index;
+  }
+  return out;
+}
+
+function pathRow(label, steps) {
+  const html = stepsWithGaps(steps).map((s) => (s.missing
+    ? `<span class="step is-missing" title="This guide doesn't name a ${s.tier} class"><small>${s.tier}</small>not given</span>`
+    : `<span class="step${s.tier === 'Divine' ? ' is-divine' : ''}">${s.tier ? `<small>${s.tier}</small>` : ''}${escapeHtml(s.class)}</span>`),
+  ).join('<span class="arrow" aria-hidden="true">→</span>');
+  return `
+    <div class="path-row">
+      <p class="label">${escapeHtml(label)}</p>
+      <div class="class-path">${html}</div>
+    </div>`;
+}
+
 function classCard(c) {
-  const steps = c.path.map((step) => `<span class="step">${escapeHtml(step)}</span>`).join('<span class="arrow" aria-hidden="true">→</span>');
+  const keen = c.path.map((step) => ({ class: step, tier: tierOf(step) }));
+  const game8 = c.game8?.steps ?? [];
+  const masters = [...game8, ...keen]
+    .flatMap((s) => s.class.split(/\s*\/\s*/))
+    .filter((name, i, all) => classData.masterUnlocks?.[name] && all.indexOf(name) === i);
+  const unlocks = masters.map((name) =>
+    `<p class="note"><b>Unlock ${escapeHtml(name)}:</b> ${escapeHtml(classData.masterUnlocks[name])}</p>`).join('');
+
   return `
     <article class="card">
       <div class="card-head">${crest(c.name)}<div><h2>${escapeHtml(c.name)}</h2>
         <button class="link-button" type="button" data-character="${escapeHtml(c.name)}">See gifts</button></div></div>
-      <div class="class-path" aria-label="Class path">${steps}</div>
+      ${game8.length ? pathRow('Game8', game8) : ''}
+      ${c.game8?.why ? `<p class="card-sub">${escapeHtml(c.game8.why)}</p>` : ''}
+      ${pathRow('KeenGamer', keen)}
       <p class="card-sub">${escapeHtml(c.why)}</p>
       ${c.tip ? `<p class="note">${escapeHtml(c.tip)}</p>` : ''}
+      ${unlocks}
     </article>`;
 }
 
 function renderClasses() {
   const q = normalize(state.query);
-  const matches = (c) => normalize(`${c.name} ${c.path.join(' ')}`).includes(q);
+  const matches = (c) => normalize(`${c.name} ${c.path.join(' ')} ${(c.game8?.steps ?? []).map((s) => s.class).join(' ')}`).includes(q);
   const shown = classData.characters.filter((c) => (state.role === 'all' || c.role === state.role) && (!q || matches(c)));
 
   const tiers = classData.tiers.map((t) =>
@@ -640,7 +689,7 @@ function renderClasses() {
 
   return viewFrame({
     filters: filterRow('Role', [{ id: 'all', name: 'All roles' }, ...classData.roles], state.role, 'role'),
-    intro: 'Recommended class path for each character. "A / B" means either works. Treat them as suggestions; growths and your team come first.',
+    intro: 'Recommended class paths from two guides, Game8 and KeenGamer, with each step tagged by tier. "Not given" marks a tier a guide skips, and "A / B" means either works. Treat them as suggestions; growths and your team come first.',
     count: shown.length === classData.characters.length ? `${shown.length} characters` : `${shown.length} of ${classData.characters.length} characters`,
     key: `<div class="tiers" aria-label="Class tiers">${tiers}</div>`,
     body: groups || `<p class="empty">No class path matches “${escapeHtml(state.query)}”.</p>`,

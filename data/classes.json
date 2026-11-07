@@ -1,7 +1,30 @@
 {
   "sources": [
-    {"name": "KeenGamer: Best Class for Every Character", "url": "https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/", "covers": "Every path and reason"},
-    {"name": "AllThings.How: Class Guide, All Tiers and Masteries", "url": "https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/", "covers": "Tier names, unlocks and the tip notes"}
+    {
+      "name": "KeenGamer: Best Class for Every Character",
+      "url": "https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/",
+      "covers": "KeenGamer paths, roles and reasons"
+    },
+    {
+      "name": "Game8: character pages",
+      "url": "https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/619779",
+      "covers": "Game8 paths by tier, including Divine classes (updated Oct 27, 2026)"
+    },
+    {
+      "name": "Pocket Tactics: Classes",
+      "url": "https://www.pockettactics.com/fire-emblem-fortunes-weave/classes",
+      "covers": "Which tier each class belongs to"
+    },
+    {
+      "name": "AllThings.How: Class Guide, All Tiers and Masteries",
+      "url": "https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/",
+      "covers": "Tier unlocks and the tip notes"
+    },
+    {
+      "name": "ProdigyGamers: All Classes Unlock",
+      "url": "https://prodigygamers.com/2026/10/19/fire-emblem-fortunes-weave-all-classes-unlock-temple-master-exam/",
+      "covers": "Temple, material and favor quest for six Master classes"
+    }
   ],
   "tiers": [
     {"name": "Beginner", "unlock": "Beginner License, Renown 1"},
@@ -12,83 +35,1032 @@
   ],
   "roles": [
     {"id": "healer", "name": "Healer", "summary": "Strongest healing, with an edge against enemy mages."},
-    {"id": "mage", "name": "Attack mage", "summary": "Offensive magic with better accuracy and bind resistance."},
+    {
+      "id": "mage",
+      "name": "Attack mage",
+      "summary": "Offensive magic with better accuracy and bind resistance."
+    },
     {"id": "mounted-mage", "name": "Mounted mage", "summary": "Keeps offensive magic while gaining movement."},
-    {"id": "sword", "name": "Swordfighter", "summary": "Fast sword damage and critical hits to finish fights."},
+    {
+      "id": "sword",
+      "name": "Swordfighter",
+      "summary": "Fast sword damage and critical hits to finish fights."
+    },
     {"id": "axe", "name": "Axe bruiser", "summary": "Strength-driven close combat with a heavy finisher."},
     {"id": "archer", "name": "Archer", "summary": "Reliable long-range damage and the anti-flier role."},
-    {"id": "mounted-archer", "name": "Mounted archer", "summary": "Moves and shoots from new angles across big maps."},
-    {"id": "armor", "name": "Armored wall", "summary": "Holds chokepoints, shields allies and counterattacks."},
+    {
+      "id": "mounted-archer",
+      "name": "Mounted archer",
+      "summary": "Moves and shoots from new angles across big maps."
+    },
+    {
+      "id": "armor",
+      "name": "Armored wall",
+      "summary": "Holds chokepoints, shields allies and counterattacks."
+    },
     {"id": "cavalry", "name": "Cavalry", "summary": "Mounted frontliners with mobility and durability."},
     {"id": "flier", "name": "Flier", "summary": "Flies over terrain to reach targets others can't."},
-    {"id": "frontline-support", "name": "Frontline support", "summary": "Spear fighter on foot who can also heal nearby allies."},
-    {"id": "hybrid", "name": "Brawler-healer", "summary": "Fights up close on one turn and heals on the next."},
+    {
+      "id": "frontline-support",
+      "name": "Frontline support",
+      "summary": "Spear fighter on foot who can also heal nearby allies."
+    },
+    {
+      "id": "hybrid",
+      "name": "Brawler-healer",
+      "summary": "Fights up close on one turn and heals on the next."
+    },
     {"id": "utility", "name": "Thief and utility", "summary": "Combat plus locks, chests and exploration."},
     {"id": "unique", "name": "Unique paths", "summary": "Characters with their own route or special class."}
   ],
   "characters": [
-    {"name": "Alexandra", "role": "flier", "path": ["Ornius Rider", "Wing Soldier", "Dragoon", "Celestial Trooper"], "why": "Mobile flier with improved survivability and reach."},
-    {"name": "Anatolia", "role": "hybrid", "path": ["Diviner / Gladiator", "Priest / Pugilist", "War Monk"], "why": "Contributes on both offense and support turns."},
-    {"name": "Aswan", "role": "unique", "path": ["Keep joining class"], "why": "Joins in Part III, when retraining costs more than it returns."},
-    {"name": "Benditz", "role": "mounted-archer", "path": ["Hunter", "Archer / Light Cavalry", "Forest Knight", "Bow Knight"], "why": "Mounted ranged attacker who covers large areas."},
-    {"name": "Bertrand", "role": "axe", "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"], "why": "Simple physical package with a heavy finisher."},
-    {"name": "Bonaventure", "role": "mounted-mage", "path": ["Diviner + Riding", "Mounted magic route", "High Savant"], "why": "Mobile magic attacker."},
-    {"name": "Buccar", "role": "armor", "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"], "why": "Front-line durability and ally shielding."},
-    {"name": "Cai", "role": "unique", "path": ["Ornius Rider", "Bardinger", "Orichaldia"], "why": "Stays mounted and turns spear skill into mobile offense."},
-    {"name": "Catania", "role": "sword", "path": ["Hunter / Gladiator", "Myrmidon", "Shido", "Swordmaster"], "why": "Speed and precision for finishing kills."},
-    {"name": "Centurio", "role": "armor", "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"], "why": "Absorbs enemy turns and hits back hard."},
-    {"name": "Creek", "role": "cavalry", "path": ["Soldier", "Light Cavalry / Armored Knight", "Cataphract", "Great Knight"], "why": "Defensive mounted unit that keeps pace on large maps."},
-    {"name": "Dadao", "role": "axe", "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"], "why": "Turns Strength into heavy-hitting damage."},
-    {"name": "Dante", "role": "mage", "path": ["Diviner", "Shaman", "Ovate", "Druid"], "why": "Strongest offensive magic route."},
-    {"name": "Diego", "role": "utility", "path": ["Hunter", "Rogue", "Ranger / Shido", "Shadow Seeker"], "why": "Combat plus lockpicking and searching."},
-    {"name": "Dietrich", "role": "unique", "path": ["Gladiator", "Myrmidon", "Shido", "Shadow Seeker", "The Blade"], "why": "Sword critical-hit build. The Blade is his Divine class.", "tip": "AllThings.How also suggests In Shadow (Rogue) for his evasion, Ever Vigilant (Shido) for his crits, and Overtake (Caladrius) as a mobile finisher."},
-    {"name": "Esmeralda", "role": "armor", "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"], "why": "Chokepoint defender who protects nearby allies."},
-    {"name": "Eshmel", "role": "frontline-support", "path": ["Soldier", "Guardian", "Sentinel"], "why": "Spear pressure, healing and staying power in a lane."},
-    {"name": "Fabio", "role": "mage", "path": ["Diviner", "Shaman", "Ovate", "Druid"], "why": "Offensive magic without spending ranks on other weapons.", "tip": "AllThings.How suggests Ever Vigilant (Shido) to pair his Death spell with crit-focused units."},
-    {"name": "Fianna", "role": "healer", "path": ["Diviner", "Priest", "Bishop", "Wiseman"], "why": "Strongest healer route, with a defensive edge against mages."},
-    {"name": "Gaitz", "role": "sword", "path": ["Gladiator / Hunter", "Myrmidon", "Shido", "Swordmaster"], "why": "Maximizes sword offense and finishing burst."},
-    {"name": "Goliath", "role": "armor", "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"], "why": "Physical wall that protects allies and counterattacks."},
-    {"name": "Guzran", "role": "utility", "path": ["Hunter", "Rogue", "Ranger / Shido", "Shadow Seeker"], "why": "Flexible combat plus exploration utility."},
-    {"name": "Halvin", "role": "archer", "path": ["Hunter", "Archer", "Sniper", "Bow Adept"], "why": "Reliable long-range damage and anti-flier role."},
-    {"name": "Hong Hua", "role": "mage", "path": ["Diviner", "Shaman", "Ovate", "Druid"], "why": "Pure offensive magic with high-impact spells."},
-    {"name": "Inyoni", "role": "archer", "path": ["Hunter", "Archer", "Sniper", "Bow Adept"], "why": "Maximizes ranged pressure and anti-flier damage."},
-    {"name": "Io", "role": "cavalry", "path": ["Soldier", "Light Cavalry / Armored Knight", "Cataphract", "Great Knight"], "why": "Durable frontliner with mounted mobility."},
-    {"name": "Jasmine", "role": "armor", "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"], "why": "Counter-focused defense that protects allies."},
-    {"name": "Jester", "role": "sword", "path": ["Hunter", "Myrmidon", "Shido", "Swordmaster"], "why": "Fits his fast sword style without splitting training."},
-    {"name": "Kiroc", "role": "utility", "path": ["Hunter", "Rogue", "Ranger / Shido", "Shadow Seeker"], "why": "Flanks exposed targets and handles doors and chests."},
-    {"name": "Klapka", "role": "unique", "path": ["Keep joining class"], "why": "Joins in Part III. Keep his class unless a direct upgrade is available."},
-    {"name": "Leda", "role": "unique", "path": ["Hunter", "Myrmidon / Rogue", "Dancer", "The Apsara"], "why": "Stay a Dancer most of the game. The Apsara is her Divine class for a support slot."},
-    {"name": "Lillian", "role": "archer", "path": ["Hunter", "Archer", "Sniper", "Bow Adept"], "why": "Highly accurate ranged damage and anti-flier role."},
-    {"name": "Loretta", "role": "sword", "path": ["Hunter / Gladiator", "Myrmidon", "Shido", "Swordmaster"], "why": "Concentrates training on swords for immediate damage."},
-    {"name": "Ludia", "role": "sword", "path": ["Hunter / Gladiator", "Myrmidon", "Shido", "Swordmaster"], "why": "Fast follow-up attacks that end fights quickly."},
-    {"name": "Lysander", "role": "cavalry", "path": ["Soldier / Ornius Rider", "Light Cavalry", "Bardinger", "Orichaldia"], "why": "Fast, aggressive spear cavalry."},
-    {"name": "Majide", "role": "axe", "path": ["Gladiator", "Brigand", "Warrior", "Battle Master"], "why": "Axes match his Strength, with a boss-damage option."},
-    {"name": "Mikaela", "role": "axe", "path": ["Gladiator", "Brigand", "Warrior", "Battle Master"], "why": "Efficient axe build with a strong finisher."},
-    {"name": "Mu", "role": "axe", "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"], "why": "Simple, high-output physical role with burst options."},
-    {"name": "Nathan", "role": "cavalry", "path": ["Soldier", "Light Cavalry / Armored Knight", "Cataphract", "Great Knight"], "why": "Brings physical pressure with mobility and durability."},
-    {"name": "Nezha", "role": "sword", "path": ["Gladiator / Hunter", "Myrmidon", "Shido", "Swordmaster"], "why": "Rewards attacking first and ending fights quickly."},
-    {"name": "Ninae", "role": "healer", "path": ["Diviner", "Priest", "Bishop", "Wiseman"], "why": "Pure support with strong healing and anti-mage value."},
-    {"name": "Noctula", "role": "axe", "path": ["Gladiator", "Pugilist", "Warrior / War Monk", "Battle Master"], "why": "Straightforward brawler with a heavy finisher.", "tip": "AllThings.How suggests In Shadow (Rogue) because Noctula dodges well."},
-    {"name": "Nuzzuo", "role": "utility", "path": ["Hunter", "Rogue", "Ranger / Shido", "Shadow Seeker"], "why": "Exploits weak points and covers exploration."},
-    {"name": "Nydine", "role": "flier", "path": ["Ornius Rider", "Wing Soldier", "Dragoon", "Celestial Trooper"], "why": "Survivability through flying mobility."},
-    {"name": "Olympia", "role": "healer", "path": ["Diviner", "Priest", "Bishop", "Wiseman"], "why": "Dedicated healer with stronger recovery."},
-    {"name": "Orchel", "role": "axe", "path": ["Gladiator", "Pugilist / Brigand", "Warrior", "Battle Master"], "why": "Strength-driven close combat with high finishing power."},
-    {"name": "Peppe", "role": "mounted-archer", "path": ["Hunter", "Archer / Light Cavalry", "Forest Knight", "Bow Knight"], "why": "Mobile archer who keeps changing firing angles."},
-    {"name": "Peter", "role": "archer", "path": ["Hunter", "Archer", "Sniper", "Bow Adept"], "why": "Dedicated archer with reliable long-range hits."},
-    {"name": "Seteth", "role": "flier", "path": ["Ornius Rider", "Wing Soldier / Armored Ornius Rider", "Dragoon", "Bau Lord"], "why": "Aggressive flier that bypasses most terrain."},
-    {"name": "Sha Lan", "role": "healer", "path": ["Diviner", "Priest", "Bishop", "Wiseman"], "why": "Maximizes her value as a healer."},
-    {"name": "Simon", "role": "axe", "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"], "why": "Direct physical pressure with a finisher for tough enemies."},
-    {"name": "Sirocco", "role": "mounted-mage", "path": ["Diviner + Riding", "Mounted magic route", "High Savant"], "why": "Keeps offensive magic while gaining mobility.", "tip": "AllThings.How suggests In Shadow (Rogue) for his evasion and Ever Vigilant (Shido) for his crits."},
-    {"name": "Sofia", "role": "healer", "path": ["Diviner", "Priest", "Bishop", "Wiseman"], "why": "Maximizes healing output."},
-    {"name": "Tahonia", "role": "unique", "path": ["Keep joining class"], "why": "Joins in Part III, too late to start a new weapon path."},
-    {"name": "Talimun", "role": "sword", "path": ["Gladiator / Hunter", "Myrmidon", "Shido", "Swordmaster"], "why": "Uses his existing sword training for kill potential."},
-    {"name": "Theodora", "role": "frontline-support", "path": ["Soldier", "Armored Knight / Priest", "Guardian", "Sentinel"], "why": "Balanced durability, damage and support on foot.", "tip": "AllThings.How suggests Crescendo (Archer) to shore up her accuracy. The Trident Divine class doesn't stack well with her Mahado's Right Arm."},
-    {"name": "Tialla", "role": "healer", "path": ["Diviner", "Priest", "Bishop", "Wiseman"], "why": "Support healer with strong recovery and anti-caster value."},
-    {"name": "Tobias", "role": "axe", "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"], "why": "Close-range Strength with an answer to bulky targets.", "tip": "AllThings.How suggests Crescendo (Archer) to make up for his low accuracy."},
-    {"name": "Troy", "role": "hybrid", "path": ["Gladiator / Diviner", "Pugilist / Priest", "War Monk"], "why": "Combines brawling offense with healing."},
-    {"name": "Ultand", "role": "frontline-support", "path": ["Soldier + Faith", "Guardian", "Sentinel"], "why": "Front-line fighter who can also heal nearby allies."},
-    {"name": "Ursula", "role": "archer", "path": ["Hunter", "Archer / Rogue", "Sniper", "Bow Adept"], "why": "Strong bow damage and anti-flier role. Shadow Seeker only for utility."},
-    {"name": "Yang Jie", "role": "hybrid", "path": ["Gladiator / Diviner", "Pugilist / Priest", "War Monk"], "why": "Covers both melee combat and healing."},
-    {"name": "Zarcone", "role": "axe", "path": ["Gladiator", "Brigand", "Warrior", "Battle Master"], "why": "Endgame class for an axe specialist."}
-  ]
+    {
+      "name": "Alexandra",
+      "role": "flier",
+      "path": ["Ornius Rider", "Wing Soldier", "Dragoon", "Celestial Trooper"],
+      "why": "Mobile flier with improved survivability and reach.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Wing Soldier"},
+          {"tier": "Advanced", "class": "Dragoon"},
+          {"tier": "Master", "class": "Celestial Trooper"}
+        ],
+        "why": "High Speed, Dexterity and Luck let her double and dodge easily."
+      }
+    },
+    {
+      "name": "Anatolia",
+      "role": "hybrid",
+      "path": ["Diviner / Gladiator", "Priest / Pugilist", "War Monk"],
+      "why": "Contributes on both offense and support turns.",
+      "game8": {
+        "steps": [
+          {"tier": "Advanced", "class": "Ovate"},
+          {"tier": "Master", "class": "Druid"},
+          {"tier": "Divine", "class": "The Avatar"}
+        ],
+        "why": "Strong Magic, Speed and Dexterity suit a fast, accurate attack mage, and her Black Magic skill makes Ovate a natural start."
+      }
+    },
+    {
+      "name": "Aswan",
+      "role": "unique",
+      "path": ["Keep joining class"],
+      "why": "Joins in Part III, when retraining costs more than it returns.",
+      "game8": {
+        "steps": [{"tier": "Advanced", "class": "Sniper"}, {"tier": "Master", "class": "Bow Knight"}],
+        "why": "High Speed and Dexterity let her double and avoid enemies, and her bow-focused personal skill suits these classes."
+      }
+    },
+    {
+      "name": "Benditz",
+      "role": "mounted-archer",
+      "path": ["Hunter", "Archer / Light Cavalry", "Forest Knight", "Bow Knight"],
+      "why": "Mounted ranged attacker who covers large areas.",
+      "game8": {
+        "steps": [{"tier": "Specialty", "class": "Charioteer"}, {"tier": "Advanced", "class": "Forest Knight"}],
+        "why": "Strong Dexterity and Bow and Riding skill suit the Charioteer path, and his chariot bonus adds accuracy."
+      }
+    },
+    {
+      "name": "Bertrand",
+      "role": "axe",
+      "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"],
+      "why": "Simple physical package with a heavy finisher.",
+      "game8": {
+        "steps": [
+          {"tier": "Advanced", "class": "Warrior"},
+          {"tier": "Master", "class": "Battle Master"},
+          {"tier": "Divine", "class": "The Eternal"}
+        ],
+        "why": "Strong HP, Strength, Speed, Dexterity and Defense make him a frontliner, and Warrior suits his Axe and Brawling skill."
+      }
+    },
+    {
+      "name": "Bonaventure",
+      "role": "mounted-mage",
+      "path": ["Diviner + Riding", "Mounted magic route", "High Savant"],
+      "why": "Mobile magic attacker.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Shaman"},
+          {"tier": "Advanced", "class": "Ovate"},
+          {"tier": "Master", "class": "Druid"}
+        ],
+        "why": "Strong Black and White Magic plus high Magic, Speed and Dexterity growths suit a pure mage from start to finish."
+      }
+    },
+    {
+      "name": "Buccar",
+      "role": "armor",
+      "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"],
+      "why": "Front-line durability and ally shielding.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Light Cavalry"},
+          {"tier": "Advanced", "class": "Bardinger"},
+          {"tier": "Master", "class": "Bau Lord"},
+          {"tier": "Divine", "class": "The Cavalier"}
+        ],
+        "why": "Spear, Axe, Riding and Heavy Armor strengths with strong HP, Strength and Defense make a durable frontliner; cavalry adds mobility."
+      }
+    },
+    {
+      "name": "Cai",
+      "role": "unique",
+      "path": ["Ornius Rider", "Bardinger", "Orichaldia"],
+      "why": "Stays mounted and turns spear skill into mobile offense.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Ornius Rider"},
+          {"tier": "Specialty", "class": "Light Cavalry"},
+          {"tier": "Advanced", "class": "Bardinger"},
+          {"tier": "Master", "class": "Orichaldia"},
+          {"tier": "Divine", "class": "The Cavalier"}
+        ],
+        "why": "Cai's spear and riding aptitudes suit a cavalry path, and the early classes unlock a mount that leads into the later ones."
+      }
+    },
+    {
+      "name": "Catania",
+      "role": "sword",
+      "path": ["Hunter / Gladiator", "Myrmidon", "Shido", "Swordmaster"],
+      "why": "Speed and precision for finishing kills.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Myrmidon"},
+          {"tier": "Advanced", "class": "Shido"},
+          {"tier": "Master", "class": "Swordmaster"}
+        ],
+        "why": "High Speed and Dexterity and sword and spear strengths make her a quick, evasive melee unit."
+      }
+    },
+    {
+      "name": "Centurio",
+      "role": "armor",
+      "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"],
+      "why": "Absorbs enemy turns and hits back hard.",
+      "game8": {
+        "steps": [{"tier": "Advanced", "class": "Dreadnought"}, {"tier": "Master", "class": "Castle Knight"}],
+        "why": "High HP, Strength, Dexterity and Defense make him a durable tank that hits hard."
+      }
+    },
+    {
+      "name": "Creek",
+      "role": "cavalry",
+      "path": ["Soldier", "Light Cavalry / Armored Knight", "Cataphract", "Great Knight"],
+      "why": "Defensive mounted unit that keeps pace on large maps.",
+      "game8": {
+        "steps": [
+          {"tier": "Advanced", "class": "Bardinger"},
+          {"tier": "Master", "class": "Orichaldia"},
+          {"tier": "Divine", "class": "The Cavalier"}
+        ],
+        "why": "Balanced Strength, Speed and Dexterity make him a frontliner who dodges well and doubles consistently."
+      }
+    },
+    {
+      "name": "Dadao",
+      "role": "axe",
+      "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"],
+      "why": "Turns Strength into heavy-hitting damage.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Armored Knight"},
+          {"tier": "Advanced", "class": "Dreadnought"},
+          {"tier": "Master", "class": "Battle Master"}
+        ],
+        "why": "Strong HP, Strength and Defense make him a solid tank."
+      }
+    },
+    {
+      "name": "Dante",
+      "role": "mage",
+      "path": ["Diviner", "Shaman", "Ovate", "Druid"],
+      "why": "Strongest offensive magic route.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Shaman"},
+          {"tier": "Advanced", "class": "Ovate"},
+          {"tier": "Master", "class": "Druid"},
+          {"tier": "Divine", "class": "The Avatar"}
+        ],
+        "why": "Build White and Black Magic; low Defense means she should stay at range and support allies with healing."
+      }
+    },
+    {
+      "name": "Diego",
+      "role": "utility",
+      "path": ["Hunter", "Rogue", "Ranger / Shido", "Shadow Seeker"],
+      "why": "Combat plus lockpicking and searching.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Myrmidon"},
+          {"tier": "Advanced", "class": "Shido"},
+          {"tier": "Master", "class": "Swordmaster"},
+          {"tier": "Divine", "class": "The Blade"}
+        ],
+        "why": "High Dexterity makes swords a strong choice, especially with Sword Crit +7 boosting his critical hits."
+      }
+    },
+    {
+      "name": "Dietrich",
+      "role": "unique",
+      "path": ["Gladiator", "Myrmidon", "Shido", "Shadow Seeker", "The Blade"],
+      "why": "Sword critical-hit build. The Blade is his Divine class.",
+      "tip": "AllThings.How also suggests In Shadow (Rogue) for his evasion, Ever Vigilant (Shido) for his crits, and Overtake (Caladrius) as a mobile finisher.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Myrmidon"},
+          {"tier": "Advanced", "class": "Shido"},
+          {"tier": "Master", "class": "Swordmaster"},
+          {"tier": "Divine", "class": "The Blade"}
+        ],
+        "why": "The page favors sword-based infantry classes because Dietrich's sword skill and Answerer pair well with them, and these classes further boost his already high crit rate, speed, and skill growth."
+      }
+    },
+    {
+      "name": "Esmeralda",
+      "role": "armor",
+      "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"],
+      "why": "Chokepoint defender who protects nearby allies.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Armored Ornius Rider"},
+          {"tier": "Advanced", "class": "Bardinger"},
+          {"tier": "Master", "class": "Bau Lord"}
+        ],
+        "why": "Strong HP, Strength and Defense growths suit the front line, and this path makes her a mobile, high-Strength cavalry or flying unit."
+      }
+    },
+    {
+      "name": "Eshmel",
+      "role": "frontline-support",
+      "path": ["Soldier", "Guardian", "Sentinel"],
+      "why": "Spear pressure, healing and staying power in a lane.",
+      "game8": {
+        "steps": [
+          {"tier": "Advanced", "class": "Guardian"},
+          {"tier": "Master", "class": "Sentinel"},
+          {"tier": "Divine", "class": "The Trident"}
+        ],
+        "why": "Eshmel's innate spear skill preference makes the Sentinel and The Trident skill requirements easy to meet, so the page recommends that promotion path."
+      }
+    },
+    {
+      "name": "Fabio",
+      "role": "mage",
+      "path": ["Diviner", "Shaman", "Ovate", "Druid"],
+      "why": "Offensive magic without spending ranks on other weapons.",
+      "tip": "AllThings.How suggests Ever Vigilant (Shido) to pair his Death spell with crit-focused units.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Shaman"},
+          {"tier": "Advanced", "class": "Ovate"},
+          {"tier": "Master", "class": "Druid"},
+          {"tier": "Divine", "class": "The Avatar"}
+        ],
+        "why": "Fabio's high Magic growth suits a Black Magic build, and Druid later adds Speed for Part 3."
+      }
+    },
+    {
+      "name": "Fianna",
+      "role": "healer",
+      "path": ["Diviner", "Priest", "Bishop", "Wiseman"],
+      "why": "Strongest healer route, with a defensive edge against mages.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Priest"},
+          {"tier": "Advanced", "class": "Bishop"},
+          {"tier": "Master", "class": "Wiseman"}
+        ],
+        "why": "Strong Magic and Resistance make her a good healer, and her personal ability triggers when she heals."
+      }
+    },
+    {
+      "name": "Gaitz",
+      "role": "sword",
+      "path": ["Gladiator / Hunter", "Myrmidon", "Shido", "Swordmaster"],
+      "why": "Maximizes sword offense and finishing burst.",
+      "game8": {
+        "steps": [{"tier": "Advanced", "class": "Bardinger"}, {"tier": "Master", "class": "Orichaldia"}],
+        "why": "Balanced Strength, Speed, Dexterity and Defense growths make him a solid frontline fighter."
+      }
+    },
+    {
+      "name": "Goliath",
+      "role": "armor",
+      "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"],
+      "why": "Physical wall that protects allies and counterattacks.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Armored Knight"},
+          {"tier": "Advanced", "class": "Dreadnought"},
+          {"tier": "Master", "class": "Battle Master"}
+        ],
+        "why": "Strong HP, Strength and Defense make him a durable tank, and his Heavyweight Class ability boosts Build."
+      }
+    },
+    {
+      "name": "Guzran",
+      "role": "utility",
+      "path": ["Hunter", "Rogue", "Ranger / Shido", "Shadow Seeker"],
+      "why": "Flexible combat plus exploration utility.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Myrmidon"},
+          {"tier": "Advanced", "class": "Shido"},
+          {"tier": "Master", "class": "Swordmaster"},
+          {"tier": "Divine", "class": "The Blade"}
+        ],
+        "why": "Balanced HP, Strength, Speed and Dexterity make him a strong frontliner, and sword classes suit his Sword strength."
+      }
+    },
+    {
+      "name": "Halvin",
+      "role": "archer",
+      "path": ["Hunter", "Archer", "Sniper", "Bow Adept"],
+      "why": "Reliable long-range damage and anti-flier role.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Hunter"},
+          {"tier": "Specialty", "class": "Archer"},
+          {"tier": "Advanced", "class": "Forest Knight"},
+          {"tier": "Master", "class": "Bow Knight"}
+        ],
+        "why": "High Speed and Dexterity let her double and avoid enemies."
+      }
+    },
+    {
+      "name": "Hong Hua",
+      "role": "mage",
+      "path": ["Diviner", "Shaman", "Ovate", "Druid"],
+      "why": "Pure offensive magic with high-impact spells.",
+      "game8": {
+        "steps": [{"tier": "Advanced", "class": "Ovate"}, {"tier": "Master", "class": "Druid"}],
+        "why": "Her strong Magic, Skill, and Speed growths and Black Magic proficiency make her a natural Ovate."
+      }
+    },
+    {
+      "name": "Inyoni",
+      "role": "archer",
+      "path": ["Hunter", "Archer", "Sniper", "Bow Adept"],
+      "why": "Maximizes ranged pressure and anti-flier damage.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Hunter"},
+          {"tier": "Specialty", "class": "Archer"},
+          {"tier": "Advanced", "class": "Sniper"},
+          {"tier": "Master", "class": "Bow Knight"},
+          {"tier": "Divine", "class": "The Calamity"}
+        ],
+        "why": "Strong Strength and Dexterity suit accurate, powerful ranged attacks, and her personal skill only works with bows."
+      }
+    },
+    {
+      "name": "Io",
+      "role": "cavalry",
+      "path": ["Soldier", "Light Cavalry / Armored Knight", "Cataphract", "Great Knight"],
+      "why": "Durable frontliner with mounted mobility.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Light Cavalry"},
+          {"tier": "Advanced", "class": "Bardinger"},
+          {"tier": "Master", "class": "Orichaldia"}
+        ],
+        "why": "HP, Dexterity and Defense growths make him sturdy cavalry, and Gladiator early boosts his Strength."
+      }
+    },
+    {
+      "name": "Jasmine",
+      "role": "armor",
+      "path": ["Soldier", "Armored Knight", "Dreadnought", "Castle Knight"],
+      "why": "Counter-focused defense that protects allies.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Ornius Rider"},
+          {"tier": "Specialty", "class": "Wing Soldier"},
+          {"tier": "Advanced", "class": "Dragoon"},
+          {"tier": "Master", "class": "Castle Knight"}
+        ],
+        "why": "Spear, Axe and Heavy Armor skill suit armored classes, and her counterattack kit fits a defensive role."
+      }
+    },
+    {
+      "name": "Jester",
+      "role": "sword",
+      "path": ["Hunter", "Myrmidon", "Shido", "Swordmaster"],
+      "why": "Fits his fast sword style without splitting training.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Brigand"},
+          {"tier": "Advanced", "class": "Ranger"},
+          {"tier": "Master", "class": "Shadow Seeker"},
+          {"tier": "Divine", "class": "The Apsara"}
+        ],
+        "why": "High Speed and Dexterity help him dodge and double, and a Strength-boosting Specialty class covers his weak Strength."
+      }
+    },
+    {
+      "name": "Kiroc",
+      "role": "utility",
+      "path": ["Hunter", "Rogue", "Ranger / Shido", "Shadow Seeker"],
+      "why": "Flanks exposed targets and handles doors and chests.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Hunter"},
+          {"tier": "Specialty", "class": "Archer"},
+          {"tier": "Advanced", "class": "Sniper"},
+          {"tier": "Master", "class": "Bow Knight"}
+        ],
+        "why": "Bow skill and strong Speed, Dexterity and Strength make him a fast, evasive archer all game."
+      }
+    },
+    {
+      "name": "Klapka",
+      "role": "unique",
+      "path": ["Keep joining class"],
+      "why": "Joins in Part III. Keep his class unless a direct upgrade is available.",
+      "game8": {
+        "steps": [{"tier": "Advanced", "class": "Guardian"}],
+        "why": "He's locked into Guardian and can't change class; it suits his lance and White Magic strengths."
+      }
+    },
+    {
+      "name": "Leda",
+      "role": "unique",
+      "path": ["Hunter", "Myrmidon / Rogue", "Dancer", "The Apsara"],
+      "why": "Stay a Dancer most of the game. The Apsara is her Divine class for a support slot.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Hunter"},
+          {"tier": "Specialty", "class": "Archer"},
+          {"tier": "Advanced", "class": "Dancer"},
+          {"tier": "Master", "class": "Shadow Seeker"},
+          {"tier": "Divine", "class": "The Apsara"}
+        ],
+        "why": "High Speed lets her dodge and double; Hunter and Archer raise her Speed growth, and Dancer or The Apsara let her give allies an extra turn."
+      }
+    },
+    {
+      "name": "Lillian",
+      "role": "archer",
+      "path": ["Hunter", "Archer", "Sniper", "Bow Adept"],
+      "why": "Highly accurate ranged damage and anti-flier role.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Hunter"},
+          {"tier": "Specialty", "class": "Archer"},
+          {"tier": "Advanced", "class": "Sniper"},
+          {"tier": "Master", "class": "Bow Adept"}
+        ],
+        "why": "Bow and infantry aptitudes and high Dexterity make her a reliable archer."
+      }
+    },
+    {
+      "name": "Loretta",
+      "role": "sword",
+      "path": ["Hunter / Gladiator", "Myrmidon", "Shido", "Swordmaster"],
+      "why": "Concentrates training on swords for immediate damage.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Ornius Rider"},
+          {"tier": "Specialty", "class": "Wing Soldier"},
+          {"tier": "Advanced", "class": "Bardinger"},
+          {"tier": "Master", "class": "Celestial Trooper"}
+        ],
+        "why": "Strong Speed and Resistance let her evade, double enemies and absorb magic hits."
+      }
+    },
+    {
+      "name": "Ludia",
+      "role": "sword",
+      "path": ["Hunter / Gladiator", "Myrmidon", "Shido", "Swordmaster"],
+      "why": "Fast follow-up attacks that end fights quickly.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Myrmidon"},
+          {"tier": "Advanced", "class": "Shido"},
+          {"tier": "Master", "class": "Swordmaster"}
+        ],
+        "why": "Strong Speed and Dexterity let her dodge and double, and her Sword strength pairs well with her Speed."
+      }
+    },
+    {
+      "name": "Lysander",
+      "role": "cavalry",
+      "path": ["Soldier / Ornius Rider", "Light Cavalry", "Bardinger", "Orichaldia"],
+      "why": "Fast, aggressive spear cavalry.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Armored Ornius Rider"},
+          {"tier": "Advanced", "class": "Dragoon"},
+          {"tier": "Master", "class": "Bau Lord"}
+        ],
+        "why": "High Speed growth suits cavalry or flying classes, and this path covers his modest Strength, Defense and Dexterity."
+      }
+    },
+    {
+      "name": "Majide",
+      "role": "axe",
+      "path": ["Gladiator", "Brigand", "Warrior", "Battle Master"],
+      "why": "Axes match his Strength, with a boss-damage option.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Brigand"},
+          {"tier": "Advanced", "class": "Warrior"},
+          {"tier": "Master", "class": "Battle Master"}
+        ],
+        "why": "Strong Axe and Gauntlet skill and high HP and Strength suit a hard-hitting frontliner."
+      }
+    },
+    {
+      "name": "Mikaela",
+      "role": "axe",
+      "path": ["Gladiator", "Brigand", "Warrior", "Battle Master"],
+      "why": "Efficient axe build with a strong finisher.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Armored Ornius Rider"},
+          {"tier": "Advanced", "class": "Warrior"},
+          {"tier": "Master", "class": "Bau Lord"}
+        ],
+        "why": "Strong Strength and axe growths suit melee; riding and flying are weaknesses, so mounted classes trade some power for mobility."
+      }
+    },
+    {
+      "name": "Mu",
+      "role": "axe",
+      "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"],
+      "why": "Simple, high-output physical role with burst options.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Brigand"},
+          {"tier": "Advanced", "class": "Warrior"},
+          {"tier": "Master", "class": "Battle Master"},
+          {"tier": "Divine", "class": "The Eternal"}
+        ],
+        "why": "Boosted growths and Sword, Axe and Brawling strengths make The Eternal her best end point; Warrior's Blood rewards switching weapons."
+      }
+    },
+    {
+      "name": "Nathan",
+      "role": "cavalry",
+      "path": ["Soldier", "Light Cavalry / Armored Knight", "Cataphract", "Great Knight"],
+      "why": "Brings physical pressure with mobility and durability.",
+      "game8": {
+        "steps": [
+          {"tier": "Advanced", "class": "Bardinger"},
+          {"tier": "Master", "class": "Great Knight"},
+          {"tier": "Divine", "class": "The Cavalier"}
+        ],
+        "why": "Balanced HP, Strength, Dexterity and Defense plus Riding and Heavy Armor strengths make a mobile, durable tank."
+      }
+    },
+    {
+      "name": "Nezha",
+      "role": "sword",
+      "path": ["Gladiator / Hunter", "Myrmidon", "Shido", "Swordmaster"],
+      "why": "Rewards attacking first and ending fights quickly.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Brigand"},
+          {"tier": "Advanced", "class": "Warrior"},
+          {"tier": "Master", "class": "Battle Master"},
+          {"tier": "Divine", "class": "The Eternal"}
+        ],
+        "why": "Good Strength, Speed and Dexterity make him a strong physical frontliner."
+      }
+    },
+    {
+      "name": "Ninae",
+      "role": "healer",
+      "path": ["Diviner", "Priest", "Bishop", "Wiseman"],
+      "why": "Pure support with strong healing and anti-mage value.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Priest"},
+          {"tier": "Advanced", "class": "Bishop"},
+          {"tier": "Master", "class": "Sentinel"},
+          {"tier": "Divine", "class": "The Trident"}
+        ],
+        "why": "Diviner and Priest build her White and Black Magic, and spear training at the Arena qualifies her for Sentinel and then The Trident."
+      }
+    },
+    {
+      "name": "Noctula",
+      "role": "axe",
+      "path": ["Gladiator", "Pugilist", "Warrior / War Monk", "Battle Master"],
+      "why": "Straightforward brawler with a heavy finisher.",
+      "tip": "AllThings.How suggests In Shadow (Rogue) because Noctula dodges well.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Brigand"},
+          {"tier": "Advanced", "class": "Warrior"},
+          {"tier": "Master", "class": "Battle Master"}
+        ],
+        "why": "Strong Axe and Gauntlet skill and Infantry aptitude make Noctula a physical frontliner; Warrior comes easily."
+      }
+    },
+    {
+      "name": "Nuzzuo",
+      "role": "utility",
+      "path": ["Hunter", "Rogue", "Ranger / Shido", "Shadow Seeker"],
+      "why": "Exploits weak points and covers exploration.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Hunter"},
+          {"tier": "Specialty", "class": "Rogue"},
+          {"tier": "Advanced", "class": "Forest Knight"},
+          {"tier": "Master", "class": "Bow Knight"},
+          {"tier": "Divine", "class": "The Calamity"}
+        ],
+        "why": "Strong Strength, Speed and Dexterity make an accurate attacker who doubles and dodges, and his Bow and Sword skill fit this path."
+      }
+    },
+    {
+      "name": "Nydine",
+      "role": "flier",
+      "path": ["Ornius Rider", "Wing Soldier", "Dragoon", "Celestial Trooper"],
+      "why": "Survivability through flying mobility.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Ornius Rider"},
+          {"tier": "Specialty", "class": "Armored Ornius Rider"},
+          {"tier": "Advanced", "class": "Bardinger"},
+          {"tier": "Master", "class": "Orichaldia"},
+          {"tier": "Divine", "class": "The Cavalier"}
+        ],
+        "why": "Axe and Riding strengths and cavalry-only abilities make her a natural mounted unit all game."
+      }
+    },
+    {
+      "name": "Olympia",
+      "role": "healer",
+      "path": ["Diviner", "Priest", "Bishop", "Wiseman"],
+      "why": "Dedicated healer with stronger recovery.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Shaman"},
+          {"tier": "Advanced", "class": "Ovate"},
+          {"tier": "Master", "class": "Wiseman"},
+          {"tier": "Divine", "class": "The Avatar"}
+        ],
+        "why": "High Magic growth, a White Magic strength and versatile spells make her a strong fit for The Avatar."
+      }
+    },
+    {
+      "name": "Orchel",
+      "role": "axe",
+      "path": ["Gladiator", "Pugilist / Brigand", "Warrior", "Battle Master"],
+      "why": "Strength-driven close combat with high finishing power.",
+      "game8": {
+        "steps": [
+          {"tier": "Advanced", "class": "Bishop"},
+          {"tier": "Master", "class": "Wiseman"},
+          {"tier": "Divine", "class": "The Avatar"}
+        ],
+        "why": "Solid Strength, Magic, Defense and Resistance growths make her a tanky mixed attacker."
+      }
+    },
+    {
+      "name": "Peppe",
+      "role": "mounted-archer",
+      "path": ["Hunter", "Archer / Light Cavalry", "Forest Knight", "Bow Knight"],
+      "why": "Mobile archer who keeps changing firing angles.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Hunter"},
+          {"tier": "Specialty", "class": "Archer"},
+          {"tier": "Advanced", "class": "Sniper"},
+          {"tier": "Master", "class": "Bow Adept"}
+        ],
+        "why": "Good Speed and Dexterity let him double and dodge, though low Strength limits his damage."
+      }
+    },
+    {
+      "name": "Peter",
+      "role": "archer",
+      "path": ["Hunter", "Archer", "Sniper", "Bow Adept"],
+      "why": "Dedicated archer with reliable long-range hits.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Hunter"},
+          {"tier": "Specialty", "class": "Archer"},
+          {"tier": "Advanced", "class": "Sniper"},
+          {"tier": "Master", "class": "Bow Adept"},
+          {"tier": "Divine", "class": "The Calamity"}
+        ],
+        "why": "Peter's bow and infantry skill boons and strong Dexterity growth make a bow-focused path with hit-boosting abilities the best fit."
+      }
+    },
+    {
+      "name": "Seteth",
+      "role": "flier",
+      "path": ["Ornius Rider", "Wing Soldier / Armored Ornius Rider", "Dragoon", "Bau Lord"],
+      "why": "Aggressive flier that bypasses most terrain.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Ornius Rider"},
+          {"tier": "Specialty", "class": "Armored Ornius Rider"},
+          {"tier": "Advanced", "class": "Dragoon"},
+          {"tier": "Master", "class": "Bau Lord"}
+        ],
+        "why": "Balanced growths leaning to HP, Strength and Dexterity, and a Spear strength, suit these classes."
+      }
+    },
+    {
+      "name": "Sha Lan",
+      "role": "healer",
+      "path": ["Diviner", "Priest", "Bishop", "Wiseman"],
+      "why": "Maximizes her value as a healer.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Priest"},
+          {"tier": "Advanced", "class": "Bishop"},
+          {"tier": "Master", "class": "Sentinel"},
+          {"tier": "Divine", "class": "The Godhand"}
+        ],
+        "why": "Build White Magic early for healing, then train Spear and Gauntlet to unlock Sentinel and The Godhand."
+      }
+    },
+    {
+      "name": "Simon",
+      "role": "axe",
+      "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"],
+      "why": "Direct physical pressure with a finisher for tough enemies.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Brigand"},
+          {"tier": "Advanced", "class": "Warrior"},
+          {"tier": "Master", "class": "Swordmaster"}
+        ],
+        "why": "Sword, Axe and Infantry strengths favor infantry paths, and Swordmaster's +20 Speed growth covers his low Speed."
+      }
+    },
+    {
+      "name": "Sirocco",
+      "role": "mounted-mage",
+      "path": ["Diviner + Riding", "Mounted magic route", "High Savant"],
+      "why": "Keeps offensive magic while gaining mobility.",
+      "tip": "AllThings.How suggests In Shadow (Rogue) for his evasion and Ever Vigilant (Shido) for his crits.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Shaman"},
+          {"tier": "Advanced", "class": "Troubadour"},
+          {"tier": "Master", "class": "High Savant"}
+        ],
+        "why": "Works best as a mage attacking from range to offset low Defense and Resistance; Troubadour and High Savant raise his Movement."
+      }
+    },
+    {
+      "name": "Sofia",
+      "role": "healer",
+      "path": ["Diviner", "Priest", "Bishop", "Wiseman"],
+      "why": "Maximizes healing output.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Priest"},
+          {"tier": "Advanced", "class": "Bishop"},
+          {"tier": "Master", "class": "Wiseman"}
+        ],
+        "why": "High Magic, a White Magic strength and healing abilities make her best as a healer."
+      }
+    },
+    {
+      "name": "Tahonia",
+      "role": "unique",
+      "path": ["Keep joining class"],
+      "why": "Joins in Part III, too late to start a new weapon path.",
+      "game8": {
+        "steps": [{"tier": "Master", "class": "Battle Master"}],
+        "why": "Strong Strength and Skill growths and gauntlet skill suit Battle Master, which adds +25 Strength and +5 Skill."
+      }
+    },
+    {
+      "name": "Talimun",
+      "role": "sword",
+      "path": ["Gladiator / Hunter", "Myrmidon", "Shido", "Swordmaster"],
+      "why": "Uses his existing sword training for kill potential.",
+      "game8": {
+        "steps": [{"tier": "Advanced", "class": "Ovate"}, {"tier": "Master", "class": "Druid"}],
+        "why": "Magic, Dexterity and Speed suit a fast, accurate mage, and staying on foot keeps his Authority strength and battalions usable."
+      }
+    },
+    {
+      "name": "Theodora",
+      "role": "frontline-support",
+      "path": ["Soldier", "Armored Knight / Priest", "Guardian", "Sentinel"],
+      "why": "Balanced durability, damage and support on foot.",
+      "tip": "AllThings.How suggests Crescendo (Archer) to shore up her accuracy. The Trident Divine class doesn't stack well with her Mahado's Right Arm.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Armored Ornius Rider"},
+          {"tier": "Advanced", "class": "Guardian"},
+          {"tier": "Master", "class": "Sentinel"},
+          {"tier": "Divine", "class": "The Trident"}
+        ],
+        "why": "Early Gladiator and Armored Ornius Rider training builds her Strength, Speed, and Defense, and her Spear and White Magic preferences suit the Guardian-to-Trident path."
+      }
+    },
+    {
+      "name": "Tialla",
+      "role": "healer",
+      "path": ["Diviner", "Priest", "Bishop", "Wiseman"],
+      "why": "Support healer with strong recovery and anti-caster value.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Priest"},
+          {"tier": "Advanced", "class": "Troubadour"},
+          {"tier": "Master", "class": "Valkyrium"}
+        ],
+        "why": "Her strong White and Black Magic, plus Diviner and Priest boosting her Magic and Resistance growths, make a mounted mage path that leads to Valkyrium."
+      }
+    },
+    {
+      "name": "Tobias",
+      "role": "axe",
+      "path": ["Gladiator", "Brigand / Pugilist", "Warrior", "Battle Master"],
+      "why": "Close-range Strength with an answer to bulky targets.",
+      "tip": "AllThings.How suggests Crescendo (Archer) to make up for his low accuracy.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Armored Ornius Rider"},
+          {"tier": "Advanced", "class": "Cataphract"},
+          {"tier": "Master", "class": "Great Knight"}
+        ],
+        "why": "High Strength and decent Defense make him a frontliner, and his Axe, Riding and Heavy Armor strengths suit armored cavalry."
+      }
+    },
+    {
+      "name": "Troy",
+      "role": "hybrid",
+      "path": ["Gladiator / Diviner", "Pugilist / Priest", "War Monk"],
+      "why": "Combines brawling offense with healing.",
+      "game8": {
+        "steps": [{"tier": "Master", "class": "War Monk"}, {"tier": "Divine", "class": "The Godhand"}],
+        "why": "Her strong Strength, Magic, and Speed growths make her a versatile attacker who can avoid hits and double often, especially with Gauntlets."
+      }
+    },
+    {
+      "name": "Ultand",
+      "role": "frontline-support",
+      "path": ["Soldier + Faith", "Guardian", "Sentinel"],
+      "why": "Front-line fighter who can also heal nearby allies.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Priest"},
+          {"tier": "Advanced", "class": "Guardian"},
+          {"tier": "Master", "class": "Sentinel"}
+        ],
+        "why": "Her spear skill and White Magic make Guardian and Sentinel the strongest late-game fits, so her class should focus on White Magic."
+      }
+    },
+    {
+      "name": "Ursula",
+      "role": "archer",
+      "path": ["Hunter", "Archer / Rogue", "Sniper", "Bow Adept"],
+      "why": "Strong bow damage and anti-flier role. Shadow Seeker only for utility.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Hunter"},
+          {"tier": "Specialty", "class": "Archer"},
+          {"tier": "Advanced", "class": "Sniper"},
+          {"tier": "Master", "class": "Shadow Seeker"},
+          {"tier": "Divine", "class": "The Apsara"}
+        ],
+        "why": "High Speed and Dexterity help her dodge and land critical hits."
+      }
+    },
+    {
+      "name": "Yang Jie",
+      "role": "hybrid",
+      "path": ["Gladiator / Diviner", "Pugilist / Priest", "War Monk"],
+      "why": "Covers both melee combat and healing.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Diviner"},
+          {"tier": "Specialty", "class": "Priest"},
+          {"tier": "Advanced", "class": "Bishop"},
+          {"tier": "Master", "class": "Wiseman"}
+        ],
+        "why": "His White Magic strength and 40% Magic growth make him a healer, and this path raises his Magic and healing."
+      }
+    },
+    {
+      "name": "Zarcone",
+      "role": "axe",
+      "path": ["Gladiator", "Brigand", "Warrior", "Battle Master"],
+      "why": "Endgame class for an axe specialist.",
+      "game8": {
+        "steps": [
+          {"tier": "Beginner", "class": "Gladiator"},
+          {"tier": "Specialty", "class": "Brigand"},
+          {"tier": "Advanced", "class": "Warrior"},
+          {"tier": "Master", "class": "Swordmaster"}
+        ],
+        "why": "Brigand, Warrior and Swordmaster cover his low Strength and Speed, while high Dexterity and Hatchet Man suit axes."
+      }
+    }
+  ],
+  "classTiers": {
+    "Diviner": "Beginner",
+    "Gladiator": "Beginner",
+    "Hunter": "Beginner",
+    "Ornius Rider": "Beginner",
+    "Soldier": "Beginner",
+    "Archer": "Specialty",
+    "Armored Knight": "Specialty",
+    "Armored Ornius Rider": "Specialty",
+    "Brigand": "Specialty",
+    "Charioteer": "Specialty",
+    "Light Cavalry": "Specialty",
+    "Myrmidon": "Specialty",
+    "Priest": "Specialty",
+    "Pugilist": "Specialty",
+    "Rogue": "Specialty",
+    "Shaman": "Specialty",
+    "Wing Soldier": "Specialty",
+    "Bardinger": "Advanced",
+    "Bishop": "Advanced",
+    "Blacksmith": "Advanced",
+    "Caladrius": "Advanced",
+    "Cataphract": "Advanced",
+    "Dancer": "Advanced",
+    "Dragoon": "Advanced",
+    "Dreadnought": "Advanced",
+    "Elephant Rider": "Advanced",
+    "Forest Knight": "Advanced",
+    "Guardian": "Advanced",
+    "Ovate": "Advanced",
+    "Ranger": "Advanced",
+    "Shido": "Advanced",
+    "Sniper": "Advanced",
+    "Troubadour": "Advanced",
+    "Warrior": "Advanced",
+    "Swordmaster": "Master",
+    "High Savant": "Master",
+    "Battle Master": "Master",
+    "War Monk": "Master",
+    "Bow Adept": "Master",
+    "Bow Knight": "Master",
+    "Shadow Seeker": "Master",
+    "Sentinel": "Master",
+    "Castle Knight": "Master",
+    "Orichaldia": "Master",
+    "Great Knight": "Master",
+    "Celestial Trooper": "Master",
+    "Bau Lord": "Master",
+    "Druid": "Master",
+    "Wiseman": "Master",
+    "Valkyrium": "Master",
+    "The Blade": "Divine",
+    "The Apsara": "Divine",
+    "The Trident": "Divine",
+    "The Cavalier": "Divine",
+    "The Calamity": "Divine",
+    "The Avatar": "Divine",
+    "The Godhand": "Divine",
+    "The Eternal": "Divine"
+  },
+  "masterUnlocks": {
+    "Swordmaster": "Mars' Temple: 1 Lazanibata (Giant's Mount). Favor quest: find the glowing yellow orb in Nemea Cavern.",
+    "High Savant": "Smyrnos' Temple: 1 Almamet (Dubhe Ridge). Favor quest: learn Ice from the Fimbulvetr Tome, burn the flames in Iapetus Cavern, take the yellow orb.",
+    "Valkyrium": "Jurah's Temple: 1 Jyoppa (Klytius Plains). Favor quest: use the item near the pillars on Dagsion Summit.",
+    "Bow Knight": "Kalla's Temple: 1 Ginji (Napier Woods, Amalthea). Favor quest: collect rare sandalwood at The Brigadier Pass.",
+    "Great Knight": "Credna's Temple: 1 Lightstar (Midnight Turn, Lambath). Favor quest: find the item in the Dragon Bone Tangle dungeon.",
+    "War Monk": "Aurora's Temple: 1 Ginji (Napier Woods, Amalthea). Favor quest: gather 5 Angelica."
+  }
 }

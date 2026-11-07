@@ -9,7 +9,7 @@ A fast, installable companion for **Fire Emblem: Fortune's Weave**. Add it to yo
 - **Characters:** favorite and "really liked" gifts for all 63 giftable characters, plus categories that also work and items to avoid. A small number on a gift shows how many guides agree on it. Filter by route to see who can be recruited there and what they need. Mark characters recruited on a route, then switch off groups like Recruited and Not on this route for a short list of who you still need.
 - **Items:** reverse lookup showing everyone who wants an item and where to buy it.
 - **Paralogues:** pick a route (Cai, Dietrich, Theodora or Leda) to see each Part I paralogue's accept window, deadline, start location and rewards on a timeline. Enter your in-game date to see what's open now, and tick off each one as you finish it.
-- **Classes:** the recommended class path for every character, grouped by role, with the game's five class tiers and how each unlocks.
+- **Classes:** recommended class paths from two guides for every character, grouped by role. Each step is tagged with its tier, skipped tiers are marked, and Master class unlock steps are shown where known.
 - Works offline after the first visit, and remembers your filters, date, finished paralogues and recruited characters on your device.
 
 ## Install on your phone
@@ -63,7 +63,13 @@ Optional fields are `fixedBattleDate` (the fight happens on the deadline no matt
 {"name": "Peter", "role": "archer", "path": ["Hunter", "Archer", "Sniper", "Bow Adept"], "why": "Dedicated archer."}
 ```
 
-An optional `tip` adds an extra note under the path.
+An optional `tip` adds an extra note under the path. A second path from Game8 lives under `game8`, with an explicit tier per step:
+
+```json
+"game8": {"steps": [{"tier": "Beginner", "class": "Diviner"}, {"tier": "Master", "class": "Wiseman"}], "why": "..."}
+```
+
+`classTiers` maps every class to its tier (used to tag KeenGamer steps and spot skipped tiers), and `masterUnlocks` holds the temple, material and favor quest for Master classes.
 
 **Recruitment** in `recruitment.json`. Leave a route out of `partOne` when the character can't be recruited on it:
 
@@ -94,10 +100,11 @@ In the repo's **Settings → Pages**, the source must be set to **GitHub Actions
 Data is compiled from community guides and player reports. Where sources disagree, the card says so. Corrections are welcome as issues or pull requests.
 
 **Gifts**
-- Game8: Gift Giving Guide (updated Oct 19, 2026)
+- [Game8: Gift Giving Guide and character pages](https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/619779) (guide Oct 19, character pages updated Oct 27, 2026)
 - [NightlyGamingBinge: character guides](https://nightlygamingbinge.com/fire-emblem-fortunes-weave-guides-and-walkthroughs/)
 - Polygon: Best gifts for each character in Fire Emblem: Fortune's Weave, by Josh Broadwell (updated Oct 9, 2026). Also the source for shop locations.
-- GameSpot: Fire Emblem Fortune's Weave Gifts Guide, by Dave Irwin (Sep 23, 2026)
+- [GameSpot: Fire Emblem Fortune's Weave Gifts Guide](https://www.gamespot.com/articles/fire-emblem-fortunes-weave-gifts-guide/), by Dave Irwin (Sep 23, 2026)
+- [GameRant: Favorite Gifts for Everyone](https://gamerant.com/fire-emblem-fortunes-weave-best-gifts-guide/), by Steve Booker (Sep 27, 2026)
 - [Selphie1999Gaming: Gifts for all characters](https://selphie1999gaming.com/game-guides/fire-emblem-fortunes-weave/fire-emblem-fortunes-weave-gifts-for-all-characters/)
 - [KeenGamer: Best Gifts Guide](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-gifts-guide/)
 - Reader comments on the Polygon and Game8 guides (code `RP` in the data)
@@ -113,8 +120,11 @@ Data is compiled from community guides and player reports. Where sources disagre
 - [GamesHedge: Characters Recruitment Guide](https://www.gameshedge.com/fire-emblem-fortunes-weave-characters-recruitment-guide/) (cross-check)
 
 **Classes**
-- [KeenGamer: Best Class for Every Character](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/) (every path and reason)
-- [AllThings.How: Class Guide, All Tiers and Masteries](https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/) (tiers, unlocks and tips)
+- [Game8: character pages](https://game8.co/games/Fire-Emblem-Fortunes-Weave/archives/619779) (path by tier, including Divine classes; updated Oct 27, 2026)
+- [KeenGamer: Best Class for Every Character](https://www.keengamer.com/articles/guides/fire-emblem-fortunes-weave-best-class-for-every-character/) (paths, roles and reasons)
+- [Pocket Tactics: Classes](https://www.pockettactics.com/fire-emblem-fortunes-weave/classes) (which tier each class belongs to)
+- [AllThings.How: Class Guide, All Tiers and Masteries](https://allthings.how/fire-emblem-fortune-s-weave-class-guide-all-tiers-and-masteries/) (tier unlocks and tips)
+- [ProdigyGamers: All Classes Unlock](https://prodigygamers.com/2026/10/19/fire-emblem-fortunes-weave-all-classes-unlock-temple-master-exam/) (temple, material and favor quest for six Master classes)
 
 **Fonts**
 - [Spectral SC](https://fonts.google.com/specimen/Spectral+SC) and [Source Sans 3](https://fonts.google.com/specimen/Source+Sans+3), served by Google Fonts under the SIL Open Font License.

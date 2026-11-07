@@ -4,12 +4,13 @@
     "likes": "Her parents, Bucephalus, virtuous men, talking about love",
     "interests": "Combat training, caring for her beloved steed",
     "favorites": [
+      {"item": "Pegasus Panorama", "sources": ["NGB", "PL", "GR"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS"]},
       {"item": "Eastern Earrings", "sources": ["G8", "GS"]},
-      {"item": "Pegasus Panorama", "sources": ["NGB", "PL"]},
       {"item": "Tales of Adventure", "sources": ["G8", "GS"]},
       {"item": "Blue-Rose Bouquet", "sources": ["NGB"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
+      {"item": "Dual Fish Knives", "sources": ["GR"]},
       {"item": "Flower Painting", "sources": ["NGB"]}
     ],
     "reallyLiked": [
@@ -71,9 +72,10 @@
     "likes": "The Great August's tactics, up-and-coming young people",
     "interests": "Lecturing young people, reading",
     "favorites": [
+      {"item": "Decorative Arrows", "sources": ["NGB", "GR"]},
       {"item": "Eastern Tea Leaves", "sources": ["G8", "NGB"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "NGB"]},
-      {"item": "Decorative Arrows", "sources": ["NGB"]},
+      {"item": "Arrowhead Gem", "sources": ["GR"]},
       {"item": "Eastern Black Silk", "sources": ["G8"]},
       {"item": "Eastern Board Game", "sources": ["NGB"]},
       {"item": "Eastern Earrings", "sources": ["G8"]},
@@ -126,7 +128,8 @@
     "favorites": [
       {"item": "Crimson Ghosh", "sources": ["G8", "GS"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "GS"]},
-      {"item": "Volcano Ghosh", "sources": ["G8", "GS"]}
+      {"item": "Volcano Ghosh", "sources": ["G8", "GS"]},
+      {"item": "Poems of the Greats", "sources": ["GR"]}
     ],
     "reallyLiked": [
       {"item": "Ceremonial Spear", "sources": ["G8"]},
@@ -152,7 +155,7 @@
     "interests": "Cooking, mentoring young people",
     "favorites": [
       {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS"]},
-      {"item": "Crimson Ghosh", "sources": ["G8"]},
+      {"item": "Crimson Ghosh", "sources": ["G8", "GR"]},
       {"item": "Dual Fish Knives", "sources": ["G8"]},
       {"item": "Legendary Garum", "sources": ["G8"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
@@ -188,7 +191,7 @@
     "name": "Cai",
     "likes": "Physical training, catching animals",
     "interests": "Fishing, spear training",
-    "favorites": [],
+    "favorites": [{"item": "Pegasus Panorama", "sources": ["GR"]}],
     "reallyLiked": [
       {"item": "Arrowhead Gem", "sources": ["G8", "GS"]},
       {"item": "Crimson Ghosh", "sources": ["G8", "GS"]},
@@ -203,11 +206,11 @@
     "favorites": [
       {"item": "Eastern Earrings", "sources": ["G8", "NGB"]},
       {"item": "Eastern Tea Leaves", "sources": ["G8", "NGB"]},
+      {"item": "Pegasus Panorama", "sources": ["NGB", "GR"]},
       {"item": "Arrowhead Gem", "sources": ["NGB"]},
       {"item": "Blue-Rose Bouquet", "sources": ["NGB"]},
       {"item": "Eastern Black Silk", "sources": ["G8"]},
       {"item": "Flower Painting", "sources": ["NGB"]},
-      {"item": "Pegasus Panorama", "sources": ["NGB"]},
       {"item": "Tales of Adventure", "sources": ["G8"]}
     ],
     "reallyLiked": [
@@ -235,12 +238,12 @@
     "favorites": [
       {"item": "Ceremonial Spear", "sources": ["G8", "NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["G8", "NGB"]},
+      {"item": "Shield Portrait", "sources": ["NGB", "GR"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "NGB"]},
       {"item": "Eastern Board Game", "sources": ["G8"]},
       {"item": "History of a Master", "sources": ["G8"]},
       {"item": "Rancid Garum", "sources": ["NGB"]},
       {"item": "School Scandal", "sources": ["G8"]},
-      {"item": "Shield Portrait", "sources": ["NGB"]},
       {"item": "Tales of Adventure", "sources": ["NGB"]}
     ],
     "reallyLiked": [
@@ -270,10 +273,10 @@
     "interests": "Tinkering with machines, watching out for the weak",
     "favorites": [
       {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Tales of Adventure", "sources": ["G8", "GS", "GR"]},
       {"item": "Poems of the Greats", "sources": ["G8", "GS"]},
-      {"item": "Tales of Adventure", "sources": ["G8", "GS"]},
+      {"item": "Portrait of Yu Phas", "sources": ["NGB", "GR"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
-      {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
       {"item": "Shield Portrait", "sources": ["NGB"]},
       {"item": "Tome from Away", "sources": ["NGB"]}
     ],
@@ -304,14 +307,15 @@
     "likes": "Herself, writing quickly, searching for dramatic subjects",
     "interests": "Studying people for research, seeing how others act",
     "favorites": [
-      {"item": "Poems of the Greats", "sources": ["G8", "NGB"]},
+      {"item": "Poems of the Greats", "sources": ["G8", "NGB", "GR"]},
       {"item": "School Scandal", "sources": ["G8", "NGB"]},
       {"item": "Tome from Away", "sources": ["G8", "NGB"]},
       {"item": "Decorative Arrows", "sources": ["NGB"]},
       {"item": "Flower Painting", "sources": ["NGB"]},
       {"item": "History of a Master", "sources": ["G8"]},
       {"item": "Morfis Almanac", "sources": ["G8"]},
-      {"item": "Portrait of Yu Phas", "sources": ["G8"]}
+      {"item": "Portrait of Yu Phas", "sources": ["G8"]},
+      {"item": "Tales of Adventure", "sources": ["GR"]}
     ],
     "reallyLiked": [
       {"item": "Magic-Trick Set", "sources": ["G8", "NGB", "GS"]},
@@ -333,8 +337,8 @@
     "likes": "Walking in the forest, foraging medicinal herbs, Orchel",
     "interests": "Playing the flute, being devoted to Orchel",
     "favorites": [
+      {"item": "Decorative Arrows", "sources": ["G8", "NGB", "GR"]},
       {"item": "Arrowhead Gem", "sources": ["G8", "NGB"]},
-      {"item": "Decorative Arrows", "sources": ["G8", "NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB", "RP"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
       {"item": "Tales of Adventure", "sources": ["NGB"]}
@@ -356,7 +360,7 @@
     "name": "Dietrich",
     "likes": "Objects of beauty, sweet things, his little sister",
     "interests": "Fighting the strong, meditating",
-    "favorites": [],
+    "favorites": [{"item": "Ebony Game Board", "sources": ["GR"]}],
     "reallyLiked": [
       {"item": "Ginji Cervi", "sources": ["G8", "GS"]},
       {"item": "Honey Milk", "sources": ["G8", "GS"]},
@@ -387,8 +391,9 @@
     "likes": "Handsome men, throwing her trident, maintaining fishing gear",
     "interests": "Fishing, carving wooden dolls",
     "favorites": [
-      {"item": "Eastern Earrings", "sources": ["G8", "NGB", "GS"]},
-      {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GS"]}
+      {"item": "Eastern Earrings", "sources": ["G8", "NGB", "GS", "GR"]},
+      {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Eastern Black Silk", "sources": ["NGB", "GR"]}
     ],
     "reallyLiked": [
       {"item": "Mellow Pastries", "sources": ["G8", "NGB"]},
@@ -401,7 +406,6 @@
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
       {"item": "Coffee Pastries", "sources": ["G8"]},
       {"item": "Dagda Beard Grass", "sources": ["G8"]},
-      {"item": "Eastern Black Silk", "sources": ["NGB"]},
       {"item": "Eastern Tea Leaves", "sources": ["G8"]},
       {"item": "Flexible Fishing Rod", "sources": ["G8"]},
       {"item": "Flower Painting", "sources": ["NGB"]},
@@ -429,6 +433,7 @@
     "favorites": [
       {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GS"]},
       {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Flower Painting", "sources": ["GR"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
       {"item": "Special \"Medicine\"", "sources": ["NGB"]}
     ],
@@ -468,7 +473,7 @@
     "likes": "Books of poetry, spicy foods, coffee, trustworthy people",
     "interests": "Praying, going to the theater",
     "favorites": [
-      {"item": "Arrowhead Gem", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Arrowhead Gem", "sources": ["G8", "NGB", "GS", "GR"]},
       {"item": "Blue-Rose Bouquet", "sources": ["G8", "NGB", "GS"]},
       {"item": "Volcano Ghosh", "sources": ["G8", "GS"]},
       {"item": "Flower Painting", "sources": ["NGB"]},
@@ -494,9 +499,10 @@
     "likes": "Tea from Sai, Ferghanan horses, dueling, calligraphy",
     "interests": "Brewing tea, practicing martial arts",
     "favorites": [
-      {"item": "Ceremonial Spear", "sources": ["G8", "NGB"]},
+      {"item": "Ceremonial Spear", "sources": ["G8", "NGB", "GR"]},
       {"item": "Portrait of Yu Phas", "sources": ["G8", "NGB"]},
       {"item": "Decorative Arrows", "sources": ["NGB"]},
+      {"item": "Eastern Board Game", "sources": ["GR"]},
       {"item": "Eastern Tea Leaves", "sources": ["NGB"]},
       {"item": "Flower Painting", "sources": ["G8"]},
       {"item": "History of a Master", "sources": ["G8"]},
@@ -523,10 +529,11 @@
     "likes": "Rampaging, food, animals, smoking meat",
     "interests": "Training, competing as a gladiator",
     "favorites": [
+      {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS", "GR"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS"]},
-      {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
       {"item": "Crimson Ghosh", "sources": ["NGB"]},
+      {"item": "Rancid Garum", "sources": ["GR"]},
       {"item": "Shield Portrait", "sources": ["NGB"]},
       {"item": "Special \"Medicine\"", "sources": ["NGB"]}
     ],
@@ -557,8 +564,8 @@
     "likes": "Booze, women, interesting people, young greenhorns",
     "interests": "Boasting",
     "favorites": [
+      {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS", "GR"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS"]},
-      {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS"]},
       {"item": "Tales of Adventure", "sources": ["G8", "GS"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
       {"item": "Crimson Ghosh", "sources": ["NGB"]},
@@ -600,7 +607,8 @@
       {"item": "Eastern Earrings", "sources": ["G8", "NGB"]},
       {"item": "Flower Painting", "sources": ["NGB"]},
       {"item": "Odd Vegetable Seeds", "sources": ["NGB"]},
-      {"item": "Portrait of Yu Phas", "sources": ["NGB"]}
+      {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
+      {"item": "Red Hair Clip", "sources": ["GR"]}
     ],
     "reallyLiked": [
       {"item": "Magic-Trick Set", "sources": ["G8", "NGB", "PL"]},
@@ -653,7 +661,7 @@
     "likes": "Her family and hometown, hunting, farm work, bow maintenance",
     "interests": "Archery training, being frugal",
     "favorites": [
-      {"item": "Strategy Manuscript", "sources": ["G8", "NGB"]},
+      {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GR"]},
       {"item": "Tales of Adventure", "sources": ["G8", "NGB"]},
       {"item": "Arrowhead Gem", "sources": ["NGB"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
@@ -678,8 +686,8 @@
     "likes": "Chivalry, self-discipline, his beloved horse Rocinan",
     "interests": "Caring for his faithful steed, being quiet",
     "favorites": [
+      {"item": "Pegasus Panorama", "sources": ["NGB", "GR"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
-      {"item": "Pegasus Panorama", "sources": ["NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
       {"item": "Shield Portrait", "sources": ["NGB"]},
       {"item": "Strategy Manuscript", "sources": ["NGB"]},
@@ -708,8 +716,8 @@
     "likes": "Memories of her spouse, mercenary friends, trying to get rich",
     "interests": "Counting money, managing her mercenary group",
     "favorites": [
+      {"item": "Rugged Blade", "sources": ["NGB", "GR"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
-      {"item": "Rugged Blade", "sources": ["NGB"]},
       {"item": "Shield Portrait", "sources": ["NGB"]},
       {"item": "Strategy Manuscript", "sources": ["NGB"]},
       {"item": "Tales of Adventure", "sources": ["NGB"]}
@@ -744,9 +752,9 @@
     "likes": "The White-Maned Demon, seeing fear in his opponents' faces",
     "interests": "Slicing opponents into pieces, terrifying audiences",
     "favorites": [
-      {"item": "Arrowhead Gem", "sources": ["G8", "NGB"]},
+      {"item": "Arrowhead Gem", "sources": ["G8", "NGB", "GR"]},
+      {"item": "Legendary Garum", "sources": ["NGB", "GR"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
-      {"item": "Legendary Garum", "sources": ["NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
       {"item": "Tales of Adventure", "sources": ["NGB"]}
     ],
@@ -777,7 +785,7 @@
     "likes": "Thievery, the open sea, ships, obedient underlings",
     "interests": "Riding on ships, pirating",
     "favorites": [
-      {"item": "Arrowhead Gem", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Arrowhead Gem", "sources": ["G8", "NGB", "GS", "GR"]},
       {"item": "Volcano Ghosh", "sources": ["G8", "NGB"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
       {"item": "Crimson Ghosh", "sources": ["G8"]},
@@ -815,7 +823,7 @@
     "likes": "Memories of her parents, songs from home, gemstones, applause",
     "interests": "Tuning her vihuela, taking long horseback rides",
     "favorites": [
-      {"item": "Eastern Black Silk", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Eastern Black Silk", "sources": ["G8", "NGB", "GS", "GR"]},
       {"item": "Eastern Earrings", "sources": ["G8", "NGB", "GS"]},
       {"item": "Tales of Adventure", "sources": ["G8", "GS"]},
       {"item": "Volcano Ghosh", "sources": ["G8", "GS"]},
@@ -855,9 +863,9 @@
     "likes": "Gold coins, gemstones, older men",
     "interests": "Being frugal, hunting",
     "favorites": [
-      {"item": "Eastern Earrings", "sources": ["G8", "GS", "PL"]},
+      {"item": "Eastern Earrings", "sources": ["G8", "GS", "PL", "GR"]},
+      {"item": "Eastern Tea Leaves", "sources": ["G8", "GS", "GR"]},
       {"item": "Blue-Rose Bouquet", "sources": ["GS", "PL"]},
-      {"item": "Eastern Tea Leaves", "sources": ["G8", "GS"]},
       {"item": "Poems of the Greats", "sources": ["G8", "GS"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "GS"]},
       {"item": "Tales of Adventure", "sources": ["G8", "GS"]}
@@ -880,9 +888,9 @@
     "likes": "Reliable people, sweets, her friends",
     "interests": "Sword training, fishing",
     "favorites": [
-      {"item": "Ceremonial Spear", "sources": ["NGB"]},
+      {"item": "Ceremonial Spear", "sources": ["NGB", "GR"]},
+      {"item": "Rugged Blade", "sources": ["NGB", "GR"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
-      {"item": "Rugged Blade", "sources": ["NGB"]},
       {"item": "Shield Portrait", "sources": ["NGB"]},
       {"item": "Tales of Adventure", "sources": ["NGB"]}
     ],
@@ -911,9 +919,9 @@
     "interests": "Reading adventure stories, going shopping",
     "favorites": [
       {"item": "Eastern Black Silk", "sources": ["G8", "NGB"]},
+      {"item": "Eastern Earrings", "sources": ["G8", "GR"]},
       {"item": "Eastern Love Story", "sources": ["G8", "GS"]},
       {"item": "Arrowhead Gem", "sources": ["NGB"]},
-      {"item": "Eastern Earrings", "sources": ["G8"]},
       {"item": "Eastern Tea Leaves", "sources": ["G8"]},
       {"item": "Flower Painting", "sources": ["NGB"]},
       {"item": "History of a Master", "sources": ["NGB"]},
@@ -953,13 +961,12 @@
     "name": "Lysander",
     "likes": "Skygazing, dining with women",
     "interests": "Crafting throwing sticks, going on long rides",
-    "favorites": [],
+    "favorites": [{"item": "Ceremonial Spear", "sources": ["PL", "GR"]}, {"item": "Shield Portrait", "sources": ["GR"]}],
     "reallyLiked": [
       {"item": "Dagda Beard Grass", "sources": ["G8", "GS"]},
       {"item": "Eastern Tea Leaves", "sources": ["G8", "GS"]},
       {"item": "Horse-Grooming Kit", "sources": ["G8", "GS"]},
       {"item": "Wing Fletching", "sources": ["G8", "GS"]},
-      {"item": "Ceremonial Spear", "sources": ["PL"]},
       {"item": "Mane Ornament", "sources": ["G8"]},
       {"item": "Training Weights", "sources": ["G8"]}
     ],
@@ -970,7 +977,7 @@
     "likes": "Booze, women, fighting, being strong",
     "interests": "Fighting with annoying people",
     "favorites": [
-      {"item": "Crimson Ghosh", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Crimson Ghosh", "sources": ["G8", "NGB", "GS", "GR"]},
       {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS"]},
       {"item": "Dual Fish Knives", "sources": ["G8", "GS"]},
       {"item": "Arrowhead Gem", "sources": ["G8"]},
@@ -1000,9 +1007,10 @@
     "favorites": [
       {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GS"]},
       {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Rugged Blade", "sources": ["NGB", "GR"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
-      {"item": "Rugged Blade", "sources": ["NGB"]}
+      {"item": "Strategy Manuscript", "sources": ["GR"]}
     ],
     "reallyLiked": [
       {"item": "Mature Ghosh", "sources": ["G8", "NGB"]},
@@ -1040,7 +1048,7 @@
     "likes": "Concocting new medicines, her father, her mother, eating sweets",
     "interests": "Making medicinal elixirs, exercise",
     "favorites": [
-      {"item": "Candy Crystals", "sources": ["G8", "GS"]},
+      {"item": "Candy Crystals", "sources": ["G8", "GS", "GR"]},
       {"item": "Portrait of Yu Phas", "sources": ["G8", "NGB"]},
       {"item": "Blue-Rose Bouquet", "sources": ["NGB"]},
       {"item": "History of a Master", "sources": ["G8"]},
@@ -1087,7 +1095,7 @@
     "favorites": [
       {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS"]},
       {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GS"]},
-      {"item": "Arrowhead Gem", "sources": ["NGB"]},
+      {"item": "Arrowhead Gem", "sources": ["NGB", "GR"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
       {"item": "Shield Portrait", "sources": ["NGB"]}
     ],
@@ -1108,7 +1116,7 @@
     "likes": "Pitiable people, talking to spirits, her keepsake necklace, skygazing",
     "interests": "Daydreaming, training",
     "favorites": [
-      {"item": "Eastern Black Silk", "sources": ["G8", "NGB", "PL"]},
+      {"item": "Eastern Black Silk", "sources": ["G8", "NGB", "PL", "GR"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS"]},
       {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GS"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]}
@@ -1130,7 +1138,7 @@
     "likes": "The city and its people, brawling",
     "interests": "Sightseeing in the city, training",
     "favorites": [
-      {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS", "GR"]},
       {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GS"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]}
@@ -1153,7 +1161,7 @@
     "likes": "Tradition, honor, great power",
     "interests": "Conversing with forest spirits",
     "favorites": [
-      {"item": "Arrowhead Gem", "sources": ["G8", "NGB"]},
+      {"item": "Arrowhead Gem", "sources": ["G8", "NGB", "GR"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
       {"item": "Decorative Arrows", "sources": ["NGB"]},
       {"item": "Dual Fish Knives", "sources": ["G8"]},
@@ -1187,7 +1195,7 @@
     "favorites": [
       {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS"]},
       {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GS"]},
-      {"item": "Pegasus Panorama", "sources": ["NGB"]},
+      {"item": "Pegasus Panorama", "sources": ["NGB", "GR"]},
       {"item": "Rugged Blade", "sources": ["NGB"]}
     ],
     "reallyLiked": [
@@ -1212,16 +1220,17 @@
     "interests": "Caring for her instruments, studying music and dance",
     "favorites": [
       {"item": "Eastern Earrings", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Flower Painting", "sources": ["G8", "NGB", "GR"]},
       {"item": "Blue-Rose Bouquet", "sources": ["G8", "NGB"]},
       {"item": "Eastern Tea Leaves", "sources": ["G8", "GS"]},
-      {"item": "Flower Painting", "sources": ["G8", "NGB"]},
       {"item": "Orgus Coffee", "sources": ["G8", "GS"]},
       {"item": "Tales of Adventure", "sources": ["G8", "GS"]},
       {"item": "Eastern Black Silk", "sources": ["NGB"]},
       {"item": "Eastern Board Game", "sources": ["NGB"]},
       {"item": "History of a Master", "sources": ["G8"]},
       {"item": "Poems of the Greats", "sources": ["NGB"]},
-      {"item": "Portrait of Yu Phas", "sources": ["G8"]}
+      {"item": "Portrait of Yu Phas", "sources": ["G8"]},
+      {"item": "Red Hair Clip", "sources": ["GR"]}
     ],
     "reallyLiked": [
       {"item": "Gaudy Bangle", "sources": ["G8", "NGB"]},
@@ -1240,10 +1249,10 @@
     "likes": "Animals, listening to music, cleaning, doing laundry, cooking",
     "interests": "Caring for plants, reading",
     "favorites": [
+      {"item": "Blue-Rose Bouquet", "sources": ["NGB", "GR"]},
       {"item": "Pegasus Panorama", "sources": ["G8", "NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["G8", "NGB"]},
       {"item": "Tales of Adventure", "sources": ["G8", "NGB"]},
-      {"item": "Blue-Rose Bouquet", "sources": ["NGB"]},
       {"item": "Dual Fish Knives", "sources": ["G8"]},
       {"item": "Flower Painting", "sources": ["NGB"]},
       {"item": "History of a Master", "sources": ["G8"]},
@@ -1274,10 +1283,11 @@
     "likes": "The spirits, the sun, his hometown",
     "interests": "Hunting, people watching in the city",
     "favorites": [
+      {"item": "Shield Portrait", "sources": ["NGB", "GR"]},
       {"item": "Arrowhead Gem", "sources": ["G8"]},
       {"item": "Pegasus Panorama", "sources": ["NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
-      {"item": "Shield Portrait", "sources": ["NGB"]},
+      {"item": "Rancid Garum", "sources": ["GR"]},
       {"item": "Strategy Manuscript", "sources": ["NGB"]},
       {"item": "Tales of Adventure", "sources": ["NGB"]}
     ],
@@ -1308,7 +1318,7 @@
     "likes": "His mother's home cooking, ginji fruits",
     "interests": "Eating, watching clouds",
     "favorites": [
-      {"item": "Arrowhead Gem", "sources": ["G8", "NGB"]},
+      {"item": "Arrowhead Gem", "sources": ["G8", "NGB", "GR"]},
       {"item": "Decorative Arrows", "sources": ["G8", "NGB"]},
       {"item": "Candy Crystals", "sources": ["G8"]},
       {"item": "History of a Master", "sources": ["G8"]},
@@ -1347,9 +1357,9 @@
     "likes": "The teachings of Seiros, fishing, his daughter, hardworking people",
     "interests": "Writing fables, preaching, teaching",
     "favorites": [
-      {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Strategy Manuscript", "sources": ["G8", "NGB", "GS", "GR"]},
+      {"item": "Poems of the Greats", "sources": ["G8", "GS", "GR"]},
       {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GS"]},
-      {"item": "Poems of the Greats", "sources": ["G8", "GS"]},
       {"item": "History of a Master", "sources": ["NGB"]},
       {"item": "Morfis Almanac", "sources": ["NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
@@ -1382,6 +1392,7 @@
     "likes": "Delicious food, drinks, socializing",
     "interests": "Caring for Anatolia, studying",
     "favorites": [
+      {"item": "Special \"Medicine\"", "sources": ["GS", "G8", "GR"]},
       {"item": "Arrowhead Gem", "sources": ["NGB"]},
       {"item": "Eastern Black Silk", "sources": ["NGB"]},
       {"item": "Flower Painting", "sources": ["NGB"]},
@@ -1400,7 +1411,6 @@
       {"item": "Pastry Cookbook", "sources": ["G8"]},
       {"item": "Rare Spices", "sources": ["NGB"]},
       {"item": "Select Coffee", "sources": ["G8"]},
-      {"item": "Special \"Medicine\"", "sources": ["GS"]},
       {"item": "Strong Seasonings", "sources": ["NGB"]},
       {"item": "Village Recipes", "sources": ["NGB"]}
     ],
@@ -1415,9 +1425,9 @@
       {"item": "Dual Fish Knives", "sources": ["G8", "NGB", "GS", "RP"]},
       {"item": "Ceremonial Spear", "sources": ["G8", "NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["G8", "NGB"]},
+      {"item": "Shield Portrait", "sources": ["NGB", "GR"]},
       {"item": "History of a Master", "sources": ["G8"]},
       {"item": "Rancid Garum", "sources": ["G8"]},
-      {"item": "Shield Portrait", "sources": ["NGB"]},
       {"item": "Strategy Manuscript", "sources": ["NGB"]},
       {"item": "Tales of Adventure", "sources": ["NGB"]}
     ],
@@ -1439,15 +1449,16 @@
     "interests": "Reading, drawing portraits",
     "favorites": [
       {"item": "Portrait of Yu Phas", "sources": ["G8", "NGB", "GS", "PL"]},
+      {"item": "Flower Painting", "sources": ["G8", "GR"]},
       {"item": "Poems of the Greats", "sources": ["G8", "NGB"]},
       {"item": "Volcano Ghosh", "sources": ["G8", "NGB"]},
       {"item": "Arrowhead Gem", "sources": ["G8"]},
       {"item": "Crimson Ghosh", "sources": ["G8"]},
       {"item": "Eastern Black Silk", "sources": ["NGB"]},
       {"item": "Eastern Earrings", "sources": ["NGB"]},
-      {"item": "Flower Painting", "sources": ["G8"]},
       {"item": "History of a Master", "sources": ["G8"]},
-      {"item": "Special \"Medicine\"", "sources": ["NGB"]}
+      {"item": "Special \"Medicine\"", "sources": ["NGB"]},
+      {"item": "Tales of Adventure", "sources": ["GR"]}
     ],
     "reallyLiked": [
       {"item": "Mature Ghosh", "sources": ["G8", "NGB"]},
@@ -1473,7 +1484,7 @@
     "interests": "Proselytizing about Solel, eating her fill",
     "favorites": [
       {"item": "Blue-Rose Bouquet", "sources": ["G8", "NGB"]},
-      {"item": "Dual Fish Knives", "sources": ["G8"]},
+      {"item": "Dual Fish Knives", "sources": ["G8", "GR"]},
       {"item": "Flower Painting", "sources": ["NGB"]},
       {"item": "Portrait of Yu Phas", "sources": ["NGB"]},
       {"item": "Tales of Adventure", "sources": ["NGB"]},
@@ -1516,7 +1527,7 @@
     "likes": "Money, adventure, cinnamon, flirting, following his heart",
     "interests": "Making money, going on perilous adventures",
     "favorites": [
-      {"item": "Volcano Ghosh", "sources": ["G8", "NGB"]},
+      {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GR"]},
       {"item": "Blue-Rose Bouquet", "sources": ["G8"]},
       {"item": "Crimson Ghosh", "sources": ["G8"]},
       {"item": "Flower Painting", "sources": ["G8"]},
@@ -1543,7 +1554,7 @@
     "name": "Theodora",
     "likes": "Fighting, seeing the people of Saramis thrive",
     "interests": "Hunting, combat training",
-    "favorites": [{"item": "Portrait of Yu Phas", "sources": ["GS", "PL"]}],
+    "favorites": [{"item": "Portrait of Yu Phas", "sources": ["GS", "PL", "GR"]}],
     "reallyLiked": [
       {"item": "Dagda Beard Grass", "sources": ["G8", "GS"]},
       {"item": "Eastern Black Silk", "sources": ["G8", "GS"]},
@@ -1557,10 +1568,10 @@
     "likes": "Libraries, gossiping about love, alone time, her grandfather",
     "interests": "Reading, playing board games",
     "favorites": [
+      {"item": "Tales of Adventure", "sources": ["G8", "NGB", "GR"]},
+      {"item": "Tome from Away", "sources": ["G8", "NGB", "GR"]},
       {"item": "Morfis Almanac", "sources": ["G8", "NGB"]},
       {"item": "School Scandal", "sources": ["G8", "NGB"]},
-      {"item": "Tales of Adventure", "sources": ["G8", "NGB"]},
-      {"item": "Tome from Away", "sources": ["G8", "NGB"]},
       {"item": "Eastern Board Game", "sources": ["G8"]},
       {"item": "Ebony Game Board", "sources": ["G8"]},
       {"item": "History of a Master", "sources": ["G8"]},
@@ -1603,8 +1614,8 @@
     "likes": "Singing, interacting with others",
     "interests": "Hunting, solitary camping",
     "favorites": [
+      {"item": "Tales of Adventure", "sources": ["G8", "GS", "GR"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "GS"]},
-      {"item": "Tales of Adventure", "sources": ["G8", "GS"]},
       {"item": "Volcano Ghosh", "sources": ["G8", "GS"]}
     ],
     "reallyLiked": [
@@ -1668,6 +1679,7 @@
     "favorites": [
       {"item": "Blue-Rose Bouquet", "sources": ["G8", "NGB", "GS"]},
       {"item": "Portrait of Yu Phas", "sources": ["G8", "NGB"]},
+      {"item": "Dual Fish Knives", "sources": ["GR"]},
       {"item": "History of a Master", "sources": ["G8"]},
       {"item": "Legendary Garum", "sources": ["G8"]},
       {"item": "Rancid Garum", "sources": ["G8"]},
@@ -1695,11 +1707,11 @@
     "likes": "Poetry, animals, flowers in the shade, counting money",
     "interests": "Reading, drawing pictures",
     "favorites": [
-      {"item": "Flower Painting", "sources": ["G8", "NGB"]},
+      {"item": "Flower Painting", "sources": ["G8", "NGB", "GR"]},
       {"item": "Pegasus Panorama", "sources": ["G8", "NGB"]},
+      {"item": "Shield Portrait", "sources": ["NGB", "GR"]},
       {"item": "History of a Master", "sources": ["G8"]},
       {"item": "Portrait of Yu Phas", "sources": ["G8"]},
-      {"item": "Shield Portrait", "sources": ["NGB"]},
       {"item": "Solomon Coffee", "sources": ["NGB"]}
     ],
     "reallyLiked": [
@@ -1722,8 +1734,8 @@
     "likes": "Alcohol, tales of old, distant journeys, saving the weak",
     "interests": "Collecting liquors, giving sermons",
     "favorites": [
+      {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS", "GR"]},
       {"item": "Eastern Tea Leaves", "sources": ["G8", "NGB", "GS"]},
-      {"item": "Volcano Ghosh", "sources": ["G8", "NGB", "GS"]},
       {"item": "Poems of the Greats", "sources": ["G8", "GS"]},
       {"item": "Strategy Manuscript", "sources": ["G8", "GS"]},
       {"item": "Tales of Adventure", "sources": ["G8", "GS"]},
@@ -1768,7 +1780,7 @@
     "likes": "Money, violence, good women, vegetables, drinking with friends",
     "interests": "Tormenting the weak, pillaging",
     "favorites": [
-      {"item": "Eastern Tea Leaves", "sources": ["G8", "NGB", "GS"]},
+      {"item": "Eastern Tea Leaves", "sources": ["G8", "NGB", "GS", "GR"]},
       {"item": "Tales of Adventure", "sources": ["G8", "NGB"]},
       {"item": "Ceremonial Spear", "sources": ["NGB"]},
       {"item": "Odd Vegetable Seeds", "sources": ["NGB"]}

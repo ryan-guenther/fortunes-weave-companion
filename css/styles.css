@@ -796,11 +796,29 @@ main { padding-block: 12px 40px; }
   line-height: 1.2;
 }
 
-.class-path .step:last-child {
+.class-path .step small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.class-path .step:last-child,
+.class-path .step.is-divine {
   border-color: transparent;
   background: var(--gold-soft);
   font-weight: 600;
 }
+
+.class-path .step.is-missing {
+  border-style: dashed;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.path-row .label { margin-bottom: 4px; }
 
 .arrow {
   color: var(--muted);
