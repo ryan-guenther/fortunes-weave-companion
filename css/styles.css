@@ -864,3 +864,53 @@ main { padding-block: 12px 40px; }
 }
 
 .site-footer a { color: inherit; }
+
+.backup {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--fg);
+  font-size: 13.5px;
+}
+
+.backup summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.backup p { margin: 8px 0; color: var(--muted); }
+#progress-summary { color: var(--fg); }
+
+.backup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.backup-actions button {
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.backup textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 12px ui-monospace, Menlo, Consolas, monospace;
+  resize: vertical;
+}
+
+.backup-status:empty { display: none; }
+.backup .backup-status { color: var(--fg); font-weight: 600; }

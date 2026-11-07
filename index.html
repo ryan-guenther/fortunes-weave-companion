@@ -54,6 +54,18 @@
 
   <footer class="site-footer">
     <div class="wrap">
+      <details class="backup" id="backup">
+        <summary>Back up your progress</summary>
+        <p id="progress-summary"></p>
+        <p>Your marks live only in this browser. On iPhone, Safari and the home-screen app keep separate copies, and Safari can clear them if you don't visit for a while. Copy a backup code to keep them safe, or to move them to another browser or phone.</p>
+        <div class="backup-actions">
+          <button type="button" id="backup-copy">Copy backup code</button>
+          <button type="button" id="backup-restore">Restore from code</button>
+        </div>
+        <label for="backup-text" class="label">Backup code</label>
+        <textarea id="backup-text" rows="3" spellcheck="false" placeholder="Paste a backup code here, then tap Restore from code"></textarea>
+        <p id="backup-status" class="backup-status" role="status"></p>
+      </details>
       <p>Sources are listed at the bottom of each tab. Unofficial fan project; Fire Emblem is a trademark of Nintendo. <a href="https://github.com/ryan-guenther/fortunes-weave-companion">Source on GitHub</a>.</p>
     </div>
   </footer>

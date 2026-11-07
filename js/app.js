@@ -93,11 +93,31 @@ function loadRouteSets(key) {
   return Object.fromEntries(ROUTES.map((r) => [r, new Set(Array.isArray(saved[r]) ? saved[r] : [])]));
 }
 
-function toggleInRouteSet(key, sets, route, id) {
+// Read the latest saved copy, apply one change, save it back, and return the result.
+// Reading first matters: the app may be open in two places (a browser tab and the
+// home-screen app), and saving this page's in-memory copy would wipe the other's marks.
+function toggleInRouteSet(key, route, id) {
+  const sets = loadRouteSets(key);
   const set = sets[route];
   if (set.has(id)) set.delete(id);
   else set.add(id);
   storage.set(key, JSON.stringify(Object.fromEntries(ROUTES.map((r) => [r, [...sets[r]]]))));
+  return sets;
+}
+
+// Pick up marks saved elsewhere (another tab, or this app while it sat in the background).
+function reloadProgress() {
+  state.done = loadRouteSets('fw-paralogues-done');
+  state.recruited = loadRouteSets('fw-recruited');
+  try {
+    const saved = JSON.parse(storage.get('fw-game-date'));
+    if (saved && PICKABLE_MONTHS.includes(saved.month) && saved.day >= 1 && saved.day <= 31) {
+      state.gameDate = saved;
+      state.dateDraft = { ...saved };
+    } else {
+      state.gameDate = null;
+    }
+  } catch { /* ignore bad saved data */ }
 }
 
 function loadSavedState() {
@@ -115,16 +135,7 @@ function loadSavedState() {
     if (Array.isArray(shown)) state.recruitShow = new Set(shown.filter((id) => RECRUIT_GROUPS.some((g) => g.id === id)));
   } catch { /* ignore bad saved data */ }
 
-  state.done = loadRouteSets('fw-paralogues-done');
-  state.recruited = loadRouteSets('fw-recruited');
-
-  try {
-    const saved = JSON.parse(storage.get('fw-game-date'));
-    if (saved && PICKABLE_MONTHS.includes(saved.month) && saved.day >= 1 && saved.day <= 31) {
-      state.gameDate = saved;
-      state.dateDraft = { ...saved };
-    }
-  } catch { /* ignore bad saved data */ }
+  reloadProgress();
 }
 
 // ---------- Data ----------
@@ -785,10 +796,10 @@ function bindEvents() {
       storage.set('fw-recruit-show', JSON.stringify([...state.recruitShow]));
       render();
     } else if (done) {
-      toggleInRouteSet('fw-paralogues-done', state.done, state.route, done);
+      state.done = toggleInRouteSet('fw-paralogues-done', state.route, done);
       render();
     } else if (recruited) {
-      toggleInRouteSet('fw-recruited', state.recruited, state.charRoute, recruited);
+      state.recruited = toggleInRouteSet('fw-recruited', state.charRoute, recruited);
       render();
     } else if (route) {
       state.route = route;
@@ -808,6 +819,80 @@ function bindEvents() {
   });
 }
 
+// ---------- Progress: sync and backup ----------
+
+const PROGRESS_KEYS = ['fw-paralogues-done', 'fw-recruited', 'fw-game-date', 'fw-route', 'fw-char-route', 'fw-recruit-show'];
+
+function backupText() {
+  const data = {};
+  for (const key of PROGRESS_KEYS) {
+    const value = storage.get(key);
+    if (value !== null) data[key] = value;
+  }
+  return JSON.stringify({ app: 'fw-companion', version: 1, saved: new Date().toISOString(), data });
+}
+
+function restoreBackup(text) {
+  let parsed;
+  try { parsed = JSON.parse(text); } catch { return 'That isn\'t a backup code. Paste the whole code you copied.'; }
+  if (parsed?.app !== 'fw-companion' || typeof parsed.data !== 'object') return 'That isn\'t a backup code from this app.';
+  for (const key of PROGRESS_KEYS) {
+    if (typeof parsed.data[key] === 'string') storage.set(key, parsed.data[key]);
+  }
+  loadSavedState();
+  render();
+  return null;
+}
+
+function progressSummary() {
+  const done = ROUTES.reduce((n, r) => n + state.done[r].size, 0);
+  const recruited = ROUTES.reduce((n, r) => n + state.recruited[r].size, 0);
+  return `${plural(done, 'paralogue')} done and ${plural(recruited, 'character')} recruited, saved on this device.`;
+}
+
+function bindBackup() {
+  const status = $('#backup-status');
+  const say = (text) => { status.textContent = text; };
+  const refreshSummary = () => { $('#progress-summary').textContent = progressSummary(); };
+  $('#backup').addEventListener('toggle', refreshSummary);
+
+  $('#backup-copy').addEventListener('click', () => {
+    const text = backupText();
+    const box = $('#backup-text');
+    box.value = text;
+    const fallback = () => { box.focus(); box.select(); say('Copying isn\'t allowed here. The code is selected below; copy it yourself.'); };
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(() => say('Backup code copied. Keep it somewhere safe, like a note.'), fallback);
+    } else {
+      fallback();
+    }
+  });
+
+  $('#backup-restore').addEventListener('click', () => {
+    const error = restoreBackup($('#backup-text').value.trim());
+    if (error) {
+      say(error);
+    } else {
+      refreshSummary();
+      say('Progress restored.');
+    }
+  });
+}
+
+function keepInSync() {
+  const resync = () => {
+    reloadProgress();
+    if (characters.length) render();
+  };
+  // Another tab saved.
+  window.addEventListener('storage', (e) => { if (PROGRESS_KEYS.includes(e.key)) resync(); });
+  // The app came back on screen, or the page was restored from the back/forward cache.
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') resync(); });
+  window.addEventListener('pageshow', (e) => { if (e.persisted) resync(); });
+  // Ask the browser not to clear this site's storage to free up space.
+  navigator.storage?.persist?.().catch(() => { /* best effort */ });
+}
+
 function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(() => { /* offline support is optional */ });
@@ -817,6 +902,8 @@ function registerServiceWorker() {
 async function start() {
   loadSavedState();
   bindEvents();
+  bindBackup();
+  keepInSync();
   registerServiceWorker();
   try {
     await loadData();

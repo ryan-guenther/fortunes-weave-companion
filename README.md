@@ -10,7 +10,7 @@ A fast, installable companion for **Fire Emblem: Fortune's Weave**. Add it to yo
 - **Items:** reverse lookup showing everyone who wants an item and where to buy it.
 - **Paralogues:** pick a route (Cai, Dietrich, Theodora or Leda) to see each Part I paralogue's accept window, deadline, start location and rewards on a timeline. Enter your in-game date to see what's open now, and tick off each one as you finish it.
 - **Classes:** recommended class paths from two guides for every character, grouped by role. Each step is tagged with its tier, skipped tiers are marked, and Master class unlock steps are shown where known.
-- Works offline after the first visit, and remembers your filters, date, finished paralogues and recruited characters on your device.
+- Works offline after the first visit, and remembers your filters, date, finished paralogues and recruited characters on your device. Back up your progress from the footer to keep it safe or move it to another browser.
 
 ## Install on your phone
 
